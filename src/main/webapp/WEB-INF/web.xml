@@ -40,6 +40,12 @@
   	<description></description>
   	<servlet-class>com.ECW.User.Controller.forgotPasswordController2</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>UserNameVerificationCOntroller</servlet-name>
+  	<display-name>UserNameVerificationCOntroller</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.User.Controller.UserNameVerificationCOntroller</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>loginServletController</servlet-name>
   	<url-pattern>/loginServletController</url-pattern>
@@ -63,6 +69,10 @@
   <servlet-mapping>
   	<servlet-name>forgotPasswordController2</servlet-name>
   	<url-pattern>/forgotPasswordController2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserNameVerificationCOntroller</servlet-name>
+  	<url-pattern>/UserNameVerificationCOntroller</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

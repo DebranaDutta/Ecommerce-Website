@@ -14,42 +14,64 @@ public class UserDao {
 		super();
 		this.connection = connection;
 	}
+
 	public boolean updateUserPassword(String newPassword) {
-		boolean status=false;
+		boolean status = false;
 		try {
-			String query="";
+			String query = "";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return status;
 	}
-	//String query = "select * from ecommerce.user where userName=? and password=?;";
-	public User getUserDetailsByUserNameAndEmailId(String userName, String emailId) {
-		User user=null;
+
+	// String query = "select * from ecommerce.user where userName=?;
+	public String getSecurityQuestionByUserName(String userName) {
+		String securityQuestion = null;
 		try {
-			String query="select * from ecommerce.user where userName=? or email=?;";
-			PreparedStatement preparedStatement=this.connection.prepareStatement(query);
+			String query = "select securityQuestion from ecommerce.user where userName=?";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setString(1, userName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(resultSet.next()) {
+				securityQuestion = resultSet.getString("securityQuestion");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return securityQuestion;
+	}
+
+	// String query = "select * from ecommerce.user where userName=? and
+	// password=?;";
+	public User getUserDetailsByUserNameAndEmailId(String userName, String emailId) {
+		User user = null;
+		try {
+			String query = "select * from ecommerce.user where userName=? or email=?;";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setString(1, userName);
 			preparedStatement.setString(2, emailId);
-			ResultSet resultSet=preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
 				long contactNumber = Long.parseLong(resultSet.getString("phoneNumber"));
 				String answer = resultSet.getString("answer");
 				Date date = resultSet.getDate("date");
-				String email=resultSet.getString("email");
+				String email = resultSet.getString("email");
 				String fullName = resultSet.getString("fullName");
 				String gender = resultSet.getString("gender");
-				String password=resultSet.getString("password");
+				String password = resultSet.getString("password");
 				String securityQuestion = resultSet.getString("securityQuestion");
-				String username=resultSet.getString("userName");
-				
-				user=new User(fullName, username, email, contactNumber, password, securityQuestion, answer, gender, date);
+				String username = resultSet.getString("userName");
+
+				user = new User(fullName, username, email, contactNumber, password, securityQuestion, answer, gender,
+						date);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return user;
 	}
+
 	public User getUserByUserIdAndPassword(String password, String userName) {
 		User user = null;
 		try {
