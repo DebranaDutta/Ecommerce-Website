@@ -20,7 +20,7 @@
 				<span></span> <label>Password</label>
 			</div>
 			<div class="pass">
-				<a href="ForgotPasswordPage1.jsp"> Forgot Password?</a>
+				<a href="ForgotPasswordPage.jsp"> Forgot Password?</a>
 			</div>
 			<input type="button" value="Login" id="loginBtn" />
 			<div class="singup_link">

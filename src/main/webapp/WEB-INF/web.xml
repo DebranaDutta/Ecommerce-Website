@@ -46,6 +46,18 @@
   	<description></description>
   	<servlet-class>com.ECW.User.Controller.UserNameVerificationCOntroller</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>securityQuestionVerificationController</servlet-name>
+  	<display-name>securityQuestionVerificationController</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.User.Controller.securityQuestionVerificationController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>changePasswordController</servlet-name>
+  	<display-name>changePasswordController</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.User.Controller.changePasswordController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>loginServletController</servlet-name>
   	<url-pattern>/loginServletController</url-pattern>
@@ -73,6 +85,14 @@
   <servlet-mapping>
   	<servlet-name>UserNameVerificationCOntroller</servlet-name>
   	<url-pattern>/UserNameVerificationCOntroller</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>securityQuestionVerificationController</servlet-name>
+  	<url-pattern>/securityQuestionVerificationController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>changePasswordController</servlet-name>
+  	<url-pattern>/changePasswordController</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

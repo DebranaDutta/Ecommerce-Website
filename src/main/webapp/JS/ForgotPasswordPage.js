@@ -18,12 +18,32 @@ function validateUserName(){
 				if(question!==""){
 					$('#submitBtn').click(function(){
 						var answer=document.getElementById("answer").value;
-						console.log(answer);
+						$.ajax({
+							type:'POST',
+							url:'securityQuestionVerificationController',
+							data:{
+								userName:userName,
+								answer:answer
+							}, 
+							success : function(data, tetxtStatus, jqXHR){
+								if(data.trim()==='success'){
+									localStorage.setItem("userName", userName);
+									window.location='ChangePasswordPage.jsp'
+								}else if(data.trim()==='error'){
+									swal('Answer mismatch, please try again!').then((value)=>{
+										window.location='ForgotPasswordPage.jsp';
+									});
+								}
+							},
+							error : function(jqXHR, textStatus, errorThrown){
+								
+							}
+						});
 					});
 				}
 			}else if(status.trim()==='error'){
 				swal('Invalid Username!').then((value)=>{
-					window.location='NewForgotPasswordPage1.jsp';
+					window.location='ForgotPasswordPage.jsp';
 				});
 			}
 			

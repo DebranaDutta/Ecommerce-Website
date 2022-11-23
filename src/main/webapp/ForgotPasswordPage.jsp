@@ -4,7 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="CSS/NewForgotPasswordPage1.css" />
+<link rel="stylesheet" href="CSS/ForgotPasswordPage.css" />
 </head>
 <body>
 <body>
@@ -39,5 +39,5 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script type="text/javascript" src="JS/NewForgotPasswordPage1.js"></script>
+<script type="text/javascript" src="JS/ForgotPasswordPage.js"></script>
 </html>

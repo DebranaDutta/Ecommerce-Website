@@ -8,10 +8,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet(name = "forgotPasswordController2", urlPatterns = {"/forgotPasswordController2"})
-public class forgotPasswordController2 extends HttpServlet {
+
+import com.ECW.Dao.UserDao;
+import com.ECW.helper.ConnectionProvider;
+
+@WebServlet(name = "changePasswordController", urlPatterns = {"/changePasswordController"})
+public class changePasswordController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public forgotPasswordController2() {
+    public changePasswordController() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,8 +23,14 @@ public class forgotPasswordController2 extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newPassword=request.getParameter("newPassword");
+		String userName=request.getParameter("userName");
+		UserDao userDao=new UserDao(ConnectionProvider.getConnection());
 		PrintWriter out=response.getWriter();
-		
+		boolean status= userDao.updateUserPassword(newPassword, userName);
+		if(status==true) {
+			out.print("success");
+		}else {
+			out.print("error");
+		}
 	}
-
 }
