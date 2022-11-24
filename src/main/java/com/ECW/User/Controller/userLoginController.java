@@ -35,9 +35,13 @@ public class userLoginController extends HttpServlet {
 		HttpSession session = request.getSession();
 		UserDao userDao = new UserDao(ConnectionProvider.getConnection());
 		User user = userDao.getUserByUserIdAndPassword(password, userName);
-		if (user == null) {
+		if(user.getFullName().equals(userName)) {
+			out.print("success"+","+user.getFullName());
+			session.setAttribute("currentUser", user);
+			session.setMaxInactiveInterval(600);
+		}else if(user==null) {
 			out.print("error");
-		} else {
+		}else {
 			out.print("success");
 			session.setAttribute("currentUser", user);
 			session.setMaxInactiveInterval(600);

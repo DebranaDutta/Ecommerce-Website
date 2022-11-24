@@ -14,27 +14,33 @@ import com.ECW.Model.Product;
 import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.ECW.helper.RandomIdGenerator;
 
-@WebServlet(name = "AddNewProductController", urlPatterns = {"/AddNewProductController"})
+@WebServlet(name = "AddNewProductController", urlPatterns = { "/AddNewProductController" })
 public class AddNewProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public AddNewProductController() {
-        super();
-    }
+
+	public AddNewProductController() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String productName=request.getParameter("productName");
-		String productPrice=request.getParameter("productPrice");
-		String productCategory=request.getParameter("productCategory");
-		String available=request.getParameter("available");
-		PrintWriter out=response.getWriter();
-		Product product=new Product(RandomIdGenerator.newIdGenrator(), productName, 0, productCategory, available, new Date());
-		boolean status= CrudOperationsUsingHibernate.addNewProduct(product);
-		if(status==true) {
+		String productName = request.getParameter("productName");
+		int productPrice = Integer.parseInt(request.getParameter("productPrice"));
+		String productCategory = request.getParameter("productCategory");
+		String available = request.getParameter("available");
+		PrintWriter out = response.getWriter();
+		Product product = new Product(RandomIdGenerator.newIdGenrator(), productName, productPrice, productCategory, available, new Date());
+		System.out.println(product);
+
+		boolean status = CrudOperationsUsingHibernate.addNewProduct(product);
+		if (status == true) {
 			out.print("success");
-		}else {
+		} else {
 			out.print("error");
 		}
+
 	}
 }

@@ -4,9 +4,11 @@ $(document).ready(function() {
 		var productPrice = document.getElementById("productPrice").value;
 		var productCategory = document.getElementById("productCategory").value;
 		var available = $('input[name="active"]:checked').val();
+		console.log(productName, productPrice, productCategory, available)
+		var url="http://localhost:8080/E-commerceWebsite/AddNewProductController";
 		$.ajax({
 			type : 'POST',
-			url : 'AddNewProductController',
+			url : url,
 			data : {
 				productName : productName,
 				productPrice : productPrice,
