@@ -25,8 +25,8 @@ $(document).ready(function() {
 						swal("Invalid username or password").then((value)=>{
 							window.location='login.jsp'
 						});
-					}else{
-						console.log(data);
+					}else if(data.trim()==='success'){
+						
 						window.location='#'
 					}
 				},
