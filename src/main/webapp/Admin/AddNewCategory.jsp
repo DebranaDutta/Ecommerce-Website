@@ -31,11 +31,12 @@
 								</div>
 								<div class="input-box">
 									<span class="details">Category Details</span>
-									<input type="text" placeholder="Enter category name" id="categoryDetails" required="required" />
+									<input type="text" placeholder="Enter category details" id="categoryDetails" required="required" />
 								</div>
 							</div>
-							<div class="button">
+							<div class="text-center button">
 								<input type="button" name="" value="Save" id="saveBtn" />
+								<input type="button" name="" value="Cancel" id="cancelBtn" />
 							</div>
 						</form>
 					</div>

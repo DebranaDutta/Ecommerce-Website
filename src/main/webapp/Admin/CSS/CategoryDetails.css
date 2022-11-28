@@ -90,13 +90,12 @@ form .category-details .input-box .details {
 	border-color: #9b59b6;
 }
 form .button {
-	height: 45px;
-	margin-bottom: 5px;
+	height: 45px; 
 }
 
 form .button input {
 	height: 100%;
-	width: 100%;
+	width: 45%;
 	outline: none;
 	color: #fff;
 	border: none;

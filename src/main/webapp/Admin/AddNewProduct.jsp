@@ -74,8 +74,9 @@
 									</label>
 								</div>
 							</div>
-							<div class="button">
+							<div class="text-center button">
 								<input type="button" name="" value="Save" id="saveBtn" />
+								<input type="button" name="" value="Cancel" id="cancelBtn" />
 							</div>
 						</form>
 					</div>
