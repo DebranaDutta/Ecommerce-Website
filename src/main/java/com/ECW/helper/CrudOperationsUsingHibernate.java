@@ -1,7 +1,10 @@
 package com.ECW.helper;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.ECW.Model.Category;
 import com.ECW.Model.Product;
@@ -33,5 +36,12 @@ public class CrudOperationsUsingHibernate {
 		session.save(category);
 		transaction.commit();
 		return true;
+	}
+	
+	public static List<Category> getAllCategoryDetails(){
+		List<Category> categories=null;
+		session=FactoryProvider.getFactory().openSession();
+		Query<Category> query= session.createQuery("from Category");
+		return categories=query.getResultList();
 	}
 }

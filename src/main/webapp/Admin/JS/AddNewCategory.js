@@ -13,7 +13,7 @@ $(document).ready(function() {
 			},
 			success: function(data, tetxtStatus, jqXHR){
 				if(data.trim()==='success'){
-					swal("Product added successfully").then((value)=>{
+					swal("Category added successfully").then((value)=>{
 						window.location='AdminHome.jsp';
 					});
 				}

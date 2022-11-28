@@ -6,4 +6,5 @@ public interface JAVAView {
 	public String USER_VIEW="/UserView";
 	
 	public String logoutController=APP_CONTEXT+"/userLogoutController";
+	public String getAllCategoryDetails=APP_CONTEXT+"/getAllCategoryDetails";
 }

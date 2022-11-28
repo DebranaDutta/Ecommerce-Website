@@ -1,4 +1,11 @@
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ECW.Model.Category"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%
+	List<Category> categories=(ArrayList<Category>) session.getAttribute("categories");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +39,7 @@
 									<span class="details">Price</span>
 									<input type="text" placeholder="Enter price" id="productPrice" required />
 								</div>
-								<div class="input-box">
+								<!-- <div class="input-box">
 									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
 										<option value="Cloths">Cloths</option>
 										<option value="Shoes">Shoes</option>
@@ -43,6 +50,17 @@
 										<option value="Grocery">Grocery</option>
 										<option value="Electronics">Electronics</option>
 										<option value="Medicine">Medicine</option>
+									</select>
+								</div> -->
+								<div class="input-box">
+									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select" >
+									<%
+									for(Category category:categories){
+									%>	
+									<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
+									<%
+									}
+									%>
 									</select>
 								</div>
 							</div>

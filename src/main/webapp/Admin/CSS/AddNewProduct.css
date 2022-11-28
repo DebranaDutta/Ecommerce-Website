@@ -1,3 +1,6 @@
+body{
+	background: linear-gradient(100deg, #2980b9, #8e44ad);
+}
 .main_cont {
 	justify-content: center;
 	box-sizing: border-box;
