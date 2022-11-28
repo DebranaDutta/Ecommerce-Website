@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<%@include file="AdminNavbar.jsp"%>
+		<%@include file="Common/AdminNavbar.jsp"%>
 	</div>
 	<div class="container-fluid mt-3 main_cont">
 		<div class="container">

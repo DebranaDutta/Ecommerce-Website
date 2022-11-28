@@ -61,7 +61,10 @@
 				</div>
 			</div>
 			<div class="button">
-				<input type="button" name="" value="Register" id="registerBtn"/>
+				<input type="button" name="" value="Register" id="registerBtn" />
+			</div>
+			<div class="login">
+				<a href="login.jsp">Login</a>
 			</div>
 		</form>
 	</div>

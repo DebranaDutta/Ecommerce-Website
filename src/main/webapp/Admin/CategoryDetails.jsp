@@ -1,24 +1,29 @@
-<%@page import="com.ECW.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%
-User user = (User) session.getAttribute("currentUser");
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Category Details</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="CSS/AdminHome.css">
+<link rel="stylesheet" href="CSS/CategoryDetails.css">
 </head>
 <body>
 	<div class="container-fluid">
 		<%@include file="Common/AdminNavbar.jsp"%>
 	</div>
-	<h1> Hello <%=user.getUserName()%></h1>
-
-	<!-- BootStrap -->
+	<div class="container-fluid mt-3">
+		<div class="row">
+			<!-- First COL -->
+			<div class="col-md-2 text-center">
+				<%@include file="Common/listGroup.jsp" %>
+			</div>
+			<!-- Second COL -->
+			<div class="col-md-12">
+			
+			</div>
+		</div>
+	</div>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
@@ -32,5 +37,6 @@ User user = (User) session.getAttribute("currentUser");
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
+	<script type="text/javascript" src="JS/CategoryDetails.js"></script>
 </body>
 </html>

@@ -41,6 +41,5 @@ public class AddNewProductController extends HttpServlet {
 		} else {
 			out.print("error");
 		}
-
 	}
 }

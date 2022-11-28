@@ -160,6 +160,16 @@ form .button input:hover {
 	background: linear-gradient(-135deg, #2980b9, #8e44ad);
 }
 
+form .login a {
+	width: 100%;
+	color: #2691d9;
+	text-decoration: none;
+	font-size: 18px;
+	letter-spacing: 1px;
+	font-weight: 500;
+	margin-left: 45%;
+}
+
 @media ( max-width : 584px) {
 	.container {
 		max-width: 100%;
