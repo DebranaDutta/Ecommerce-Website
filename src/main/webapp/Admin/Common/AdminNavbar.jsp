@@ -8,10 +8,8 @@
 
 	<div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item mr-5"><a class="nav-link" href="AddNewProduct.jsp"><i class="fa-solid fa-plus"></i>Add New Product<span
-					class="sr-only">(current)</span></a></li>
-			<%-- <li class="nav-item mr-5"><a class="nav-link" href="<%=JavaView.ViewProductsServelts%>"><i class="fa-solid fa-border-all"></i>All Products</a></li> --%>
-			<li class="nav-item mr-5"><a class="nav-link" href="CategoryDetails.jsp"><i class="fa-solid fa-bars"></i>Category Details</a></li>
+		
+			<li class="nav-item mr-5"><a class="nav-link" href="CategoryDetails.jsp"><i class="fa-solid fa-bars"></i>Category & Products</a></li>
 			<li class="nav-item mr-5"><a class="nav-link" href="AllUserDetails.jsp"><i class="fa-solid fa-user"></i>Users</a></li>
 			<li class="nav-item mr-5"><a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i>Message Reviewed</a></li>
 			<li class="nav-item mr-5"><a class="nav-link" href="#"><i class="fa-solid fa-list"></i>Orders Received</a></li>

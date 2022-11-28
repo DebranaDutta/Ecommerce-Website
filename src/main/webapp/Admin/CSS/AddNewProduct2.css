@@ -1,0 +1,15 @@
+.list-group-item {
+	border: 1px solid #ccc;
+	transition: all 1s ease;
+	border-radius: 15px;
+}
+
+.list-group-item:hover {
+	background: linear-gradient(-100deg, #2980b9, #8e44ad);
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: 1px;
+	font-size: 15px;
+	border-radius: 15px;
+	border-bottom-width: 3px;
+}

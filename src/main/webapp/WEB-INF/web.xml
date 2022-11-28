@@ -70,6 +70,12 @@
   	<description></description>
   	<servlet-class>com.ECW.User.Controller.userLogoutController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddNewCategoryController</servlet-name>
+  	<display-name>AddNewCategoryController</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.Product.Controller.AddNewCategoryController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>loginServletController</servlet-name>
   	<url-pattern>/loginServletController</url-pattern>
@@ -113,6 +119,10 @@
   <servlet-mapping>
   	<servlet-name>userLogoutController</servlet-name>
   	<url-pattern>/userLogoutController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddNewCategoryController</servlet-name>
+  	<url-pattern>/AddNewCategoryController</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

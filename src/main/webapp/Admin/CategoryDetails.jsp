@@ -19,7 +19,7 @@
 				<%@include file="Common/listGroup.jsp" %>
 			</div>
 			<!-- Second COL -->
-			<div class="col-md-12">
+			<div class="col-md-10">
 			
 			</div>
 		</div>

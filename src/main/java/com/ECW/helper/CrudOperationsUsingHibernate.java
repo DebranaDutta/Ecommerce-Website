@@ -3,6 +3,7 @@ package com.ECW.helper;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.ECW.Model.Category;
 import com.ECW.Model.Product;
 import com.ECW.Model.User;
 
@@ -22,6 +23,14 @@ public class CrudOperationsUsingHibernate {
 		session = FactoryProvider.getFactory().openSession();
 		transaction=session.beginTransaction();
 		session.save(product);
+		transaction.commit();
+		return true;
+	}
+	
+	public static boolean addNewCategory(Category category) {
+		session=FactoryProvider.getFactory().openSession();
+		transaction=session.beginTransaction();
+		session.save(category);
 		transaction.commit();
 		return true;
 	}

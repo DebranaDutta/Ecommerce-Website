@@ -3,56 +3,66 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add New Product</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="CSS/AddNewProduct.css">
+<link rel="stylesheet" href="CSS/AddNewProduct2.css">
 </head>
 <body>
 	<div class="container-fluid">
 		<%@include file="Common/AdminNavbar.jsp"%>
 	</div>
-	<div class="container-fluid mt-3 main_cont">
-		<div class="container">
-			<div class="title">Add Product Details</div>
-			<form action="#">
-				<div class="product-details">
-					<div class="input-box">
-						<span class="details">Product Name</span>
-						<input type="text" placeholder="Enter product name" id="productName" required />
-					</div>
-					<div class="input-box">
-						<span class="details">Price</span>
-						<input type="text" placeholder="Enter price" id="productPrice" required />
-					</div>
-					<div class="input-box">
-						<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
-							<option value="Cloths">Cloths</option>
-							<option value="Shoes">Shoes</option>
-							<option value="Kitchen Essentials">Kitchen Essentials</option>
-							<option value="Food">Food</option>
-							<option value="Pet Supplies">Pet Supplies</option>
-							<option value="Home Essential">Home Essential</option>
-							<option value="Grocery">Grocery</option>
-							<option value="Electronics">Electronics</option>
-							<option value="Medicine">Medicine</option>
-						</select>
+	<div class="container-fluid mt-3">
+		<div class="row">
+			<div class="col-md-2 text-center">
+				<%@include file="Common/listGroup.jsp"%>
+			</div>
+			<div class="col-md-10">
+				<div class="container-fluid mt-3 main_cont">
+					<div class="container">
+						<div class="title">Add Product Details</div>
+						<form action="#">
+							<div class="product-details">
+								<div class="input-box">
+									<span class="details">Product Name</span>
+									<input type="text" placeholder="Enter product name" id="productName" required />
+								</div>
+								<div class="input-box">
+									<span class="details">Price</span>
+									<input type="text" placeholder="Enter price" id="productPrice" required />
+								</div>
+								<div class="input-box">
+									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
+										<option value="Cloths">Cloths</option>
+										<option value="Shoes">Shoes</option>
+										<option value="Kitchen Essentials">Kitchen Essentials</option>
+										<option value="Food">Food</option>
+										<option value="Pet Supplies">Pet Supplies</option>
+										<option value="Home Essential">Home Essential</option>
+										<option value="Grocery">Grocery</option>
+										<option value="Electronics">Electronics</option>
+										<option value="Medicine">Medicine</option>
+									</select>
+								</div>
+							</div>
+							<div class="radio_field">
+								<input type="radio" name="active" value="yes" id="dot-1" />
+								<input type="radio" name="active" value="no" id="dot-2" />
+								<span class="radio_field_title">Available</span>
+								<div class="category">
+									<label for="dot-1"> <span class="dot one"></span> <span class="active">Yes</span>
+									</label> <label for="dot-2"> <span class="dot two"></span> <span class="active">No</span>
+									</label>
+								</div>
+							</div>
+							<div class="button">
+								<input type="button" name="" value="Save" id="saveBtn" />
+							</div>
+						</form>
 					</div>
 				</div>
-				<div class="radio_field">
-					<input type="radio" name="active" value="yes" id="dot-1" />
-					<input type="radio" name="active" value="no" id="dot-2" />
-					<span class="radio_field_title">Available</span>
-					<div class="category">
-						<label for="dot-1"> <span class="dot one"></span> <span class="active">Yes</span>
-						</label> <label for="dot-2"> <span class="dot two"></span> <span class="active">No</span>
-						</label>
-					</div>
-				</div>
-				<div class="button">
-					<input type="button" name="" value="Save" id="saveBtn" />
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 

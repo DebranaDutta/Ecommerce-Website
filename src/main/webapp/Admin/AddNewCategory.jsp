@@ -16,10 +16,31 @@
 		<div class="row">
 			<!-- First COL -->
 			<div class="col-md-2 text-center">
-				<%@include file="Common/listGroup.jsp" %>
+				<%@include file="Common/listGroup.jsp"%>
 			</div>
 			<!-- Second COL -->
-			<div class="col-md-12"></div>
+			<div class="col-md-10">
+				<div class="container-fluid main_cont">
+					<div class="containerAdd">
+						<div class="title">Add Category</div>
+						<form action="#">
+							<div class="category-details">
+								<div class="input-box">
+									<span class="details">Category Name</span>
+									<input type="text" placeholder="Enter category name" id="categoryName" required="required" />
+								</div>
+								<div class="input-box">
+									<span class="details">Category Details</span>
+									<input type="text" placeholder="Enter category name" id="categoryDetails" required="required" />
+								</div>
+							</div>
+							<div class="button">
+								<input type="button" name="" value="Save" id="saveBtn" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- BootStrap -->
@@ -36,6 +57,6 @@
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
-	<script type="text/javascript" src="JS/ShowAllProducts.js"></script>
+	<script type="text/javascript" src="JS/AddNewCategory.js"></script>
 </body>
 </html>
