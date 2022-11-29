@@ -1,10 +1,25 @@
+<%@page import="com.ECW.Model.User"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-	List<Category> categories=(ArrayList<Category>) session.getAttribute("categories");
+User user = (User) session.getAttribute("currentUser");
+if (user == null) {
+	session.setAttribute("message", "You are not loggedin!");
+	response.sendRedirect(JAVAView.loginView);
+	return;
+} else {
+	if (user.getUserType().equalsIgnoreCase("normal")) {
+		session.setAttribute("message", "You are not autorized access this portal");
+		response.sendRedirect("login.jsp");
+		return;
+	}
+}
+%>
+<%
+List<Category> categories = (ArrayList<Category>) session.getAttribute("categories");
 %>
 <!DOCTYPE html>
 <html>
@@ -53,14 +68,14 @@
 									</select>
 								</div> -->
 								<div class="input-box">
-									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select" >
-									<%
-									for(Category category:categories){
-									%>	
-									<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
-									<%
-									}
-									%>
+									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
+										<%
+										for (Category category : categories) {
+										%>
+										<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
+										<%
+										}
+										%>
 									</select>
 								</div>
 							</div>

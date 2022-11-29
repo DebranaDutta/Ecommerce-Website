@@ -21,23 +21,22 @@ $(document).ready(function() {
 					password : password
 				},
 				success : function(data, tetxtStatus, jqXHR) {
-					var response=data.split(",");
-					var status=response[0];
-					var page=response[1];
-					if(status.trim()==='success'){
-						if(page.trim()==='admin'){
-							window.location='Admin/AdminHome.jsp'
-						}
-					}
-					/*if(data.trim()==='error')
+					/*
+					 * var response=data.split(","); var status=response[0]; var
+					 * page=response[1]; if(status.trim()==='success'){
+					 * if(page.trim()==='admin'){
+					 * window.location='Admin/AdminHome.jsp' } }
+					 */
+					if(data.trim()==='normal'){
+						window.location='index.jsp';
+					}else if(data.trim()==='admin'){
+						window.location='Admin/AdminHome.jsp'
+					}else if(data.trim()==='error')
 					{
 						swal("Invalid username or password").then((value)=>{
 							window.location='login.jsp'
 						});
-					}else if(data.trim()==='success'){
-						
-						window.location='#'
-					}*/
+					}
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 	

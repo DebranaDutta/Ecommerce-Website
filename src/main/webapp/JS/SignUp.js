@@ -9,6 +9,7 @@ $(document).ready(function() {
 		var securityQuestion=$('#securityQuestion').val();
 		var answer=$('#answer').val();
 		var gender=$('input[name = "gender"]:checked').val();
+		var userType='normal';
 		if(password===cnfPassword){
 			$.ajax({
 				type:'POST',
@@ -21,7 +22,8 @@ $(document).ready(function() {
 					password:password,
 					securityQuestion:securityQuestion,
 					answer:answer,
-					gender:gender
+					gender:gender,
+					userType:userType
 				},
 				success: function(data, tetxtStatus, jqXHR){
 					console.log(data);

@@ -18,7 +18,7 @@ if(user==null){
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Category Details</title>
+<title>Product Details</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="CSS/CategoryDetails.css">
@@ -39,7 +39,7 @@ if(user==null){
 					<i class="fa-solid fa-rotate fa-4x fa-spin"></i>
 					<h3 class="mt-2">Loading...</h3>
 				</div>
-				<div class="container-fluid" id="loadCategoryContainer">
+				<div class="container-fluid" id="loadProductContainer">
 				
 				</div>
 			</div>
@@ -58,6 +58,6 @@ if(user==null){
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
-	<script type="text/javascript" src="JS/CategoryDetails.js"></script>
+	<script type="text/javascript" src="JS/ProductDetails.js"></script>
 </body>
 </html>

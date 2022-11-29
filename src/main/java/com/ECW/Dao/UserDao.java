@@ -84,9 +84,8 @@ public class UserDao {
 				String fullName = resultSet.getString("fullName");
 				String gender = resultSet.getString("gender");
 				String securityQuestion = resultSet.getString("securityQuestion");
-
-				user = new User(fullName, userName, email, contactNumber, password, securityQuestion, answer, gender,
-						date);
+				String userType=resultSet.getString("userType");
+				user = new User(fullName, userName, email, contactNumber, password, securityQuestion, answer, gender, date, userType);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

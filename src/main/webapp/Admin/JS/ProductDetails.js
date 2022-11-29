@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function(){
 	$.ajax({
-		url:'Common/loadCategory.jsp',
+		url:"Common/loadProducts.jsp",
 		success: function(data, tetxtStatus, jqXHR){
 			console.log(data);
 			$('#loader').hide();
-			$('#loadCategoryContainer').html(data);
+			$('#loadProductContainer').html(data);
 		}
 	});
 });

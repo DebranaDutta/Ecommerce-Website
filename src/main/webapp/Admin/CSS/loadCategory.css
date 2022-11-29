@@ -1,0 +1,19 @@
+.card{
+	border-radius: 15px;	
+}
+.card:hover{
+	cursor:pointer;
+	transition: all .5s ease;
+	border-bottom: 3px solid #ccc;
+	background: linear-gradient(-135deg, #FFFFFF, #2980b9, #8e44ad, #FFFFFF);
+}
+
+#catName{
+	text-decoration: none;
+	color: black;
+}
+#catName:hover{
+	letter-spacing: 2px;
+	font-weight:700;
+	color:#fff;
+}

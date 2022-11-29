@@ -17,13 +17,13 @@ public class User {
 	private String answer;
 	private String gender;
 	private Date date;
+	private String userType;
 
 	public User() {
 		super();
 	}
 
-	public User(String fullName, String userName, String email, long phoneNumber, String password,
-			String securityQuestion, String answer, String gender) {
+	public User(String fullName, String userName, String email, long phoneNumber, String password, String securityQuestion, String answer, String gender) {
 		super();
 		this.fullName = fullName;
 		this.userName = userName;
@@ -35,8 +35,7 @@ public class User {
 		this.gender = gender;
 	}
 
-	public User(String fullName, String userName, String email, long phoneNumber, String password,
-			String securityQuestion, String answer, String gender, Date date) {
+	public User(String fullName, String userName, String email, long phoneNumber, String password, String securityQuestion, String answer, String gender, Date date) {
 		super();
 		this.fullName = fullName;
 		this.userName = userName;
@@ -47,6 +46,21 @@ public class User {
 		this.answer = answer;
 		this.gender = gender;
 		this.date = date;
+	}
+
+	public User(String fullName, String userName, String email, long phoneNumber, String password, String securityQuestion, String answer, String gender, Date date,
+			String userType) {
+		super();
+		this.fullName = fullName;
+		this.userName = userName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.securityQuestion = securityQuestion;
+		this.answer = answer;
+		this.gender = gender;
+		this.date = date;
+		this.userType = userType;
 	}
 
 	public String getFullName() {
@@ -113,11 +127,26 @@ public class User {
 		this.gender = gender;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 	@Override
 	public String toString() {
-		return "User [fullName=" + fullName + ", userName=" + userName + ", email=" + email + ", phoneNumber="
-				+ phoneNumber + ", password=" + password + ", securityQuestion=" + securityQuestion + ", answer="
-				+ answer + ", gender=" + gender + "]";
+		return "User [fullName=" + fullName + ", userName=" + userName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", password=" + password + ", securityQuestion="
+				+ securityQuestion + ", answer=" + answer + ", gender=" + gender + ", date=" + date + ", userType=" + userType + "]";
 	}
 
 }

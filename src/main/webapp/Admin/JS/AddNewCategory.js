@@ -14,7 +14,7 @@ $(document).ready(function() {
 			success: function(data, tetxtStatus, jqXHR){
 				if(data.trim()==='success'){
 					swal("Category added successfully").then((value)=>{
-						window.location='AdminHome.jsp';
+						window.location='CategoryDetails.jsp';
 					});
 				}
 			},

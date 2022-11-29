@@ -36,8 +36,9 @@ public class userSignupController extends HttpServlet {
 		String securityQuestion=request.getParameter("securityQuestion");
 		String answer=request.getParameter("answer");
 		String gender=request.getParameter("gender");
+		String userType=request.getParameter("userType");
 		PrintWriter out=response.getWriter();
-		User user=new User(fullName, userName, email, phoneNumber, password, securityQuestion, answer, gender, new Date());
+		User user=new User(fullName, userName, email, phoneNumber, password, securityQuestion, answer, gender, new Date(), userType);
 		
 		boolean status= CrudOperationsUsingHibernate.addNewUser(user);
 		System.out.println(status);

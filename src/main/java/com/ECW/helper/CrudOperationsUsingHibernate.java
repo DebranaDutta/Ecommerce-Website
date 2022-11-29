@@ -30,6 +30,13 @@ public class CrudOperationsUsingHibernate {
 		return true;
 	}
 	
+	public static List<Product> getAllProductDetails(){
+		List<Product> products=null;
+		session=FactoryProvider.getFactory().openSession();
+		Query<Product> query= session.createQuery("from Product");
+		return products=query.getResultList();
+	}
+	
 	public static boolean addNewCategory(Category category) {
 		session=FactoryProvider.getFactory().openSession();
 		transaction=session.beginTransaction();
