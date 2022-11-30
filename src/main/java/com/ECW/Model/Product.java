@@ -20,13 +20,14 @@ public class Product {
 	@Column(name = "Available")
 	private String productAvailability;
 	private Date date;
+	@Column(name = "Image", length = 1000, nullable = true)
+	private String productImage;
 
 	public Product() {
 		super();
 	}
 
-	public Product(int productId, String productName, int productPrice, String productCategory,
-			String productAvailability, Date date) {
+	public Product(int productId, String productName, int productPrice, String productCategory, String productAvailability, Date date) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -34,6 +35,17 @@ public class Product {
 		this.productCategory = productCategory;
 		this.productAvailability = productAvailability;
 		this.date = date;
+	}
+
+	public Product(int productId, String productName, int productPrice, String productCategory, String productAvailability, Date date, String productImage) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productCategory = productCategory;
+		this.productAvailability = productAvailability;
+		this.date = date;
+		this.productImage = productImage;
 	}
 
 	public int getProductId() {
@@ -84,11 +96,18 @@ public class Product {
 		this.date = date;
 	}
 
+	public String getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productCategory=" + productCategory + ", productAvailability=" + productAvailability + ", date="
-				+ date + "]";
+		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice + ", productCategory=" + productCategory
+				+ ", productAvailability=" + productAvailability + ", date=" + date + ", productImage=" + productImage + "]";
 	}
 
 }

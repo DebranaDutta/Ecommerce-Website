@@ -44,29 +44,16 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 				<div class="container-fluid mt-3 main_cont">
 					<div class="container">
 						<div class="title">Add Product Details</div>
-						<form action="#">
+						<form action="#" id="addProductForm" enctype="mutipart/form-data">
 							<div class="product-details">
 								<div class="input-box">
 									<span class="details">Product Name</span>
-									<input type="text" placeholder="Enter product name" id="productName" required />
+									<input type="text" placeholder="Enter product name" name="productName" id="productName" required />
 								</div>
 								<div class="input-box">
 									<span class="details">Price</span>
-									<input type="text" placeholder="Enter price" id="productPrice" required />
+									<input type="text" placeholder="Enter price" name="productPrice" id="productPrice" required />
 								</div>
-								<!-- <div class="input-box">
-									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
-										<option value="Cloths">Cloths</option>
-										<option value="Shoes">Shoes</option>
-										<option value="Kitchen Essentials">Kitchen Essentials</option>
-										<option value="Food">Food</option>
-										<option value="Pet Supplies">Pet Supplies</option>
-										<option value="Home Essential">Home Essential</option>
-										<option value="Grocery">Grocery</option>
-										<option value="Electronics">Electronics</option>
-										<option value="Medicine">Medicine</option>
-									</select>
-								</div> -->
 								<div class="input-box">
 									<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
 										<%
@@ -78,20 +65,29 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 										%>
 									</select>
 								</div>
+								<div class="input-box">
+									<span class="details">Upload image</span>
+									<input type="file" id="productPic" name="productPic"/>
+									<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> 
+									<br/> 
+									<span> 
+										<span id="productPicName" style="font-size: 12px">No file</span>
+									</span>
+								</div>
 							</div>
 							<div class="radio_field">
-								<input type="radio" name="active" value="yes" id="dot-1" />
-								<input type="radio" name="active" value="no" id="dot-2" />
+								<input type="radio" name="available" value="yes" id="dot-1" />
+								<input type="radio" name="available" value="no" id="dot-2" />
 								<span class="radio_field_title">Available</span>
 								<div class="category">
-									<label for="dot-1"> <span class="dot one"></span> <span class="active">Yes</span>
-									</label> <label for="dot-2"> <span class="dot two"></span> <span class="active">No</span>
+									<label for="dot-1"> <span class="dot one"></span> <span class="available">Yes</span>
+									</label> <label for="dot-2"> <span class="dot two"></span> <span class="available">No</span>
 									</label>
 								</div>
 							</div>
 							<div class="text-center button">
-								<input type="button" name="" value="Save" id="saveBtn" />
-								<input type="button" name="" value="Cancel" id="cancelBtn" />
+								<input type="submit" name="" value="Save" id="saveBtn" />
+								<input type="submit" name="" value="Cancel" id="cancelBtn" />
 							</div>
 						</form>
 					</div>
@@ -115,5 +111,6 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
 	<script type="text/javascript" src="JS/AddNewProduct.js"></script>
+	<script type="text/javascript" src="JS/AddNewProductUploadFile.js"></script>
 </body>
 </html>
