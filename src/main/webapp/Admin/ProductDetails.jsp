@@ -17,11 +17,12 @@ if(user==null){
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Product Details</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="CSS/CategoryDetails.css">
+<link rel="stylesheet" href="CSS/commonCss/background.css">
+<link rel="stylesheet" href="CSS/commonCss/productCardDesignAdmin.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -34,7 +35,7 @@ if(user==null){
 				<%@include file="Common/listGroup.jsp"%>
 			</div>
 			<!-- Second COL -->
-			<div class="col-md-10" >
+			<div class="col-md-10 mb-3">
 				<div class="container text-center" id="loader">
 					<i class="fa-solid fa-rotate fa-4x fa-spin"></i>
 					<h3 class="mt-2">Loading...</h3>

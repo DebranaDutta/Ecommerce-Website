@@ -21,13 +21,15 @@ if(user==null){
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="CSS/AdminHome.css">
+<link rel="stylesheet" href="CSS/commonCss/background.css">
 </head>
 <body>
 	<div class="container-fluid">
 		<%@include file="Common/AdminNavbar.jsp"%>
 	</div>
-	<h1> Hello <%=user.getUserName()%></h1>
+	<div class="container-fluid text-center">
+		<h1>Hello <%=user.getFullName() %></h1>
+	</div>
 
 	<!-- BootStrap -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

@@ -22,6 +22,7 @@ if(user==null){
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="CSS/CategoryDetails.css">
+<link rel="stylesheet" href="CSS/commonCss/background.css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -37,21 +38,21 @@ if(user==null){
 			<div class="col-md-10">
 				<div class="container-fluid main_cont">
 					<div class="containerAdd">
-						<div class="title">Add Category</div>
+						<div class="title">add category</div>
 						<form action="#">
 							<div class="category-details">
 								<div class="input-box">
-									<span class="details">Category Name</span>
-									<input type="text" placeholder="Enter category name" id="categoryName" required="required" />
+									<span class="details">category name</span>
+									<input type="text" placeholder="category name" id="categoryName" required="required" />
 								</div>
 								<div class="input-box">
-									<span class="details">Category Details</span>
-									<input type="text" placeholder="Enter category details" id="categoryDetails" required="required" />
+									<span class="details">category details</span>
+									<input type="text" placeholder="category details" id="categoryDetails" required="required" />
 								</div>
 							</div>
 							<div class="text-center button">
-								<input type="button" name="" value="Save" id="saveBtn" />
-								<input type="button" name="" value="Cancel" id="cancelBtn" />
+								<input type="button" name="" value="save" id="saveBtn" />
+								<input type="button" name="" value="cancel" id="cancelBtn" />
 							</div>
 						</form>
 					</div>

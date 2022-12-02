@@ -1,6 +1,3 @@
-body{
-	background: linear-gradient(100deg, #2980b9, #8e44ad);
-}
 .main_cont {
 	justify-content: center;
 	box-sizing: border-box;
@@ -16,6 +13,7 @@ body{
 	width: 100%;
 	padding: 25px 30px;
 	border-radius: 15px;
+	box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 1);
 }
 
 .container .title {

@@ -1,23 +1,26 @@
-body {
-	font-family: Arial, Helvetica, sans-serif;
-	background: linear-gradient(100deg, #2980b9, #8e44ad);
-	overflow: hidden;
+.card {
+	max-width: 100%;
+	border-radius: 20px;
+	border: none;
+	background: #FAFAFA;
 }
 
-.list-group-item {
-	border: 1px solid #ccc;
+.card:hover {
+	cursor: pointer;
+	box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 0.5);
 	transition: all 1s ease;
-	border-radius: 15px;
+	letter-spacing: 3px;
+	font-weight: 700;
+	background: linear-gradient(-100deg, #F0F7BF, #F7F0BF, #CFF5F4, #FFFFFF);
 }
 
-.list-group-item:hover {
-	background: linear-gradient(-100deg, #2980b9, #8e44ad);
-	font-weight: 700;
-	color: #fff;
-	letter-spacing: 1px;
-	font-size: 15px;
-	border-radius: 15px;
-	border-bottom-width: 3px;
+.card .card-body a {
+	color: #6F7878;
+}
+
+.card .card-body a:hover {
+	text-decoration: none;
+	color: #2B3333
 }
 
 .main_cont {
@@ -35,6 +38,7 @@ body {
 	width: 100%;
 	padding: 25px 30px;
 	border-radius: 15px;
+	box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 1);
 }
 
 .containerAdd .title {
@@ -70,6 +74,7 @@ form .category-details .input-box .details {
 	font-weight: 500;
 	margin-bottom: 5px;
 }
+
 .category-details .input-box input {
 	height: 45px;
 	width: 100%;
@@ -81,6 +86,7 @@ form .category-details .input-box .details {
 	border-bottom-width: 2px;
 	transition: all 0.5s ease;
 }
+
 .category-details .input-box input:focus, .category-details .input-box input:valid
 	{
 	border-color: #8e44ad;
@@ -89,8 +95,9 @@ form .category-details .input-box .details {
 .category-details .input-box input:hover {
 	border-color: #9b59b6;
 }
+
 form .button {
-	height: 45px; 
+	height: 45px;
 }
 
 form .button input {
@@ -103,7 +110,6 @@ form .button input {
 	font-size: 18px;
 	font-weight: 500;
 	border-radius: 10px;
-	
 }
 
 form .button input:hover {
@@ -112,6 +118,7 @@ form .button input:hover {
 	background: linear-gradient(-135deg, #2980b9, #8e44ad);
 	transition: all 1s ease;
 }
+
 @media ( max-width : 584px) {
 	.container {
 		max-width: 100%;

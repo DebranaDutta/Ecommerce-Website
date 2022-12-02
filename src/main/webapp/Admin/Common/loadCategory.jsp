@@ -19,7 +19,7 @@ List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
 	<%
 		for(Category category:categories){
 	%>
-		<div class="col-md-3 mt-3 text-center">
+		<div class="col-md-3 mt-2 text-center">
 			<div class="card">
 				<div class="card-body">
 					<a id="catName" class="card-title" href="#"><%=category.getCategoryName()%></a>

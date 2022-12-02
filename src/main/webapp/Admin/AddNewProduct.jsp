@@ -30,6 +30,7 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="CSS/AddNewProduct.css">
 <link rel="stylesheet" href="CSS/AddNewProduct2.css">
+<link rel="stylesheet" href="CSS/commonCss/background.css">
 </head>
 <body>
 	<div class="container-fluid">
