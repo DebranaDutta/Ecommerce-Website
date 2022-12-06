@@ -2,12 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 User user = (User) session.getAttribute("currentUser");
-if(user==null){
+if (user == null) {
 	session.setAttribute("message", "You are not loggedin!");
 	response.sendRedirect(JAVAView.loginView);
 	return;
-}else{
-	if(user.getUserType().equalsIgnoreCase("normal")){
+} else {
+	if (user.getUserType().equalsIgnoreCase("normal")) {
 		session.setAttribute("message", "You are not autorized access this portal");
 		response.sendRedirect("login.jsp");
 		return;
@@ -25,15 +25,12 @@ if(user==null){
 <link rel="stylesheet" href="CSS/commonCss/background.css">
 </head>
 <body>
-	<div class="container-fluid">
-		<%@include file="Common/AdminNavbar.jsp"%>
-	</div>
+	<%@include file="Common/AdminNavbar.jsp"%>
 	<div class="container-fluid mt-3">
 		<div class="row">
 			<!-- First COL -->
-			<div class="col-md-2 text-center">
-				<%@include file="Common/listGroup.jsp"%>
-			</div>
+			<%@include file="Common/listGroup.jsp"%>
+			<%-- <%@include file="Common/fixedSidebar.jsp" %> --%>
 			<!-- Second COL -->
 			<div class="col-md-10">
 				<div class="container-fluid main_cont">

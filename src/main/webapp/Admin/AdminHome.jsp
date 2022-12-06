@@ -24,9 +24,7 @@ if(user==null){
 <link rel="stylesheet" href="CSS/commonCss/background.css">
 </head>
 <body>
-	<div class="container-fluid">
-		<%@include file="Common/AdminNavbar.jsp"%>
-	</div>
+	<%@include file="Common/AdminNavbar.jsp"%>
 	<div class="container-fluid text-center">
 		<h1>Hello <%=user.getFullName() %></h1>
 	</div>

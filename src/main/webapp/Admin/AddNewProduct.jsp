@@ -33,14 +33,12 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 <link rel="stylesheet" href="CSS/commonCss/background.css">
 </head>
 <body>
-	<div class="container-fluid">
-		<%@include file="Common/AdminNavbar.jsp"%>
-	</div>
+	<%@include file="Common/AdminNavbar.jsp"%>
 	<div class="container-fluid mt-3">
 		<div class="row">
-			<div class="col-md-2 text-center">
-				<%@include file="Common/listGroup.jsp"%>
-			</div>
+			<!-- First Colomn -->
+			<%@include file="Common/listGroup.jsp"%>
+			<!-- second colomn -->
 			<div class="col-md-10">
 				<div class="container-fluid mt-3 main_cont">
 					<div class="container">
@@ -68,10 +66,8 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 								</div>
 								<div class="input-box">
 									<span class="details">Upload image</span>
-									<input type="file" id="productPic" name="productPic"/>
-									<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> 
-									<br/> 
-									<span> 
+									<input type="file" id="productPic" name="productPic" />
+									<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> <br /> <span>
 										<span id="productPicName" style="font-size: 12px">No file</span>
 									</span>
 								</div>

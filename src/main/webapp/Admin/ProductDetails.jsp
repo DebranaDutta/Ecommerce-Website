@@ -2,12 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 User user = (User) session.getAttribute("currentUser");
-if(user==null){
+if (user == null) {
 	session.setAttribute("message", "You are not loggedin!");
 	response.sendRedirect(JAVAView.loginView);
 	return;
-}else{
-	if(user.getUserType().equalsIgnoreCase("normal")){
+} else {
+	if (user.getUserType().equalsIgnoreCase("normal")) {
 		session.setAttribute("message", "You are not autorized access this portal");
 		response.sendRedirect("login.jsp");
 		return;
@@ -25,24 +25,20 @@ if(user==null){
 <link rel="stylesheet" href="CSS/commonCss/productCardDesignAdmin.css">
 </head>
 <body>
+	<%@include file="Common/AdminNavbar.jsp"%>
+
 	<div class="container-fluid">
-		<%@include file="Common/AdminNavbar.jsp"%>
-	</div>
-	<div class="container-fluid mt-3">
 		<div class="row">
 			<!-- First COL -->
-			<div class="col-md-2 text-center">
-				<%@include file="Common/listGroup.jsp"%>
-			</div>
+			<%-- <%@include file="Common/listGroup.jsp"%> --%>
+			<%@include file="Common/listGroup.jsp" %>
 			<!-- Second COL -->
 			<div class="col-md-10 mb-3">
 				<div class="container text-center" id="loader">
 					<i class="fa-solid fa-rotate fa-4x fa-spin"></i>
 					<h3 class="mt-2">Loading...</h3>
 				</div>
-				<div class="container-fluid" id="loadProductContainer">
-				
-				</div>
+				<div class="container-fluid" id="loadProductContainer"></div>
 			</div>
 		</div>
 	</div>

@@ -1,24 +1,82 @@
 <%@page import="com.ECW.helper.JAVAView"%>
+<div class="col-md-2">
+<input type="checkbox" name="" id="toggler" />
+<label for="toggler" class="fas fa-bars toggle-bar"></label>
 <div class="list-group">
-	<a href="CategoryDetails.jsp" class="list-group-item">Show All Category</a> 
+	<a href="CategoryDetails.jsp" class="list-group-item actv">Show All Category</a> 
 	<a href="ProductDetails.jsp" class="list-group-item">Show All Products</a> 
 	<a href="AddNewCategory.jsp" class="list-group-item">Add New Category</a> 
-	<a href="<%=JAVAView.getAllCategoryDetails%>" class="list-group-item">Add New Product</a>
-	<style>
+	<a href="<%=JAVAView.getAllCategoryDetails%>" class="list-group-item">Add new Product</a>
+</div>
+	<style>			
+		.list-group{	
+			text-align:center;
+			position:fixed;	
+			width: 12%;
+			top:2;
+			left:1;
+			background: linear-gradient(100deg, #F0F7BF, #F7F0BF, #CFF5F4); 
+			box-shadow: 0 .2rem .2rem rgb(0, 0, 0, .5);
+			border-radius: 10px;
+		}
 		.list-group a {
-			margin-top: 2px; color : #6F7878;
+			background:none;
+			color : black ;
+			font-weight:500;
 			border: none;
-			border-radius: 15px;
-			color: #6F7878;
 		}
 		.list-group a:hover {
 			letter-spacing: 1px;
-			font-weight: 600;
+			font-weight: 700;
+			background:white;
 			box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 1);
-			transition: all 1s ease;
-			color: #2B3333;
-			background: linear-gradient(100deg,#FFFFFF, #F0F7BF, #F7F0BF, #CFF5F4,  #A7F1A2, #A2A5F1, #E9A2F1);
+			transition: all .5s ease;
+			color: black;
+			border-radius: 10px;
 		}
+		#toggler {
+ 		 	display: none;
+		}
+		.toggle-bar {
+			position:absolute;
+		  	font-size: 1rem;
+		 	color: black;
+		  	border-radius: 1rem;
+		  	padding: 0.5rem 1.5rem;
+		  	cursor: pointer;
+		  	border: 0.1rem solid rgba(0, 0, 0, 0.3);
+		}
+		@media (max-width: 800px) {
+			.list-group{
+				left:-12%;
+				transition: all 1s ease-in;
+			}
+		
+			.toggle-bar{
+				display: block;
+				position: static;
+			}
+			#toggler:checked ~ .list-group{
+				left:0;
+				transition: all 1s ease-out;
+				position:relative;
+				width: 50%;
+				margin:0;
+				padding: 0;
+			}
+			
+			#toggler:checked ~ .list-group a:hover{
+				left:0;
+				background:none;
+				letter-spacing: 1px;
+				font-weight: 700;
+				background:white;
+				box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 1);
+				transition: all .5s ease;
+				color: black;
+				border-radius: 10px;
+			}
+		};
+		
 	</style>
 </div>
-

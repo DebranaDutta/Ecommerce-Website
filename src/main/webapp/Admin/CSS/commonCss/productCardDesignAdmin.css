@@ -19,7 +19,8 @@
 }
 
 .product-grid .product-image img {
-	height: auto;
+	background:#DBD8D8 ;
+	height: 230px;
 	width: 100%;
 }
 

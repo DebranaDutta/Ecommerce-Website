@@ -2,5 +2,6 @@
 	text-transform: capitalize;
 }
 body{
-	background: linear-gradient(100deg, #F0F7BF, #F7F0BF, #CFF5F4);
+	/* background: linear-gradient(100deg, #F0F7BF, #F7F0BF, #CFF5F4); */
+	background: #CFF5F4;
 }
