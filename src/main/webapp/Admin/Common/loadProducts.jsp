@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
 <%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
 <%@page import="com.ECW.Model.Product"%>
@@ -5,6 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 List<Product> products = CrudOperationsUsingHibernate.getAllProductDetails();
+List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails();
 %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,7 @@ List<Product> products = CrudOperationsUsingHibernate.getAllProductDetails();
 <body>
 	<div class="row">
 		<%
-		for(Product product:products){
+		for (Product product : products) {
 		%>
 		<div class="col-md-3 col-sm-6">
 			<div class="product-grid">
@@ -23,16 +25,19 @@ List<Product> products = CrudOperationsUsingHibernate.getAllProductDetails();
 					<a href=""><img class="pic-1" src="img/<%=product.getProductImage()%>" /></a>
 					<ul class="social">
 						<li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
-						<li><a href="" data-tip="Edit product details"><i class="fa fa-edit"></i></a></li>
-						<li><a href="" data-tip="remove product"><i class="fa fa-remove"></i></a></li>
+						<li><a href="#" data-tip="Edit product details" class="editProduct"><i class="fa fa-edit"></i></a></li>
+						<li><a href="" data-tip="remove product" class="removeProduct"><i class="fa fa-remove"></i></a></li>
 					</ul>
 				</div>
 				<div class="product-content">
 					<h3 class="title">
 						<a href="#"><%=product.getProductName()%></a>
+						<input type="hidden" class="productId" value="<%=product.getProductId()%>">
 					</h3>
-					<div class="price">INR : <%=product.getProductPrice()%></div>
-					<a class="add-to-cart" href="">+ Add To Cart</a>
+					<div class="price">
+						INR :
+						<%=product.getProductPrice()%></div>
+					<a class="add-to-cart">Product Id: <%=product.getProductId()%></a>
 				</div>
 			</div>
 		</div>
@@ -40,52 +45,77 @@ List<Product> products = CrudOperationsUsingHibernate.getAllProductDetails();
 		}
 		%>
 	</div>
-	<%-- <div class="row">
-		<%
-		for (Product product : products) {
-		%>
-		<div class="col-md-3 col-sm-4 text-center">
-			<div class="card">
-				<img class="card-img-top" src="img/<%=product.getProductImage()%>" alt="Card image cap">
-				<div class="card-body">
-					<a href=""><h6><%=product.getProductName()%></h6></a>
-					<hr>
-					<p class="card-text">
-						Price:
-						<%=product.getProductPrice()%></p>
-					<div class="text-center" style="display: inline-block;">
-						<a href="#" class="btn btn-primary mr-3">Edit</a> <a href="#" class="btn btn-primary ml-3">Delete</a>
-					</div>
+	
+	
+	<!-- Start of Edit Product MODAL -->
+	<div class="modal fade" id="editProductDetails" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="" id="editProductForm">
+						<div class="product-details">
+							<div class="input-box">
+								<span class="details">Product Name</span>
+								<input type="text" value="" name="productName" id="productName">
+							</div>
+							<div class="input-box">
+								<span class="details">Product Price</span>
+								<input type="text" value="" name="productPrice" id="productPrice">
+							</div>
+							<div class="input-box">
+								<span class="details">Product Category</span> <select name="productCategory" id="productCategory" class="select">
+									<%
+									for (Category category : categories) {
+									%>
+									<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
+									<%
+									}
+									%>
+								</select>
+							</div>
+						</div>
+						<div class="radio_field">
+							<input type="radio" name="available" value="yes" id="dot-1" />
+							<input type="radio" name="available" value="no" id="dot-2" />
+							<span class="radio_field_title">Available</span>
+							<div class="category">
+								<label for="dot-1"> <span class="dot one"></span> <span class="available">Yes</span>
+								</label> <label for="dot-2"> <span class="dot two"></span> <span class="available">No</span>
+								</label>
+							</div>
+						</div>
+						<div class="modal-footer text-center">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Save changes</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Edit Product MODAL -->
 
-				</div>
-			</div>
-		</div>
-		<%
-		}
-		%>
-	</div>
-	<style>
-		.card{
-			margin-top: 10px;
-		}
-		.card .card-img-top{ 
-			width: 100%;
-			height: 50%;
-		}
-		.card .card-body a{
-			text-decoration: none;
-			color:  #6F7878;
-		}
-		.card .card-body a:hover{
-			color: #2B3333;
-			letter-spacing: 1px;
-			transition: all 1s ease;
-			text-shadow:  0 .5rem 1rem rgb(0, 0, 0, 0.5);
-		}
-		.card .card-body a h6{
-			padding: 0;
-			margin: 0;
-		}
-	</style> --%>
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- BootStrap -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- FontAwsome -->
+	<script src="https://kit.fontawesome.com/400552a932.js" crossorigin="anonymous"></script>	
+	<!-- Sweetalert -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script> -->
+	<!-- CustomScript -->
+	<script type="text/javascript" src="Common/CommonJS/removeProducts.js"></script>
+	<script type="text/javascript" src="Common/CommonJS/editProduct.js"></script>
 </body>
 </html>

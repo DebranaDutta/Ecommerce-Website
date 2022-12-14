@@ -23,6 +23,8 @@ if (user == null) {
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="CSS/commonCss/background.css">
 <link rel="stylesheet" href="CSS/commonCss/productCardDesignAdmin.css">
+<link rel="stylesheet" href="CSS/commonCss/productEditModal.css">
+
 </head>
 <body>
 	<%@include file="Common/AdminNavbar.jsp"%>

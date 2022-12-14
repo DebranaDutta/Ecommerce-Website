@@ -12,7 +12,7 @@ $(document).ready(function(){
 			success: function(data, tetxtStatus, jqXHR){
 				if(data.trim()==='success'){
 					swal("Product added successfully").then((value)=>{
-						window.location='ProductDetails.jsp';
+						window.location='AddNewProduct.jsp';
 					});
 				}
 			},
