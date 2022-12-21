@@ -1,5 +1,6 @@
 package com.ECW.helper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -80,6 +81,25 @@ public class CrudOperationsUsingHibernate {
 			e.printStackTrace();
 		}
 		return product;
+	}	
+	
+	public static void updateProdcutDetails(int productId, String productName, int productPrice, String productCategory, String available, String productPic) {
+		try {
+			session=FactoryProvider.getFactory().openSession();
+			transaction=session.beginTransaction();
+			Product product=(Product)session.get(Product.class, productId);
+			product.setProductName(productName);
+			product.setProductPrice(productPrice);
+			product.setProductCategory(productCategory);
+			product.setProductAvailability(available);
+			product.setProductImage(productPic);
+			product.setDate(new Date());
+			session.save(product);
+			transaction.commit();
+			session.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static boolean addNewCategory(Category category) {

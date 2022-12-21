@@ -67,7 +67,8 @@ List<Category> categories = (ArrayList<Category>) session.getAttribute("categori
 								<div class="input-box">
 									<span class="details">Upload image</span>
 									<input type="file" id="productPic" name="productPic" />
-									<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> <br /> <span>
+									<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> <br /> 
+									<span>
 										<span id="productPicName" style="font-size: 12px">No file</span>
 									</span>
 								</div>

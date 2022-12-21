@@ -9,7 +9,10 @@
 	font-size: 25px;
 	font-weight: 500;
 }
-
+#spanProdId {
+	border: none;
+	background: #fff;
+}
 .modal-header .close {
 	font-size: 25px;
 	font-weight: 700;
@@ -106,4 +109,40 @@ form .radio-field .category {
 {
 	border-color: #d9d9d9;
 	background: #9b59b6;
+}
+
+.product-details .input-box #productPic {
+  display: none;
+}
+.input-box span{
+	font-size: 12px;
+	background: #fff;
+}
+#oldProductPicName{
+	border: none;
+	background: #fff;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	font-weight: 700;
+}
+#productId{
+	display: none;
+}
+#oldProductPic{
+	display: none;
+}
+.product-details .input-box #productPicLabel {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 5px;
+  transition: all 0.5s ease;
+}
+
+.product-details .input-box #productPicLabel:hover {
+  cursor: pointer;
+  border-bottom: 2px solid #9b59b6;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+  background-color: #ccc;
+  letter-spacing: 1px;
 }

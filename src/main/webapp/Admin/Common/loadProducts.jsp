@@ -52,13 +52,15 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					<h5 class="modal-title">Product ID : <input value="" id="spanProdId" type="text" disabled="disabled"> </h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="" id="editProductForm">
+					<form action="#" id="editProductForm" enctype="mutipart/form-data">
+						<input	type="text" name="productId" id="productId">
+						<input	type="text" name="oldProductPic" id="oldProductPic">
 						<div class="product-details">
 							<div class="input-box">
 								<span class="details">Product Name</span>
@@ -79,6 +81,17 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 									%>
 								</select>
 							</div>
+							<div class="input-box">
+								<span class="details">Update image:</span>
+								<input type="file" id="productPic" name="productPic" />
+								<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> 
+								<br /> 
+								<span>
+									<span id="newProductPicName">no new file is selected</span><br/>
+									<span>Old file: </span> 
+									<input type="text" value="" id="oldProductPicName" name="oldProductPicName" disabled="disabled">
+								</span>
+							</div>
 						</div>
 						<div class="radio_field">
 							<input type="radio" name="available" value="yes" id="dot-1" />
@@ -92,7 +105,7 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 						</div>
 						<div class="modal-footer text-center">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
+							<button type="button" class="btn btn-primary" id="saveDetails">Save changes</button>
 						</div>
 					</form>
 				</div>
@@ -116,6 +129,8 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script> -->
 	<!-- CustomScript -->
 	<script type="text/javascript" src="Common/CommonJS/removeProducts.js"></script>
-	<script type="text/javascript" src="Common/CommonJS/editProduct.js"></script>
+	<script type="text/javascript" src="Common/CommonJS/getIndividualProductDetails.js"></script>
+	<script type="text/javascript" src="Common/CommonJS/NewProductPicUpload.js"></script>
+	<script type="text/javascript" src="Common/CommonJS/loadUpdatedDetails.js"></script>
 </body>
 </html>
