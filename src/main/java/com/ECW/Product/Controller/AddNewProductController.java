@@ -42,15 +42,22 @@ public class AddNewProductController extends HttpServlet {
 		String productPic = part.getSubmittedFileName();
 		if (productPic != "") {
 			InputStream inputStream = part.getInputStream();
-			String path = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
-			System.out.println(path);
-			fileInputOutput.saveFile(inputStream, path);
+			
+			String AdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
+			fileInputOutput.saveFile(inputStream, AdminPath);
+			
+			String UserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + productPic;
+			fileInputOutput.saveFile(inputStream, UserPath);
 		} else {
 			productPic = "default.png";
 			InputStream inputStream = part.getInputStream();
-			String path = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
-			System.out.println(path);
-			fileInputOutput.saveFile(inputStream, path);
+			
+			
+			String AdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
+			fileInputOutput.saveFile(inputStream, AdminPath);
+			
+			String UserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + productPic;
+			fileInputOutput.saveFile(inputStream, UserPath);
 		}
 		Product product = new Product(RandomIdGenerator.newIdGenrator(), productName, productPrice, productCategory, available, new Date(), productPic);
 		PrintWriter out = response.getWriter();
@@ -61,13 +68,14 @@ public class AddNewProductController extends HttpServlet {
 		} else {
 			out.print("error");
 		}
-		//C:\Users\debra\OneDrive\Desktop\Code With Durgesh\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\E-commerceWebsite\Admin\img
-		/*InputStream inputStream = part.getInputStream();
-		byte data[] = new byte[inputStream.available()];
-		inputStream.read(data);
-		String path = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
-		System.out.println(path);
-		FileOutputStream fileOutputStream = new FileOutputStream(path);
-		fileOutputStream.write(data);*/
+		// C:\Users\debra\OneDrive\Desktop\Code With
+		// Durgesh\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\E-commerceWebsite\Admin\img
+		/*
+		 * InputStream inputStream = part.getInputStream(); byte data[] = new
+		 * byte[inputStream.available()]; inputStream.read(data); String path =
+		 * request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator
+		 * + productPic; System.out.println(path); FileOutputStream fileOutputStream =
+		 * new FileOutputStream(path); fileOutputStream.write(data);
+		 */
 	}
 }

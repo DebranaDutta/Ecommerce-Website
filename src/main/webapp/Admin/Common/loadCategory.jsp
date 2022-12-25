@@ -12,7 +12,6 @@ List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="CSS/loadCategory.css">
 </head>
 <body>
 	<div class="row">

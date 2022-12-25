@@ -9,7 +9,6 @@
 
 		<div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-
 				<li class="nav-item mr-5"><a class="nav-link" href="CategoryDetails.jsp"><i class="fa-solid fa-bars"></i>Category & Products</a></li>
 				<li class="nav-item mr-5"><a class="nav-link" href="AllUserDetails.jsp"><i class="fa-solid fa-user"></i>Users</a></li>
 				<li class="nav-item mr-5"><a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i>Message Reviewed</a></li>

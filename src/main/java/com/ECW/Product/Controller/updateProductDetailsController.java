@@ -32,30 +32,35 @@ public class updateProductDetailsController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int productId=Integer.parseInt(request.getParameter("productId"));
-		String productName=request.getParameter("productName");
-		int productPrice=Integer.parseInt(request.getParameter("productPrice"));
-		String productCategory=request.getParameter("productCategory");
-		String available=request.getParameter("available");
-		String oldProductPic=request.getParameter("oldProductPic");
-		
-		Part part=request.getPart("productPic");
-		String newProductPic=part.getSubmittedFileName();
-		
-		if(newProductPic!="") {
-			InputStream inputStream=part.getInputStream();
-			String oldPath=request.getRealPath("/")+"Admin" + File.separator + "img" + File.separator + oldProductPic;
-			fileInputOutput.deleteFile(oldPath);
-			
-			String newPath=request.getRealPath("/")+"Admin" + File.separator + "img" + File.separator + newProductPic;
-			fileInputOutput.saveFile(inputStream, newPath);
-			
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		String productName = request.getParameter("productName");
+		int productPrice = Integer.parseInt(request.getParameter("productPrice"));
+		String productCategory = request.getParameter("productCategory");
+		String available = request.getParameter("available");
+		String oldProductPic = request.getParameter("oldProductPic");
+
+		Part part = request.getPart("productPic");
+		String newProductPic = part.getSubmittedFileName();
+
+		if (newProductPic != "") {
+			InputStream inputStream = part.getInputStream();
+
+			String oldAdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + oldProductPic;
+			fileInputOutput.deleteFile(oldAdminPath);
+			String newAdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + newProductPic;
+			fileInputOutput.saveFile(inputStream, newAdminPath);
+
+			String oldUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + oldProductPic;
+			fileInputOutput.deleteFile(oldUserPath);
+			String newUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + newProductPic;
+			fileInputOutput.saveFile(inputStream, newUserPath);
+
 			CrudOperationsUsingHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, newProductPic);
-			
-		}else if(newProductPic=="") {
+
+		} else if (newProductPic == "") {
 			CrudOperationsUsingHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, oldProductPic);
 		}
-		
+
 		PrintWriter out = response.getWriter();
 		out.print("success");
 	}

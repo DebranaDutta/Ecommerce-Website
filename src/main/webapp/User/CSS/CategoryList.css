@@ -1,0 +1,21 @@
+.list-group {
+	box-shadow: 0 .2rem .2rem rgb(0, 0, 0, .5);
+	border-radius: 5px;
+}
+
+.list-group a {
+	background: none;
+	color: black;
+	font-weight: 500;
+	border: none;
+	padding: 10px;
+}
+
+.list-group a:hover {
+	background:#fff;
+	letter-spacing: .8px;
+	font-weight: 600;
+	transition: all .5s ease;
+	color: black;
+	box-shadow: 0 .2rem .3rem rgb(0, 0, 0, .5);
+}

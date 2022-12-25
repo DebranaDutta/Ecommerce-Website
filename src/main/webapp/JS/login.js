@@ -28,7 +28,7 @@ $(document).ready(function() {
 					 * window.location='Admin/AdminHome.jsp' } }
 					 */
 					if(data.trim()==='normal'){
-						window.location='index.jsp';
+						window.location='User/UserHomePage.jsp';
 					}else if(data.trim()==='admin'){
 						window.location='Admin/AdminHome.jsp'
 					}else if(data.trim()==='error')

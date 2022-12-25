@@ -1,5 +1,6 @@
 package com.ECW.Product.Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ECW.helper.CrudOperationsUsingHibernate;
+import com.ECW.helper.fileInputOutput;
 
 @WebServlet(name = "removeProductController", urlPatterns = { "/removeProductController" })
 public class removeProductController extends HttpServlet {
@@ -24,7 +26,14 @@ public class removeProductController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String productId=request.getParameter("productId");
+		String productId = request.getParameter("productId");
+		String productPic = request.getParameter("productPic");
+
+		String adminProductPicPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
+		fileInputOutput.deleteFile(adminProductPicPath);
+		String userProductPicPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + productPic;
+		fileInputOutput.deleteFile(userProductPicPath);
+
 		CrudOperationsUsingHibernate.removeProducts(productId);
 	}
 }

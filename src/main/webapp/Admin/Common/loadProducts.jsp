@@ -33,6 +33,7 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 					<h3 class="title">
 						<a href="#"><%=product.getProductName()%></a>
 						<input type="hidden" class="productId" value="<%=product.getProductId()%>">
+						<input type="hidden" class="productPic" value="<%=product.getProductImage()%>">
 					</h3>
 					<div class="price">
 						INR :

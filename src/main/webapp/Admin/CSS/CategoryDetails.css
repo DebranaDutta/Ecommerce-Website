@@ -1,26 +1,30 @@
 .card {
 	max-width: 100%;
-	border-radius: 20px;
+	border-radius: 5px;
 	border: none;
-	background: #FAFAFA;
+	/* background: #FAFAFA; */
+	background: #000000;
 }
 
 .card:hover {
 	cursor: pointer;
 	box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 0.5);
-	transition: all 1s ease;
+	transition: all .5s ease;
 	letter-spacing: 3px;
 	font-weight: 700;
-	background: linear-gradient(-100deg, #F0F7BF, #F7F0BF, #CFF5F4, #FFFFFF);
+	/* background: linear-gradient(-100deg, #F0F7BF, #F7F0BF, #CFF5F4, #FFFFFF); */
+	background: #FFFFFF;
 }
 
 .card .card-body a {
 	color: #6F7878;
+	/* color:  #FAFAFA; */
 }
 
 .card .card-body a:hover {
 	text-decoration: none;
-	color: #2B3333
+	/* color: #2B3333 */
+	color: #000000;
 }
 
 .main_cont {
@@ -88,7 +92,7 @@ form .category-details .input-box .details {
 }
 
 .category-details .input-box input:focus, .category-details .input-box input:valid
-	{
+{
 	border-color: #8e44ad;
 }
 
