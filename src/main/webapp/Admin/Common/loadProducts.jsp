@@ -1,3 +1,7 @@
+<%@page import="com.ECW.Dao.CategoryDao"%>
+<%@page import="com.ECW.helper.ConnectionProvider"%>
+<%@page import="com.ECW.Dao.ProductDao"%>
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
 <%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
@@ -5,8 +9,17 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-List<Product> products = CrudOperationsUsingHibernate.getAllProductDetails();
 List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails();
+List<Product> products = new ArrayList<Product>();
+int catId=Integer.parseInt(request.getParameter("catId"));
+if(catId==0){
+	products = CrudOperationsUsingHibernate.getAllProductDetails();
+}else{
+	CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
+	String categoryName = categoryDao.getCategoryNameByCategoryID(catId);
+	ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+	products = productDao.getProductsByCategoryName(categoryName);
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -46,22 +59,25 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 		}
 		%>
 	</div>
-	
-	
+
+
 	<!-- Start of Edit Product MODAL -->
 	<div class="modal fade" id="editProductDetails" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Product ID : <input value="" id="spanProdId" type="text" disabled="disabled"> </h5>
+					<h5 class="modal-title">
+						Product ID :
+						<input value="" id="spanProdId" type="text" disabled="disabled">
+					</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 					<form action="#" id="editProductForm" enctype="mutipart/form-data">
-						<input	type="text" name="productId" id="productId">
-						<input	type="text" name="oldProductPic" id="oldProductPic">
+						<input type="text" name="productId" id="productId">
+						<input type="text" name="oldProductPic" id="oldProductPic">
 						<div class="product-details">
 							<div class="input-box">
 								<span class="details">Product Name</span>
@@ -85,12 +101,9 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 							<div class="input-box">
 								<span class="details">Update image:</span>
 								<input type="file" id="productPic" name="productPic" />
-								<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> 
-								<br /> 
-								<span>
-									<span id="newProductPicName">no new file is selected</span><br/>
-									<span>Old file: </span> 
-									<input type="text" value="" id="oldProductPicName" name="oldProductPicName" disabled="disabled">
+								<label for="productPic" id="productPicLabel"><i class="fa-solid fa-upload" style="margin-right: 5px"></i>Choose a file...</label> <br /> <span>
+									<span id="newProductPicName">no new file is selected</span><br /> <span>Old file: </span> <input type="text" value="" id="oldProductPicName"
+										name="oldProductPicName" disabled="disabled">
 								</span>
 							</div>
 						</div>
@@ -125,9 +138,9 @@ List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails()
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<!-- FontAwsome -->
-	<script src="https://kit.fontawesome.com/400552a932.js" crossorigin="anonymous"></script>	
+	<script src="https://kit.fontawesome.com/400552a932.js" crossorigin="anonymous"></script>
 	<!-- Sweetalert -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
 	<script type="text/javascript" src="Common/CommonJS/removeProducts.js"></script>
 	<script type="text/javascript" src="Common/CommonJS/getIndividualProductDetails.js"></script>

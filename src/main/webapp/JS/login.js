@@ -7,6 +7,14 @@
 	form.submit();
 }*/
 $(document).ready(function() {
+	$('#forgotPassword').click(function(){
+		$.ajax({
+			url:"",
+			success:function(data){
+				window.location="ForgotPasswordPage.jsp";
+			}
+		})
+	});
 	$('#loginBtn').click(function() {
 		var userName = $("#userName").val();
 		var password = $("#password").val();

@@ -21,7 +21,8 @@ List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
 		<div class="col-md-3 mt-2 text-center">
 			<div class="card">
 				<div class="card-body">
-					<a id="catName" class="card-title" href="#"><%=category.getCategoryName()%></a>
+					<a id="catName" class="card-title"><%=category.getCategoryName()%></a>
+					<input type="hidden" class="catId" value="<%=category.getCategoryId()%>">
 				</div>
 			</div>
 		</div>

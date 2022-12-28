@@ -11,7 +11,8 @@ $('#saveDetails').click(function(){
 		success: function(data, tetxtStatus, jqXHR){
 			if(data.trim()==='success'){
 				swal("Details updated successfully").then((value)=>{
-					window.location='ProductDetails.jsp';
+					/*window.location='ProductAndCategoryDetails.jsp';*/
+					window.location.reload();
 				});
 			}
 		},

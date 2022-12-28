@@ -100,6 +100,18 @@
   	<description></description>
   	<servlet-class>com.ECW.Product.Controller.updateProductDetailsController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>getProductsByCategoryController</servlet-name>
+  	<display-name>getProductsByCategoryController</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.Product.Controller.getProductsByCategoryController</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>getProductsByCategoryControllerAdmin</servlet-name>
+  	<display-name>getProductsByCategoryControllerAdmin</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.Product.Controller.getProductsByCategoryControllerAdmin</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>loginServletController</servlet-name>
   	<url-pattern>/loginServletController</url-pattern>
@@ -163,6 +175,14 @@
   <servlet-mapping>
   	<servlet-name>updateProductDetailsController</servlet-name>
   	<url-pattern>/updateProductDetailsController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getProductsByCategoryController</servlet-name>
+  	<url-pattern>/getProductsByCategoryController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getProductsByCategoryControllerAdmin</servlet-name>
+  	<url-pattern>/getProductsByCategoryControllerAdmin</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

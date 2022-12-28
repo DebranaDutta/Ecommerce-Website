@@ -1,12 +1,9 @@
-<%@page import="com.ECW.helper.ConnectionProvider"%>
-<%@page import="com.ECW.Dao.ProductDao"%>
-<%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Product"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
-List<Product> products = productDao.getAllProducts();
+List<Product> products = (ArrayList<Product>) session.getAttribute("productsByCategory");
 %>
 <!DOCTYPE html>
 <html>
@@ -34,9 +31,7 @@ List<Product> products = productDao.getAllProducts();
 						<a href="#"><%=product.getProductName()%></a>
 						<input type="hidden" class="productId" value="<%=product.getProductId()%>">
 					</h3>
-					<div class="price">
-						INR :
-						<%=product.getProductPrice()%></div>
+					<div class="price">INR : <%=product.getProductPrice()%></div>
 					<a class="buyNow" href="">+ Buy Now</a>
 				</div>
 			</div>

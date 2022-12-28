@@ -21,7 +21,7 @@ public class ProductDao {
 		List<Product> products = new ArrayList<Product>();
 		String available = "yes";
 		try {
-			String query = "select * from ecommerce.product where Available=?";
+			String query = "select * from ecommerce.product where Available=?;";
 			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setString(1, available);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -36,6 +36,33 @@ public class ProductDao {
 				products.add(product);
 			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+	
+	//String query="select * from ecommerce.product where Category="Mobile";"
+	public List<Product> getProductsByCategoryName(String categoryName){
+		List<Product> products = new ArrayList<Product>();
+		String available = "yes";
+		try {
+			String query="select * from ecommerce.product where Category=? and Available= ?;";
+			PreparedStatement preparedStatement=this.connection.prepareStatement(query);
+			preparedStatement.setString(1, categoryName);
+			preparedStatement.setString(2, available);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				int productId = resultSet.getInt("Id");
+				String productName = resultSet.getString("Name");
+				int productPrice = resultSet.getInt("Price");
+				String productCategory = resultSet.getString("Category");
+				String productImage = resultSet.getString("Image");
+				
+				Product product=new Product(productId, productName, productPrice, productCategory, productImage);
+				products.add(product);
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -141,10 +141,22 @@
 	transition: all 0.5s;
 }
 
-.product-grid .add-to-cart {
+.product-grid .buyNow{
 	color: #000;
 	font-size: 13px;
 	font-weight: 600;
+	text-transform: uppercase;
+	font-style: normal;
+	text-decoration: none;
+}
+
+.product-grid .buyNow:hover {
+	color: #1C6F2F;
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-style: normal;
+	text-decoration: blink;
 }
 
 @media only screen and (max-width: 990px) {

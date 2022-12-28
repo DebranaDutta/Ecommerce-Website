@@ -6,9 +6,9 @@
 <%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-//List<Category> categories = (ArrayList<Category>) CrudOperationsUsingHibernate.getAllCategoryDetails();
-CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
-List<Category> categories = categoryDao.getAllCategories();
+List<Category> categories = (ArrayList<Category>) CrudOperationsUsingHibernate.getAllCategoryDetails();
+/* CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
+List<Category> categories = categoryDao.getAllCategories(); */
 %>
 <!DOCTYPE html>
 <html>
@@ -23,13 +23,15 @@ List<Category> categories = categoryDao.getAllCategories();
 			for (Category category : categories) {
 			%>
 			<div class="categoryGrid">
-				<a href="#" class="list-group-item"><%=category.getCategoryName()%></a>
-				<input type="hidden" class="catId" value="<%=category.getCategoryId()%>">
+				<a href="#" onclick="getProductDetailsByCategory(<%=category.getCategoryId()%>)" class="list-group-item"><%=category.getCategoryName()%></a>
+				<input type="hidden" id="catId" value="<%=category.getCategoryId()%>">
 			</div>
 			<%
 			}
 			%>
 		</div>
 	</div>
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

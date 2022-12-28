@@ -4,9 +4,10 @@
 <label for="toggler" class="fas fa-bars toggle-bar"></label>
 <div class="list-group" id="listGroup">
 	<a href="CategoryDetails.jsp" class="list-group-item">Show All Category</a>
-	<a href="ProductDetails.jsp" class="list-group-item">Show All Products</a> 
 	<a href="AddNewCategory.jsp" class="list-group-item">Add New Category</a> 
 	<a href="<%=JAVAView.getAllCategoryDetails%>" class="list-group-item">Add new Product</a>
+	<a href="ProductAndCategoryDetails.jsp" class="list-group-item">All Products & Categories </a> 
+	
 </div>
 	<style>			
 		.list-group{	

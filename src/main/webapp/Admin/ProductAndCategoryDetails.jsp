@@ -1,3 +1,7 @@
+<%@page import="com.ECW.Model.Category"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
+<%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
@@ -17,30 +21,32 @@ if (user == null) {
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product Details</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="CSS/commonCss/background.css">
-<link rel="stylesheet" href="CSS/commonCss/productCardDesignAdmin.css">
-<link rel="stylesheet" href="CSS/commonCss/productEditModal.css">
-
+<meta charset="ISO-8859-1">
+<title>Category Details Page2</title>
+</head>
+<body>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="CSS/commonCss/background.css">
+	<link rel="stylesheet" href="CSS/commonCss/listGroup2.css">
+	<link rel="stylesheet" href="CSS/commonCss/productCardDesignAdmin.css">
+	<link rel="stylesheet" href="CSS/commonCss/productEditModal.css">
 </head>
 <body>
 	<%@include file="Common/AdminNavbar.jsp"%>
-
-	<div class="container-fluid">
+	<div class="container-fluid mt-3">
 		<div class="row">
 			<!-- First COL -->
-			<%-- <%@include file="Common/listGroup.jsp"%> --%>
-			<%@include file="Common/listGroup.jsp" %>
+			<%@include file="Common/loadCategory2.jsp"%>
 			<!-- Second COL -->
-			<div class="col-md-10 mb-3">
+			<div class="col-md-10">
 				<div class="container text-center" id="loader">
 					<i class="fa-solid fa-rotate fa-4x fa-spin"></i>
 					<h3 class="mt-2">Loading...</h3>
 				</div>
-				<div class="container-fluid" id="loadProductContainer"></div>
+				<div class="container-fluid" id="loadProductContainer">
+					
+				</div>
 			</div>
 		</div>
 	</div>
@@ -57,6 +63,9 @@ if (user == null) {
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
-	<script type="text/javascript" src="JS/ProductDetails.js"></script>
+	<!-- <script type="text/javascript" src="Common/CommonJS/ProductDetailsByCategory.js"></script> -->
+	<script type="text/javascript" src="Common/CommonJS/loadCategory.js"></script>
+</body>
+</html>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Forgot Password</title>
 <link rel="stylesheet" href="CSS/ForgotPasswordPage.css" />
 </head>
 <body>
@@ -16,14 +16,6 @@
 				<span></span> <label id="userNameLabel">Enter Username</label>
 			</div>
 			<div id="enterQandS" hidden>
-				<!-- <div class="input-box">
-					<span class="details">Security Question</span> <select name="" id="securityQuestion" class="select">
-						<option value="1" class="op1">What was your first Car?</option>
-						<option value="2">What was first school?</option>
-						<option value="3">What is your mother's maiden name?</option>
-						<option value="4">what was your first pet name?</option>
-					</select>
-				</div> -->
 				<div>
 					<span></span> <label id="question"></label>
 				</div>

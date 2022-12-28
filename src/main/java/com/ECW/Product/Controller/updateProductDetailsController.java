@@ -47,14 +47,15 @@ public class updateProductDetailsController extends HttpServlet {
 
 			String oldAdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + oldProductPic;
 			fileInputOutput.deleteFile(oldAdminPath);
+			String oldUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + oldProductPic;
+			fileInputOutput.deleteFile(oldUserPath);
+			
 			String newAdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + newProductPic;
 			fileInputOutput.saveFile(inputStream, newAdminPath);
 
-			String oldUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + oldProductPic;
-			fileInputOutput.deleteFile(oldUserPath);
 			String newUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + newProductPic;
-			fileInputOutput.saveFile(inputStream, newUserPath);
-
+			fileInputOutput.fileCopy(newAdminPath, newUserPath);
+			
 			CrudOperationsUsingHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, newProductPic);
 
 		} else if (newProductPic == "") {
