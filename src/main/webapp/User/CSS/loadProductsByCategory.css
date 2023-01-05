@@ -1,0 +1,42 @@
+#toast {
+	min-width: 300px;
+	position: fixed;
+	bottom: 50%;
+	left: 50%;
+	margin-left: -100px;
+	background:rgba(1, 0, 0, .8);
+	padding: 10px;
+	color: white;
+	text-align: center;
+	z-index: 1;
+	font-size: 18px;
+	text-transform: capitalize;
+	border-radius: 10px;
+	box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 1);
+	opacity: 1;
+	visibility: hidden;
+}
+#toast.display {
+  visibility: visible;
+  animation: fadeIn 1s, fadeOut 0.5s 2.5s;
+}
+@keyframes fadeIn {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 50%;
+    opacity: 3;
+  }
+}
+@keyframes fadeOut {
+  from {
+    bottom: 50%;
+    opacity: 3;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}

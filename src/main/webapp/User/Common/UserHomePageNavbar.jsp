@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ECW.Model.Cart"%>
+<%@page import="java.util.List"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <div class="sticky-top" style="margin-bottom: 15px; box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5); ">
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 15px">
@@ -10,6 +13,7 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item dropdown mr-5">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-user"></i><%=user.getFullName() %></a>
+					<input type="hidden" id="userId" value="<%=user.getPhoneNumber()%>">
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<li><a class="dropdown-item" href="#">View Account Details</a></li>
 						<li><a class="dropdown-item" href="#">Edit Account Details</a></li>
@@ -20,7 +24,7 @@
 				</li>
 				<li class="nav-item mr-5"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Home</a></li>
 				<li class="nav-item mr-5"><a class="nav-link" href="allProducts.jsp"><i class="fa-solid fa-bars"></i>All Products</a></li>
-				<li class="nav-item mr-5"><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-cart-shopping"></i>My Cart</a></li>
+				<li class="nav-item mr-5"><a class="nav-link" id="getCartDetails" href="#" tabindex="-1" aria-disabled="true" data-toggle="modal" data-target="#cartModal"><span class="mr-1 mb-1 cart-items">( 0 )</span><i class="fa-solid fa-cart-shopping"></i>My Cart</a></li>
 				<li class="nav-item mr-5"><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-arrow-down-a-z"></i>My Orders</a></li>
 			</ul>
 			<ul class="navbar-nav">
@@ -53,4 +57,8 @@
 }
 
 </style>
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- CustomScript -->
+<script type="text/javascript" src="JS/getCartDetails.js"></script>
 </div>

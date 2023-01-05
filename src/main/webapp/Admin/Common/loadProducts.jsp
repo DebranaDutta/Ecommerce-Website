@@ -18,7 +18,7 @@ if(catId==0){
 	CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
 	String categoryName = categoryDao.getCategoryNameByCategoryID(catId);
 	ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
-	products = productDao.getProductsByCategoryName(categoryName);
+	products = productDao.getProductsByCategoryAdmin(categoryName);
 }
 %>
 <!DOCTYPE html>
@@ -51,11 +51,15 @@ if(catId==0){
 					<div class="price">
 						INR :
 						<%=product.getProductPrice()%></div>
-					<a class="add-to-cart">Product Id: <%=product.getProductId()%></a>
+					<%if(product.getProductAvailability().equals("no")){%>
+					<a class="add-to-cart" style="color: red;">Product Id: <%=product.getProductId()%></a><br>
+					<%}else{%>
+					<a class="add-to-cart" style="color: green;">Product Id: <%=product.getProductId()%></a><br>
+					<%}%>
 				</div>
 			</div>
 		</div>
-		<%
+		<% 
 		}
 		%>
 	</div>

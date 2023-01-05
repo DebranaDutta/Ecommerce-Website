@@ -25,6 +25,7 @@ List<Category> categories = categoryDao.getAllCategories(); */
 			<div class="categoryGrid">
 				<a href="#" onclick="getProductDetailsByCategory(<%=category.getCategoryId()%>)" class="list-group-item"><%=category.getCategoryName()%></a>
 				<input type="hidden" id="catId" value="<%=category.getCategoryId()%>">
+				<%-- <input type="hidden" value="<%=user.getUserType()%>"> --%>
 			</div>
 			<%
 			}

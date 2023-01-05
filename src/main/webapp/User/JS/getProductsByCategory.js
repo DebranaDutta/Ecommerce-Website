@@ -1,20 +1,16 @@
-$('.list-group-item').click(function() {
-	var catId = $(this).closest('.categoryGrid').find('.catId').val();
-	var url = "http://localhost:8080/E-commerceWebsite/getProductsByCategoryController";
+function getProductByCategory(catId) {
 	$.ajax({
-		type : 'POST',
-		url : url,
-		data:{
-			catId:catId
+		url : "Common/loadProductsByCategory.jsp",
+		data : {
+			catId : catId
 		},
-		success : function(data, tetxtStatus, jqXHR){
-			$.ajax({
-				url:"Common/loadProductsByCategory.jsp",
-				success: function(data, tetxtStatus, jqXHR){
-					$('#loader').hide();
-					$('#loadProductContainer').html(data);
-				}
-			});
+		success : function(data, tetxtStatus, jqXHR) {
+			$('#loader').hide();
+			$('#loadProductContainer').html(data);
 		}
 	});
+}
+
+$(document).ready(function() {
+	getProductByCategory(0);
 });

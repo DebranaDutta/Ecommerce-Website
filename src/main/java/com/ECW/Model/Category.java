@@ -11,7 +11,7 @@ public class Category {
 	@Column(nullable = false)
 	private String categoryName;
 	private String categoryDetails;
-
+	
 	public Category() {
 		super();
 	}

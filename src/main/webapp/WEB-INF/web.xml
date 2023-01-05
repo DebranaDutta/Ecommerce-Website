@@ -112,6 +112,18 @@
   	<description></description>
   	<servlet-class>com.ECW.Product.Controller.getProductsByCategoryControllerAdmin</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddProductsToCart</servlet-name>
+  	<display-name>AddProductsToCart</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.Cart.Controller.AddProductsToCart</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>getCartDetails</servlet-name>
+  	<display-name>getCartDetails</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.Cart.Controller.getCartDetails</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>loginServletController</servlet-name>
   	<url-pattern>/loginServletController</url-pattern>
@@ -183,6 +195,14 @@
   <servlet-mapping>
   	<servlet-name>getProductsByCategoryControllerAdmin</servlet-name>
   	<url-pattern>/getProductsByCategoryControllerAdmin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddProductsToCart</servlet-name>
+  	<url-pattern>/AddProductsToCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>getCartDetails</servlet-name>
+  	<url-pattern>/getCartDetails</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

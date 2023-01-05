@@ -19,12 +19,12 @@ List<Category> categories = categoryDao.getAllCategories();
 <body>
 	<div class="col-md-2">
 		<div class="list-group text-center bg-light">
+			<a href="#" class="list-group-item" onclick="getProductByCategory(0)">All Products</a>
 			<%
 			for (Category category : categories) {
 			%>
 			<div class="categoryGrid">
-				<a href="#" class="list-group-item"><%=category.getCategoryName()%></a>
-				<input type="hidden" class="catId" value="<%=category.getCategoryId()%>">
+				<a href="#" class="list-group-item" onclick="getProductByCategory(<%=category.getCategoryId()%>)"><%=category.getCategoryName()%></a>
 			</div>
 			<%
 			}

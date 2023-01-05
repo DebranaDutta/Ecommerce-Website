@@ -1,15 +1,28 @@
+<%@page import="com.ECW.Model.User"%>
+<%@page import="com.ECW.Dao.CategoryDao"%>
+<%@page import="com.ECW.helper.ConnectionProvider"%>
+<%@page import="com.ECW.Dao.ProductDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Product"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-List<Product> products = (ArrayList<Product>) session.getAttribute("productsByCategory");
+User user=(User) session.getAttribute("currentUser");
+List<Product> products = new ArrayList<Product>();
+int catId = Integer.parseInt(request.getParameter("catId"));
+if (catId == 0) {
+	products = new ProductDao(ConnectionProvider.getConnection()).getAllProducts();
+} else {
+	String categoryName = new CategoryDao(ConnectionProvider.getConnection()).getCategoryNameByCategoryID(catId);
+	products = new ProductDao(ConnectionProvider.getConnection()).getProductsByCategoryName(categoryName);
+}
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="CSS/loadProductsByCategory.css">
 </head>
 <body>
 	<div class="row">
@@ -21,9 +34,10 @@ List<Product> products = (ArrayList<Product>) session.getAttribute("productsByCa
 				<div class="product-image">
 					<a href=""><img class="pic-1" src="img/<%=product.getProductImage()%>" /></a>
 					<ul class="social">
-						<li><a href="" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+						<li><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
 						<li><a href="#" data-tip="Add to Wishlist" class="editProduct"><i class="fa fa-shopping-bag"></i></a></li>
-						<li><a href="" data-tip="Add to Cart" class="removeProduct"><i class="fa fa-shopping-cart"></i></a></li>
+						<%-- <li><a href="#" data-tip="Add to Cart" class="removeProduct" onclick="addToCart(<%=product.getProductId()%>, '<%=product.getProductName()%>', <%=product.getProductPrice()%>)"><i class="fa fa-shopping-cart"></i></a></li> --%>
+						<li><a href="#" data-tip="Add to Cart" class="addToCart" onclick="addToCart(<%=product.getProductId()%>, <%=user.getPhoneNumber()%>)"><i class="fa fa-shopping-cart"></i></a></li>
 					</ul>
 				</div>
 				<div class="product-content">
@@ -31,7 +45,9 @@ List<Product> products = (ArrayList<Product>) session.getAttribute("productsByCa
 						<a href="#"><%=product.getProductName()%></a>
 						<input type="hidden" class="productId" value="<%=product.getProductId()%>">
 					</h3>
-					<div class="price">INR : <%=product.getProductPrice()%></div>
+					<div class="price">
+						INR :
+						<%=product.getProductPrice()%></div>
 					<a class="buyNow" href="">+ Buy Now</a>
 				</div>
 			</div>
@@ -40,5 +56,8 @@ List<Product> products = (ArrayList<Product>) session.getAttribute("productsByCa
 		}
 		%>
 	</div>
+	<div id="toast">Product added to Cart</div>
 </body>
+<!-- <script type="text/javascript" src="JS/addProductsToCartLoaclStorage.js"></script> -->
+<script type="text/javascript" src="JS/addProductsToCart.js"></script>
 </html>
