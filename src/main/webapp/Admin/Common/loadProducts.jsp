@@ -56,6 +56,7 @@ if(catId==0){
 					<%}else{%>
 					<a class="add-to-cart" style="color: green;">Product Id: <%=product.getProductId()%></a><br>
 					<%}%>
+					
 				</div>
 			</div>
 		</div>

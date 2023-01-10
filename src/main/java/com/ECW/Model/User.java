@@ -23,6 +23,27 @@ public class User {
 		super();
 	}
 
+	public User(String userName, String email, long phoneNumber, String password, String securityQuestion, String answer) {
+		super();
+		this.userName = userName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.securityQuestion = securityQuestion;
+		this.answer = answer;
+	}
+
+	public User(String fullName, String userName, String email, long phoneNumber, String password, String securityQuestion, String answer) {
+		super();
+		this.fullName = fullName;
+		this.userName = userName;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.password = password;
+		this.securityQuestion = securityQuestion;
+		this.answer = answer;
+	}
+
 	public User(String fullName, String userName, String email, long phoneNumber, String password, String securityQuestion, String answer, String gender) {
 		super();
 		this.fullName = fullName;

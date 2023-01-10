@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.internal.build.AllowSysOut;
+
 import com.ECW.Dao.CartDao;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Product;
@@ -41,44 +43,45 @@ public class AddProductsToCart extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
 		Gson gson = new Gson();
+		HttpSession session = request.getSession();
 
-		//Creating art obj
 		Product product = CrudOperationsUsingHibernate.getIndividualProductDetails(produtIdStr);
-		int cartId = RandomIdGenerator.newIdGenrator();
-		String status = "active";
-		Cart cart = new Cart(cartId, product.getProductImage(), product.getProductName(), product.getProductPrice(), 1, new Date(), userId, productId, status);
-		
-		
-		// Getting existing cart details
+		Cart cart = new Cart(RandomIdGenerator.newIdGenrator(), product.getProductImage(), product.getProductName(), product.getProductPrice(), 1, new Date(), userId, productId, "active");
 		List<Cart> carts = cartDao.getCartDetailsByUser(userId);
-		System.out.println(carts.isEmpty());
-		if (carts.isEmpty()) {
-			boolean stat = cartDao.addProductToCart(cart);
-			if (stat == true) {
+
+		try {
+			if (carts.isEmpty()) {
+				boolean stat = cartDao.addProductToCart(cart);
 				carts = cartDao.getCartDetailsByUser(userId);
-				out.print(gson.toJson(carts));
-			}
-		} else {
-			boolean exists = false;
-			for (Cart c : carts) {
-				if (c.getProductId() == productId) {
-					// update product quantity of that particular cart by 1
-					exists = cartDao.updateQuantityIfProductExists(c.getCartId(), c.getProductQuantity());
-					if (exists == true) {
+				if (stat == true) {
+					session.setAttribute("carts", carts);
+					String data=gson.toJson(carts);
+					System.out.print(data);
+					out.print("success"+"|"+data);
+				}
+			} else {
+				for (Cart c : carts) {
+					if (c.getProductId() == productId) {
+						boolean stat = cartDao.updateQuantityIfProductExists(c.getCartId(), c.getProductQuantity());
 						carts = cartDao.getCartDetailsByUser(userId);
-						out.print(gson.toJson(carts));
+						if (stat == true) {
+							session.setAttribute("carts", carts);
+							String data=gson.toJson(carts);
+							out.print("success"+"|"+data);
+						}
+					} else {
+						boolean stat = cartDao.addProductToCart(cart);
+						carts = cartDao.getCartDetailsByUser(userId);
+						if (stat == true) {
+							session.setAttribute("carts", carts);
+							String data=gson.toJson(carts);
+							out.print("success"+"|"+data);
+						}
 					}
 				}
-				if(!exists) {
-					boolean stat=cartDao.addProductToCart(cart);
-					if (stat == true) {
-						carts = cartDao.getCartDetailsByUser(userId);
-						out.print(gson.toJson(carts));
-					}
-				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
 	}
-
 }

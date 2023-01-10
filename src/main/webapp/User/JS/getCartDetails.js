@@ -2,7 +2,7 @@
 	
 });*/
 
-function getCartDetails(userId) {
+/*function getCartDetails(userId) {
 	var url = "http://localhost:8080/E-commerceWebsite/getCartDetails";
 	$.ajax({
 		type : 'POST',
@@ -55,9 +55,27 @@ function getCartDetails(userId) {
 			$(".cart-body").html(table);		
 		}
 	});
+}*/
+
+function getCartDetails2(userId){
+	var url = "http://localhost:8080/E-commerceWebsite/getCartDetails";
+	$.ajax({
+		type:'POST',
+		url : url,
+		data : {
+			userId : userId
+		},
+		success : function(data, tetxtStatus, jqXHR){
+			var carts = JSON.parse(data);
+			$(".cart-items").html(`( ${carts.length } )`);
+		}
+	});
 }
+
 $(document).ready(function() {
 	console.log("page loaded");
 	var userId=$('#userId').val();
-	getCartDetails(userId);
+	console.log(userId);
+	getCartDetails2(userId);
+	
 });

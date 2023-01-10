@@ -57,6 +57,16 @@ public class Product {
 		this.productImage = productImage;
 	}
 
+	public Product(int productId, String productName, int productPrice, String productCategory, String productAvailability, String productImage) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.productPrice = productPrice;
+		this.productCategory = productCategory;
+		this.productAvailability = productAvailability;
+		this.productImage = productImage;
+	}
+
 	public int getProductId() {
 		return productId;
 	}

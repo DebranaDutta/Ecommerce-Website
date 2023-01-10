@@ -36,10 +36,9 @@ public class getCartDetails extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
 		out.print(gson.toJson(carts));
-		/*
-		 * HttpSession session=request.getSession(); session.setAttribute("carts",
-		 * carts);
-		 */
+
+		HttpSession session = request.getSession();
+		session.setAttribute("carts", carts);
 	}
 
 }

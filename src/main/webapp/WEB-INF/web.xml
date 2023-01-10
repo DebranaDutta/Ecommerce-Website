@@ -124,6 +124,12 @@
   	<description></description>
   	<servlet-class>com.ECW.Cart.Controller.getCartDetails</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>updateUserDetails</servlet-name>
+  	<display-name>updateUserDetails</display-name>
+  	<description></description>
+  	<servlet-class>com.ECW.User.Controller.updateUserDetails</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>loginServletController</servlet-name>
   	<url-pattern>/loginServletController</url-pattern>
@@ -203,6 +209,10 @@
   <servlet-mapping>
   	<servlet-name>getCartDetails</servlet-name>
   	<url-pattern>/getCartDetails</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>updateUserDetails</servlet-name>
+  	<url-pattern>/updateUserDetails</url-pattern>
   </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>login.jsp</welcome-file>

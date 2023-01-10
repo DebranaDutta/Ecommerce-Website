@@ -85,7 +85,7 @@ public class ProductDao {
 				String available1 = resultSet.getString("Available");
 				String productImage = resultSet.getString("Image");
 
-				Product product = new Product(productId, productName, productPrice, productCategory, productImage);
+				Product product = new Product(productId, productName, productPrice, productCategory, available1, productImage);
 				products.add(product);
 			}
 

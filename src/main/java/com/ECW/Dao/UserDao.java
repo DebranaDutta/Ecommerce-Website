@@ -15,41 +15,42 @@ public class UserDao {
 		this.connection = connection;
 	}
 
-	//String query = "UPDATE ecommerce.user SET password = ? WHERE (userName = ?);";
+	// String query = "UPDATE ecommerce.user SET password = ? WHERE (userName =
+	// ?);";
 	public boolean updateUserPassword(String newPassword, String userName) {
 		boolean status = false;
 		try {
 			String query = "UPDATE ecommerce.user SET password = ? WHERE (userName = ?);";
-			PreparedStatement preparedStatement=this.connection.prepareStatement(query);
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setString(1, newPassword);
 			preparedStatement.setString(2, userName);
-			int i=preparedStatement.executeUpdate();
-			if(i>0) {
-				status=true;
+			int i = preparedStatement.executeUpdate();
+			if (i > 0) {
+				status = true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return status;
 	}
-	
-	//String query = "select answer from ecommerce.user where userName=?;
+
+	// String query = "select answer from ecommerce.user where userName=?;
 	public String getSecurityAnsweByUserName(String userName) {
-		String answer=null;
+		String answer = null;
 		try {
 			String query = "select answer from ecommerce.user where userName=?;";
-			PreparedStatement preparedStatement=this.connection.prepareStatement(query);
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setString(1, userName);
-			ResultSet resultSet=preparedStatement.executeQuery();
-			if(resultSet.next()) {
-				answer=resultSet.getString("answer");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				answer = resultSet.getString("answer");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return answer;
 	}
-	
+
 	// String query = "select securityQuestion from ecommerce.user where userName=?;
 	public String getSecurityQuestionByUserName(String userName) {
 		String securityQuestion = null;
@@ -58,7 +59,7 @@ public class UserDao {
 			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setString(1, userName);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if(resultSet.next()) {
+			if (resultSet.next()) {
 				securityQuestion = resultSet.getString("securityQuestion");
 			}
 		} catch (Exception e) {
@@ -67,7 +68,8 @@ public class UserDao {
 		return securityQuestion;
 	}
 
-	//String query = "select * from ecommerce.user where userName=? and password=?;";
+	// String query = "select * from ecommerce.user where userName=? and
+	// password=?;";
 	public User getUserByUserIdAndPassword(String password, String userName) {
 		User user = null;
 		try {
@@ -84,12 +86,33 @@ public class UserDao {
 				String fullName = resultSet.getString("fullName");
 				String gender = resultSet.getString("gender");
 				String securityQuestion = resultSet.getString("securityQuestion");
-				String userType=resultSet.getString("userType");
+				String userType = resultSet.getString("userType");
 				user = new User(fullName, userName, email, contactNumber, password, securityQuestion, answer, gender, date, userType);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return user;
+	}
+
+	public boolean updateUserDetails(User user) {
+		boolean stat = false;
+		try {
+			String query = "UPDATE ecommerce.user SET email=?, userName=?, password=?, securityQuestion = ?, answer=? WHERE (phoneNumber = ?);";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setString(1, user.getEmail());
+			preparedStatement.setString(2, user.getUserName());
+			preparedStatement.setString(3, user.getPassword());
+			preparedStatement.setString(4, user.getSecurityQuestion());
+			preparedStatement.setString(5, user.getAnswer());
+			preparedStatement.setLong(6, user.getPhoneNumber());
+			int i = preparedStatement.executeUpdate();
+			if (i > 0) {
+				stat = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return stat;
 	}
 }
