@@ -1,18 +1,3 @@
-/*function getCartDetails2(userId){
-	var url = "http://localhost:8080/E-commerceWebsite/getCartDetails";
-	$.ajax({
-		type:'POST',
-		url : url,
-		data : {
-			userId : userId
-		},
-		success : function(data, tetxtStatus, jqXHR){
-			var carts = JSON.parse(data);
-			$(".cart-items").html(`( ${carts.length } )`);
-		}
-	});
-}*/
-
 function getCartDetails(userId) {
 	var url = "http://localhost:8080/E-commerceWebsite/getCartDetails";
 	$.ajax({
@@ -54,10 +39,10 @@ function getCartDetails(userId) {
 								<td>${item.productPrice}</td>
 								<td>${item.date}</td>
 								<td>
-									<a href="#" class="mr-1"><i class="fa-solid fa-plus"></i></a>${item.productQuantity}<a href="#" class="ml-2"><i class="fa-solid fa-minus"></i></a>
+									<a href="#" class="mr-1" onClick='IncreaseDecreaseQuantity(${item.cartId}, ${item.productQuantity}, ${item.userId}, "increase")'><i class="fa-solid fa-plus"></i></a>${item.productQuantity}<a href="#" class="ml-2" onClick='IncreaseDecreaseQuantity(${item.cartId}, ${item.productQuantity}, ${item.userId}, "decrease")'><i class="fa-solid fa-minus"></i></a>
 								</td>
 								<td>${item.productQuantity*item.productPrice}</td>
-								<td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+								<td><a href="#" onClick='deleteItemFromCart(${item.cartId} , ${item.userId})'><i class="fa-solid fa-trash-can"></i></a></td>
 							</tr>
 						</tbody>
 						`
@@ -73,6 +58,29 @@ function getCartDetails(userId) {
 		}
 	});
 }
+function IncreaseDecreaseQuantity(cartId, quantity, userId, str){
+	if(str==='increase'){
+		quantity=quantity+1;
+	}else if(str==='decrease'){
+		quantity=quantity-1;
+	}
+	var url = "http://localhost:8080/E-commerceWebsite/IncreaseDecreaseController";
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:{
+			cartId:cartId,
+			userId:userId,
+			quantity:quantity,
+		},
+		success: function(data, tetxtStatus, jqXHR){
+			var carts=JSON.parse(data);
+			$(".cart-items").html(`( ${carts.length } )`);
+			getCartDetails(userId);
+		}
+	});
+}
+
 function addToCart(productId, userId) {
 	var url = "http://localhost:8080/E-commerceWebsite/AddProductsToCart";
 	$.ajax({
@@ -94,21 +102,28 @@ function addToCart(productId, userId) {
 				 $(".cart-items").html(`( ${carts.length } )`);
 				 getCartDetails(userId);
 			}
-			/*
-			 * if(data.trim()==='success'){ $("#toast").addClass("display");
-			 * setTimeout(() => { $("#toast").removeClass("display"); }, 2000);
-			 * $(".cart-items").html(`( ${carts.length } )`); }
-			 */
 		}
 	});
 }
 
-function deleteFromCart(cartId){
-	console.log(cartId);
+function deleteItemFromCart(cartId, userId){
+	var url = "http://localhost:8080/E-commerceWebsite/deleteFromCart";
+	$.ajax({
+		url:url,
+		type:'POST',
+		data:{
+			cartId:cartId,
+			userId:userId
+		},
+		success: function(data, tetxtStatus, jqXHR){			
+				var carts=JSON.parse(data);
+				$(".cart-items").html(`( ${carts.length } )`);
+				getCartDetails(userId);
+		}
+	});
 }
 
 $(document).ready(function() {
 	var userId=$('#userId').val();
-	/* getCartDetails2(userId); */
 	getCartDetails(userId);
 });

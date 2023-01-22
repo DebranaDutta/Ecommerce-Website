@@ -70,21 +70,57 @@ public class CartDao {
 		}
 		return carts;
 	}
-	
-	//Update cart product quantity if product is already exist
+
+	// Update cart product quantity if product is already exist
 	public boolean updateQuantityIfProductExists(int cartId, int productQuantity) {
-		boolean status=false;
+		boolean status = false;
 		try {
-			String query="UPDATE ecommerce.cart SET productQuantity = ? WHERE (cartId = ?);";
-			PreparedStatement preparedStatement=this.connection.prepareStatement(query);
-			preparedStatement.setInt(1, productQuantity+1);
+			String query = "UPDATE ecommerce.cart SET productQuantity = ? WHERE (cartId = ?);";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, productQuantity + 1);
 			preparedStatement.setInt(2, cartId);
-			int i=preparedStatement.executeUpdate();
-			if(i!=0) {
-				status=true;
+			int i = preparedStatement.executeUpdate();
+			if (i != 0) {
+				status = true;
 			}
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		}
+		return status;
+	}
+
+	// DELETE FROM `ecommerce`.`cart` WHERE (`cartId` = '9046');
+	public boolean deletefromCartByCartId(int cartId) {
+		boolean status = false;
+		try {
+			String query = "DELETE FROM ecommerce.cart WHERE (cartId = ?);";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, cartId);
+			int i = preparedStatement.executeUpdate();
+			if (i != 0) {
+				status = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+
+	// UPDATE `ecommerce`.`cart` SET `productQuantity` = '2' WHERE (`cartId` =
+	// '3027');
+	public boolean updateProductQuantityInCart(int cartId, int quantity) {
+		boolean status = false;
+		try {
+			String query = "UPDATE ecommerce.cart SET productQuantity = ? WHERE (cartId = ?);";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, quantity);
+			preparedStatement.setInt(2, cartId);
+			int i = preparedStatement.executeUpdate();
+			if (i != 0) {
+				status = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return status;
 	}

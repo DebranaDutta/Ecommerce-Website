@@ -12,7 +12,7 @@ if (user == null) {
 	response.sendRedirect(JAVAView.loginView);
 	return;
 }
-List<Cart> carts = (ArrayList<Cart>) session.getAttribute("carts");
+//List<Cart> carts = (ArrayList<Cart>) session.getAttribute("carts");
 List<Address> addresses = (ArrayList<Address>) session.getAttribute("addresses");
 %>
 <!DOCTYPE html>

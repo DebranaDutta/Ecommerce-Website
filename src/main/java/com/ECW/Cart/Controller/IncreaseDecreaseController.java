@@ -14,13 +14,12 @@ import com.ECW.Dao.CartDao;
 import com.ECW.Model.Cart;
 import com.ECW.helper.ConnectionProvider;
 import com.google.gson.Gson;
-import com.mysql.cj.Session;
 
-@WebServlet(name = "deleteFromCart", urlPatterns = { "/deleteFromCart" })
-public class deleteFromCart extends HttpServlet {
+@WebServlet(name = "IncreaseDecreaseController", urlPatterns = { "/IncreaseDecreaseController" })
+public class IncreaseDecreaseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public deleteFromCart() {
+	public IncreaseDecreaseController() {
 		super();
 	}
 
@@ -31,13 +30,22 @@ public class deleteFromCart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int cartId = Integer.parseInt(request.getParameter("cartId"));
 		long userId = Long.parseLong(request.getParameter("userId"));
-		boolean status = new CartDao(ConnectionProvider.getConnection()).deletefromCartByCartId(cartId);
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
-		if (status == true) {
-			List<Cart> carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(userId);
-			out.print(gson.toJson(carts));
+		CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
+		if (quantity == 0) {
+			boolean status = cartDao.deletefromCartByCartId(cartId);
+			if (status == true) {
+				List<Cart> carts = cartDao.getCartDetailsByUser(userId);
+				out.print(gson.toJson(carts));
+			}
+		} else if (quantity >= 1) {
+			boolean status = cartDao.updateProductQuantityInCart(cartId, quantity);
+			if (status == true) {
+				List<Cart> carts = cartDao.getCartDetailsByUser(userId);
+				out.print(gson.toJson(carts));
+			}
 		}
 	}
-
 }

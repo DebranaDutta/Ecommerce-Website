@@ -5,12 +5,6 @@
 <%@page import="java.util.List"%>
 <%@page import="com.ECW.Model.Cart"%>
 <%@page import="com.ECW.helper.JAVAView"%>
-<%
-	/* List<Cart> carts=new ArrayList<Cart>();
-	carts=new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());
-	System.out.println(carts); */
-	//carts=(ArrayList<Cart>) session.getAttribute("carts");
-%>
 <div class="sticky-top" style="margin-bottom: 15px; box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-radius: 15px">
 		<div class="container-fluid">
@@ -61,92 +55,3 @@ i {
 }
 </style>
 </div>
-
-<!-- Modal -->
-<%-- <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">My Cart</h5>
-				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<%if(carts==null){%>
-				<h1>Nothing is there</h1>
-				<%}else{%>
-				<div class="cart-body">
-					<table class="table">
-						<thead class="thead-light text-center">
-							<tr>
-								<th>Name</th>
-								<th>Price</th>
-								<th>Date</th>
-								<th>Quantity</th>
-								<th>Total Price</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody class="text-center">
-							<%for(Cart cart:carts){%>
-							<tr>
-								<td>
-									<div class="child">
-										<img alt="" class="img-fluid" src="img/<%=cart.getProductPic()%>">
-									</div>
-									<div class="child"><%=cart.getProductName()%></div>
-								</td>
-								<td><%=cart.getProductPrice()%></td>
-								<td><%=cart.getDate()%></td>
-								<td><a href="#" class="mr-1"><i class="fa-solid fa-plus"></i></a><%=cart.getProductQuantity()%><a href="#" class="ml-2"><i class="fa-solid fa-minus"></i></a></td>
-								<td><%=cart.getProductQuantity()*cart.getProductPrice()%></td>
-								<td><a href="#" onclick="deleteFromCart(<%=cart.getCartId()%>)"><i class="fa-solid fa-trash-can"></i></a></td>
-							</tr>
-							<%}%>
-						</tbody>
-					</table>
-				</div>
-				<%}%>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary checkout-btn">Checkout</button>
-			</div>
-		</div>
-	</div>
-<style>
-.child {
-	display: inline-block;
-}
-
-.img-fluid {
-	height: 50px;
-}
-
-.fa-plus {
-	color: #737373;
-}
-
-.fa-plus:hover {
-	color: #17A506;
-}
-
-.fa-minus {
-	color: #737373;
-}
-
-.fa-minus:hover {
-	color: #D34A38;
-}
-
-.fa-trash-can:hover {
-	color: #FF0000;
-}
-</style>
-
-	<!-- JQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<!-- CustomScript -->
-	<script type="text/javascript" src="JS/getCartDetails.js"></script>
-</div> --%>

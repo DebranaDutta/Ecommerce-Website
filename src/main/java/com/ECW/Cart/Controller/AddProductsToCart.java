@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.internal.build.AllowSysOut;
 
 import com.ECW.Dao.CartDao;
+import com.ECW.Dao.ProductDao;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Product;
 import com.ECW.helper.ConnectionProvider;
@@ -36,16 +37,16 @@ public class AddProductsToCart extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String produtIdStr = request.getParameter("productId");
-		int productId = Integer.parseInt(produtIdStr);
+		
+		int productId = Integer.parseInt(request.getParameter("productId"));
 		Long userId = Long.parseLong(request.getParameter("userId"));
 
 		PrintWriter out = response.getWriter();
 		CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
 		Gson gson = new Gson();
-		HttpSession session = request.getSession();
 
-		Product product = CrudOperationsUsingHibernate.getIndividualProductDetails(produtIdStr);
+		//Product product = CrudOperationsUsingHibernate.getIndividualProductDetails(produtIdStr);
+		Product product=new ProductDao(ConnectionProvider.getConnection()).getIndividualProductDetails(productId);
 		Cart cart = new Cart(RandomIdGenerator.newIdGenrator(), product.getProductImage(), product.getProductName(), product.getProductPrice(), 1, new Date(), userId, productId, "active");
 		List<Cart> carts = cartDao.getCartDetailsByUser(userId);
 
@@ -54,7 +55,6 @@ public class AddProductsToCart extends HttpServlet {
 				boolean stat = cartDao.addProductToCart(cart);
 				carts = cartDao.getCartDetailsByUser(userId);
 				if (stat == true) {
-					session.setAttribute("carts", carts);
 					String data = gson.toJson(carts);
 					out.print("success" + "|" + data);
 				}
@@ -75,7 +75,6 @@ public class AddProductsToCart extends HttpServlet {
 					boolean stat = cartDao.updateQuantityIfProductExists(cartId, productQuantity);
 					carts = cartDao.getCartDetailsByUser(userId);
 					if (stat == true) {
-						session.setAttribute("carts", carts);
 						String data = gson.toJson(carts);
 						out.print("success" + "|" + data);
 					}
@@ -83,7 +82,6 @@ public class AddProductsToCart extends HttpServlet {
 					boolean stat = cartDao.addProductToCart(cart);
 					carts = cartDao.getCartDetailsByUser(userId);
 					if (stat == true) {
-						session.setAttribute("carts", carts);
 						String data = gson.toJson(carts);
 						out.print("success" + "|" + data);
 					}

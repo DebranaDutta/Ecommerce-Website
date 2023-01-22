@@ -8,8 +8,8 @@ if (user == null) {
 	response.sendRedirect(JAVAView.loginView);
 	return;
 }
-List<Cart> carts = new ArrayList<Cart>();
-carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());
+/*List<Cart> carts = new ArrayList<Cart>();
+carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());*/
 %>
 <!DOCTYPE html>
 <html>

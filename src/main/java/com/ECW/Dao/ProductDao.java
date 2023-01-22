@@ -94,4 +94,24 @@ public class ProductDao {
 		}
 		return products;
 	}
+
+	public Product getIndividualProductDetails(int productId) {
+		Product product=new Product();
+		try {
+			String query = "select * from ecommerce.product where id=?;";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, productId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				String productName = resultSet.getString("Name");
+				int productPrice = resultSet.getInt("Price");
+				String productCategory = resultSet.getString("Category");
+				String productImage = resultSet.getString("Image");
+				product=new Product(productId, productName, productPrice, productCategory, productImage);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return product;
+	}
 }
