@@ -19,6 +19,7 @@ List<Category> categories = categoryDao.getAllCategories(); */
 <body>
 	<div class="col-md-2">
 		<div class="list-group text-center bg-light">
+			<a href="#" class="list-group-item" onclick="getProductDetailsByCategory(0)">All Products</a>
 			<%
 			for (Category category : categories) {
 			%>

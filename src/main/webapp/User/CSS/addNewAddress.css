@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+.addNewAddressClass{
+	text-transform:capitalize;
+	border-radius: 5px;
+	padding:15px;
+	box-shadow: 0 .2rem .3rem rgb(0, 0, 0, .5);
+	width: 70%;
+	margin-left: 10%;
+}
+.mandate{
+	display: inline;
+	color: red;
+	margin-left: 5px;
+	margin-top: 6px;
+}

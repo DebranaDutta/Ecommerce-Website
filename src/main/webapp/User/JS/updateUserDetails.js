@@ -19,10 +19,13 @@ $('#save').click(function() {
 			seqAns : seqAns
 		},
 		success : function(data, tetxtStatus, jqXHR){
-			if(data.trim()==='success'){
+			var response=data.split("|");
+			var status=response[0];
+			var user=JSON.parse(response[1]);
+			if(status.trim()==='success'){
 				swal("Updated successfully").then((value)=>{
 					window.location='userDetails.jsp'
-				});
+				});	
 			}
 		}
 	});

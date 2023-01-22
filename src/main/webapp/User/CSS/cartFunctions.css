@@ -1,0 +1,27 @@
+.child {
+	display: inline-block;
+}
+
+.img-fluid {
+	height: 50px;
+}
+
+.fa-plus {
+	color: #737373;
+}
+
+.fa-plus:hover {
+	color: #17A506;
+}
+
+.fa-minus {
+	color: #737373;
+}
+
+.fa-minus:hover {
+	color: #D34A38;
+}
+
+.fa-trash-can:hover {
+	color: #FF0000;
+}

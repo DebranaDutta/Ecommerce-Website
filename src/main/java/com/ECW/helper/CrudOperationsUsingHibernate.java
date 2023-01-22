@@ -15,6 +15,7 @@ public class CrudOperationsUsingHibernate {
 	public static Session session;
 	public static Transaction transaction;
 
+	/* User */
 	public static boolean addNewUser(User user) {
 		try {
 			session = FactoryProvider.getFactory().openSession();
@@ -28,6 +29,21 @@ public class CrudOperationsUsingHibernate {
 		return true;
 	}
 
+	public static User getUserDetails(Long userId) {
+		User user = new User();
+		try {
+			session = FactoryProvider.getFactory().openSession();
+			transaction = session.beginTransaction();
+			user = (User) session.get(User.class, userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	/* User */
+
+	/* Product */
 	public static boolean addNewProduct(Product product) {
 		try {
 			session = FactoryProvider.getFactory().openSession();
@@ -81,13 +97,13 @@ public class CrudOperationsUsingHibernate {
 			e.printStackTrace();
 		}
 		return product;
-	}	
-	
+	}
+
 	public static void updateProdcutDetails(int productId, String productName, int productPrice, String productCategory, String available, String productPic) {
 		try {
-			session=FactoryProvider.getFactory().openSession();
-			transaction=session.beginTransaction();
-			Product product=(Product)session.get(Product.class, productId);
+			session = FactoryProvider.getFactory().openSession();
+			transaction = session.beginTransaction();
+			Product product = (Product) session.get(Product.class, productId);
 			product.setProductName(productName);
 			product.setProductPrice(productPrice);
 			product.setProductCategory(productCategory);
@@ -101,7 +117,9 @@ public class CrudOperationsUsingHibernate {
 			e.printStackTrace();
 		}
 	}
+	/* Product */
 
+	/* Category */
 	public static boolean addNewCategory(Category category) {
 		session = FactoryProvider.getFactory().openSession();
 		transaction = session.beginTransaction();
@@ -116,4 +134,5 @@ public class CrudOperationsUsingHibernate {
 		Query<Category> query = session.createQuery("from Category");
 		return categories = query.getResultList();
 	}
+	/* Category */
 }

@@ -8,8 +8,8 @@ if (user == null) {
 	response.sendRedirect(JAVAView.loginView);
 	return;
 }
-List<Cart> carts=new ArrayList<Cart>();
-carts=new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());
+List<Cart> carts = new ArrayList<Cart>();
+carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());
 %>
 <!DOCTYPE html>
 <html>
@@ -21,11 +21,11 @@ carts=new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <!--Custom CSS only -->
-
+<link rel="stylesheet" href="CSS/cartFunctions.css">
 </head>
 <body>
 	<%@include file="Common/UserHomePageNavbar.jsp"%>
-	<%-- <%@include file="Common/CartModal.jsp"%> --%>
+	<%@include file="Common/CartModal.jsp"%>
 
 	<!-- BootStrap -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -36,6 +36,6 @@ carts=new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
+	<script type="text/javascript" src="JS/cartFunctions.js"></script>
 </body>
 </html>

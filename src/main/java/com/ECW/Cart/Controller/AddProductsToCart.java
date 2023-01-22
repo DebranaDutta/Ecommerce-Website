@@ -55,28 +55,37 @@ public class AddProductsToCart extends HttpServlet {
 				carts = cartDao.getCartDetailsByUser(userId);
 				if (stat == true) {
 					session.setAttribute("carts", carts);
-					String data=gson.toJson(carts);
-					System.out.print(data);
-					out.print("success"+"|"+data);
+					String data = gson.toJson(carts);
+					out.print("success" + "|" + data);
 				}
-			} else {
-				for (Cart c : carts) {
-					if (c.getProductId() == productId) {
-						boolean stat = cartDao.updateQuantityIfProductExists(c.getCartId(), c.getProductQuantity());
-						carts = cartDao.getCartDetailsByUser(userId);
-						if (stat == true) {
-							session.setAttribute("carts", carts);
-							String data=gson.toJson(carts);
-							out.print("success"+"|"+data);
-						}
-					} else {
-						boolean stat = cartDao.addProductToCart(cart);
-						carts = cartDao.getCartDetailsByUser(userId);
-						if (stat == true) {
-							session.setAttribute("carts", carts);
-							String data=gson.toJson(carts);
-							out.print("success"+"|"+data);
-						}
+			} else if (carts != null) {
+				ArrayList<Cart> list = (ArrayList<Cart>) carts;
+				int cartId = 0;
+				int productQuantity = 0;
+				boolean isExists = false;
+				for (Cart c : list) {
+					while (c.getProductId() == productId) {
+						isExists = true;
+						cartId = c.getCartId();
+						productQuantity = c.getProductQuantity();
+						break;
+					}
+				}
+				if (isExists == true) {
+					boolean stat = cartDao.updateQuantityIfProductExists(cartId, productQuantity);
+					carts = cartDao.getCartDetailsByUser(userId);
+					if (stat == true) {
+						session.setAttribute("carts", carts);
+						String data = gson.toJson(carts);
+						out.print("success" + "|" + data);
+					}
+				} else if (isExists == false) {
+					boolean stat = cartDao.addProductToCart(cart);
+					carts = cartDao.getCartDetailsByUser(userId);
+					if (stat == true) {
+						session.setAttribute("carts", carts);
+						String data = gson.toJson(carts);
+						out.print("success" + "|" + data);
 					}
 				}
 			}

@@ -20,11 +20,12 @@
 
 <!--Custom CSS only -->
 <link rel="stylesheet" href="CSS/productCardDesignUser.css">
+<link rel="stylesheet" href="CSS/cartFunctions.css">
 
 </head>
 <body>
 	<%@include file="Common/UserHomePageNavbar.jsp"%>
-	<%-- <%@include file="Common/CartModal.jsp"%> --%>
+	<%@include file="Common/CartModal.jsp"%>
 	<div class="mt-2">
 		<div class="row">
 			<!-- First COL -->
@@ -51,5 +52,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
 	<script type="text/javascript" src="JS/getProductsByCategory.js"></script>
+	<script type="text/javascript" src="JS/cartFunctions.js"></script>
 </body>
 </html>

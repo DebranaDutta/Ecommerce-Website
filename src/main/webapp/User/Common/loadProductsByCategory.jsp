@@ -22,7 +22,7 @@ if (catId == 0) {
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="CSS/loadProductsByCategory.css">
+<link rel="stylesheet" href="CSS/toast.css">
 </head>
 <body>
 	<div class="row">
@@ -59,5 +59,4 @@ if (catId == 0) {
 	<div id="toast">Product added to Cart</div>
 </body>
 <!-- <script type="text/javascript" src="JS/addProductsToCartLoaclStorage.js"></script> -->
-<script type="text/javascript" src="JS/addProductsToCart.js"></script>
 </html>

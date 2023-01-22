@@ -21,25 +21,14 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<%-- <li class="nav-item dropdown mr-5"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-user"></i><%=user.getFullName()%></a> <input type="hidden" id="userId" value="<%=user.getPhoneNumber()%>">
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="userDetails.jsp">View Account Details</a></li>
-							<li><a class="dropdown-item" href="#">Edit Account Details</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Add New Addess</a></li>
-							<li><a class="dropdown-item" href="#">View Addess Details</a></li>
-						</ul>	
-					</li> --%>
 					<li class="nav-item mr-5">
-						<a class="nav-link" href="userDetails.jsp"><i class="fa-regular fa-user"></i><%=user.getFullName()%></a>
+						<a class="nav-link" href="userDetails.jsp"><i class="fa-solid fa-user"></i><%=user.getFullName()%></a>
 						<input type="hidden" id="userId" value="<%=user.getPhoneNumber()%>">
 					</li>
 					<li class="nav-item mr-5"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Home</a></li>
 					<li class="nav-item mr-5"><a class="nav-link" href="allProducts.jsp"><i class="fa-solid fa-bars"></i>All Products</a></li>
-					<li class="nav-item mr-5"><a class="nav-link" id="getCartDetails" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="modal"
-						data-bs-target="#cartModal"><span class="mr-1 mb-1 cart-items">( 0 )</span><i class="fa-solid fa-cart-shopping"></i>My Cart</a></li>
-					<li class="nav-item mr-5"><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-arrow-down-a-z"></i>My
-							Orders</a></li>
+					<li class="nav-item mr-5"><a class="nav-link" id="getCartDetails" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="modal" data-bs-target="#MyCartModal"><span class="mr-1 mb-1 cart-items">( 0 )</span><i class="fa-solid fa-cart-shopping"></i>My Cart</a></li>
+					<li class="nav-item mr-5"><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-arrow-down-a-z"></i>My Orders</a></li>
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="btn my-2 my-sm-0" href="<%=JAVAView.logoutController%>"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
@@ -48,9 +37,6 @@
 		</div>
 	</nav>
 	<style>
-.dropdown:hover>.dropdown-menu {
-	display: block;
-}
 
 i {
 	margin-right: 5px;
@@ -77,7 +63,7 @@ i {
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<%-- <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -113,10 +99,9 @@ i {
 								</td>
 								<td><%=cart.getProductPrice()%></td>
 								<td><%=cart.getDate()%></td>
-								<td><a href="#" class="mr-1"><i class="fa-solid fa-plus"></i></a><%=cart.getProductQuantity()%><a href="#" class="ml-2"><i
-										class="fa-solid fa-minus"></i></a></td>
+								<td><a href="#" class="mr-1"><i class="fa-solid fa-plus"></i></a><%=cart.getProductQuantity()%><a href="#" class="ml-2"><i class="fa-solid fa-minus"></i></a></td>
 								<td><%=cart.getProductQuantity()*cart.getProductPrice()%></td>
-								<td><a href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+								<td><a href="#" onclick="deleteFromCart(<%=cart.getCartId()%>)"><i class="fa-solid fa-trash-can"></i></a></td>
 							</tr>
 							<%}%>
 						</tbody>
@@ -130,7 +115,7 @@ i {
 			</div>
 		</div>
 	</div>
-	<style>
+<style>
 .child {
 	display: inline-block;
 }
@@ -159,8 +144,9 @@ i {
 	color: #FF0000;
 }
 </style>
+
 	<!-- JQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- CustomScript -->
 	<script type="text/javascript" src="JS/getCartDetails.js"></script>
-</div>
+</div> --%>
