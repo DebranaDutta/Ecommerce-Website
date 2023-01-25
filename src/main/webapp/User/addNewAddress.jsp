@@ -59,6 +59,10 @@ if (user == null) {
 								<input type="number" class="form-control" id="zip" placeholder="Zip / Postal Code" />
 								<label class="mandate">*</label>
 							</div>
+							<div style="display: flex;" class="mb-3">
+								<input type="number" class="form-control" id="contactNo" placeholder="Conatct No" style="width: 98.5%;" />
+								<label class="mandate"> </label>
+							</div>
 							<label class="form-control" id="" style="width: 98.5%;">India</label>
 							<input type="hidden" id="userId" value="<%=user.getPhoneNumber()%>" />
 							<div class="text-center">

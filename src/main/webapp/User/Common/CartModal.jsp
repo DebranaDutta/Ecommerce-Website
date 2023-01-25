@@ -23,8 +23,8 @@
 					<div class="cart-body"></div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary checkout-btn">Checkout</button>
+					<a class="btn btn-secondary" data-bs-dismiss="modal" style="color: white;">Close</a>
+					<a class="btn btn-primary checkout-btn" style="color: white;" href="CheckoutPage.jsp">Checkout</a>
 				</div>
 			</div>
 		</div>

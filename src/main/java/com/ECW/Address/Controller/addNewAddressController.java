@@ -39,7 +39,9 @@ public class addNewAddressController extends HttpServlet {
 		String state = request.getParameter("state");
 		int zip = Integer.parseInt(request.getParameter("zip"));
 		long userId = Long.parseLong(request.getParameter("userId"));
-		Address address = new Address(new Random().nextInt(10000), addreassDetails, city, state, zip, userId);
+		String contactNo = request.getParameter("contactNo");
+		Address address = new Address();
+		address = new Address(new Random().nextInt(10000), addreassDetails, city, state, zip, userId, contactNo);
 		boolean stat = new AddressDao(ConnectionProvider.getConnection()).addNewAddress(address);
 		if (stat == true) {
 			List<Address> addresses = new AddressDao(ConnectionProvider.getConnection()).getAllAddressDetails(userId);

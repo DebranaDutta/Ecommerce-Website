@@ -22,7 +22,7 @@ public class AddressDao {
 	public boolean addNewAddress(Address address) {
 		boolean stat = false;
 		try {
-			String query = "INSERT INTO ecommerce.address (addressid, addressdetails, city, state, zip, userid) VALUES (?,?,?,?,?,?)";
+			String query = "INSERT INTO ecommerce.address (addressid, addressdetails, city, state, zip, userid, contactNo) VALUES (?,?,?,?,?,?,?)";
 			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setInt(1, address.getAddressId());
 			preparedStatement.setString(2, address.getAddressDetails());
@@ -30,6 +30,7 @@ public class AddressDao {
 			preparedStatement.setString(4, address.getState());
 			preparedStatement.setInt(5, address.getZip());
 			preparedStatement.setLong(6, address.getUserId());
+			preparedStatement.setString(7, address.getContactNo());
 			int i = preparedStatement.executeUpdate();
 			if (i > 0) {
 				stat = true;
@@ -54,8 +55,9 @@ public class AddressDao {
 				String city = resultSet.getString("city");
 				String state = resultSet.getString("state");
 				int zip = resultSet.getInt("zip");
+				String contactNo = resultSet.getString("contactNo");
 
-				Address address = new Address(addressid, addressdetails, city, state, zip, userId);
+				Address address = new Address(addressid, addressdetails, city, state, zip, userId, contactNo);
 				addresses.add(address);
 			}
 		} catch (Exception e) {

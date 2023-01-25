@@ -1,0 +1,44 @@
+$(document).ready(function(){
+	$('#paymentMethod').hide();
+	$('input[name="addressDetails"]').change(function(){
+		$('#paymentMethod').show("slow");
+		
+		$('#cardIcons').hide();
+		$('#netBankinglist').hide();
+		$('#upiIdDetails').hide();
+		$('#codLabel').hide();
+		
+		$('#payWithCard').change(function(){
+			if($(this).is(":checked")){
+				$('#cardIcons').show("slow");
+				$('#netBankinglist').hide("slow");
+				$('#upiIdDetails').hide("slow");
+				$('#codLabel').hide("slow");
+			}
+		});
+		$('#netBanking').change(function(){
+			if($(this).is(":checked")){
+				$('#cardIcons').hide("slow");
+				$('#netBankinglist').show("slow");
+				$('#upiIdDetails').hide("slow");
+				$('#codLabel').hide("slow");
+			}
+		});
+		$('#upi').change(function(){
+			if($(this).is(":checked")){
+				$('#cardIcons').hide("slow");
+				$('#netBankinglist').hide("slow");
+				$('#upiIdDetails').show("slow");
+				$('#codLabel').hide("slow");
+			}
+		});
+		$('#cod').change(function(){
+			if($(this).is(":checked")){
+				$('#cardIcons').hide("slow");
+				$('#netBankinglist').hide("slow");
+				$('#upiIdDetails').hide("slow");
+				$('#codLabel').show("slow");
+			}
+		});
+	});	
+});

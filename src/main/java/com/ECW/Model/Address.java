@@ -6,7 +6,23 @@ public class Address {
 	private String city;
 	private String state;
 	private int zip;
-	private Long userId;
+	private long userId;
+	private String contactNo;
+
+	public Address() {
+		super();
+	}
+
+	public Address(int addressId, String addressDetails, String city, String state, int zip, long userId, String contactNo) {
+		super();
+		this.addressId = addressId;
+		this.addressDetails = addressDetails;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.userId = userId;
+		this.contactNo = contactNo;
+	}
 
 	public Address(int addressId, String addressDetails, String city, String state, int zip, Long userId) {
 		super();
@@ -66,9 +82,22 @@ public class Address {
 		this.userId = userId;
 	}
 
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
+
+	public String getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
+
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", addressDetails=" + addressDetails + ", city=" + city + ", state=" + state + ", zip=" + zip + ", userId=" + userId + "]";
+		return "Address [addressId=" + addressId + ", addressDetails=" + addressDetails + ", city=" + city + ", state=" + state + ", zip=" + zip + ", userId=" + userId
+				+ ", contactNo=" + contactNo + "]";
 	}
 
 }

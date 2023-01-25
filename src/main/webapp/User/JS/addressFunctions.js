@@ -45,6 +45,7 @@ $('#saveId').click(function(){
 	var state= $('#state').val();
 	var zip= $('#zip').val();
 	var userId=$('#userId').val();
+	var contactNo=$('#contactNo').val();
 	var url = "http://localhost:8080/E-commerceWebsite/addNewAddressController";
 	if( addressLine1=='' || city=='' || state=='' || zip=='' ){
 		swal({
@@ -63,7 +64,8 @@ $('#saveId').click(function(){
 				city:city,
 				state:state,
 				zip:zip,
-				userId:userId
+				userId:userId,
+				contactNo:contactNo
 			},
 			success : function(data, tetxtStatus, jqXHR){
 				console.log(data);

@@ -52,6 +52,6 @@ i {
 	text-decoration: none;
 	color: rgba(45 150 25/ 50%);
 }
-}
+
 </style>
 </div>

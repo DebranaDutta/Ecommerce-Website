@@ -46,6 +46,15 @@ List<Address> addresses = (ArrayList<Address>) session.getAttribute("addresses")
 						<div class="divh5" style="display: flex;">
 							<h5><%=address.getAddressDetails() + " " + address.getCity() + " " + address.getState() + " " + address.getZip()%></h5>
 						</div>
+						<%if(address.getContactNo() == null){%>
+							<div>
+								<h6><span>Contact no: </span><%=user.getPhoneNumber()%></h6>
+							</div>
+						<%}else{%>
+							<div>
+								<h6><span>Contact no: </span><%=address.getContactNo()%></h6>
+							</div>
+						<%}%>	
 						<div style="display: flex;">
 							<input type="hidden" value="<%=address.getAddressId()%>" class="addressId" />
 							<a class="btn btn-primary" style="color: white;">Edit</a> <a class="btn btn-danger" style="color: white;" onclick="deleteData(<%=address.getAddressId()%>)">Delete</a>

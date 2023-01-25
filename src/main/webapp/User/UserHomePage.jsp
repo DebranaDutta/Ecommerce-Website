@@ -36,6 +36,7 @@ carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(use
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<!-- Custom Script -->
 	<script type="text/javascript" src="JS/cartFunctions.js"></script>
 </body>
 </html>
