@@ -12,7 +12,8 @@ function getCartDetails(userId) {
 				$(".cart-body").html("<h3>Cart is empty</h3>");
 				$(".cart-items").html(`( ${carts.length } )`);
 				$(".checkout-btn").addClass('disabled');
-			}else{
+			}else if(carts.length>0){
+				$(".checkout-btn").removeClass('disabled');
 				let totalPrice = 0;
 				$(".cart-items").html(`( ${carts.length } )`);
 				let table=`

@@ -66,6 +66,28 @@ public class AddressDao {
 		return addresses;
 	}
 
+	public Address getAddressDetilsByAddressId(int addressid) {
+		Address address = new Address();
+		try {
+			String query = "select * from ecommerce.address where addressid= ?;";
+			PreparedStatement preparedStatement=this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, addressid);
+			ResultSet resultSet=preparedStatement.executeQuery();
+			while(resultSet.next()) {
+				String addressdetails = resultSet.getString("addressdetails");
+				String city = resultSet.getString("city");
+				String state = resultSet.getString("state");
+				int zip = resultSet.getInt("zip");
+				String contactNo = resultSet.getString("contactNo"); 
+				
+				address =new Address(addressid, addressdetails, city, state, zip, contactNo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return address;
+	}
+
 	// DELETE FROM `ecommerce`.`address` WHERE (`addressid` = '9262');
 	public boolean removeAddress(int addressId) {
 		boolean stat = false;

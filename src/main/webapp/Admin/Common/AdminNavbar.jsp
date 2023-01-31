@@ -11,7 +11,7 @@
 				<li class="nav-item"><a class="nav-link" href="CategoryDetails.jsp"><i class="fa-solid fa-bars"></i>Category & Products</a></li>
 				<li class="nav-item"><a class="nav-link" href="AllUserDetails.jsp"><i class="fa-solid fa-user"></i>Users</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-envelope"></i>Message Reviewed</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-list"></i>Orders Received</a></li>
+				<li class="nav-item"><a class="nav-link" href="userOrders.jsp"><i class="fa-solid fa-list"></i>Orders Received</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-xmark"></i>Cancel Orders</a></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-truck"></i>Delivered Orders</a></li>
 			</ul>

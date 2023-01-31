@@ -13,6 +13,9 @@ public class Cart {
 	private int productId;
 	private String status;
 
+	public Cart() {
+		super();
+	}
 	public Cart(int cartId, String productPic, String productName, int productPrice, int productQuantity, Date date, long userId, int productId, String status) {
 		super();
 		this.cartId = cartId;

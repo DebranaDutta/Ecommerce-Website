@@ -13,6 +13,16 @@ public class Address {
 		super();
 	}
 
+	public Address(int addressId, String addressDetails, String city, String state, int zip, String contactNo) {
+		super();
+		this.addressId = addressId;
+		this.addressDetails = addressDetails;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.contactNo = contactNo;
+	}
+
 	public Address(int addressId, String addressDetails, String city, String state, int zip, long userId, String contactNo) {
 		super();
 		this.addressId = addressId;

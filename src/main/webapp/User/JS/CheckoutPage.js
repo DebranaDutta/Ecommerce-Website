@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$('#paymentMethod').hide();
+	$('#checkoutBtn').hide();
 	$('input[name="addressDetails"]').change(function(){
 		$('#paymentMethod').show("slow");
 		
@@ -7,6 +8,7 @@ $(document).ready(function(){
 		$('#netBankinglist').hide();
 		$('#upiIdDetails').hide();
 		$('#codLabel').hide();
+		$('#checkoutBtn').show("slow");
 		
 		$('#payWithCard').change(function(){
 			if($(this).is(":checked")){
@@ -40,5 +42,36 @@ $(document).ready(function(){
 				$('#codLabel').show("slow");
 			}
 		});
-	});	
+		
+	});
+	
+	$('#checkoutBtn').click(function(){
+		var addressId = $('input[name="addressDetails"]:checked').val(); 
+		var mop=$('input[name="payment"]:checked').val();
+		var cartIds=$('#cartIds').val();
+		var productIds=$('#productIds').val();
+		var userId=$('#userId').val();
+		var totalPrice=$('#totalPrice').val();
+		var url = "http://localhost:8080/E-commerceWebsite/CheckoutController";
+		$.ajax({
+			type:'POST',
+			url: url,
+			data: {
+				addressId:addressId,
+				mop:mop,
+				cartIds:cartIds,
+				productIds:productIds,
+				userId:userId,
+				totalPrice:totalPrice
+			},
+			success : function(data, tetxtStatus, jqXHR){
+				if(data.trim()==='success'){
+					swal("Order placed successfully").then((value)=>{
+						window.location='UserOrderDetails.jsp';
+						
+					});
+				}
+			}
+		});
+	});
 });

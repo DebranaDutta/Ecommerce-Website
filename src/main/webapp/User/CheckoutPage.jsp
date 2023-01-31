@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Dao.CartDao"%>
 <%@page import="com.ECW.Model.Cart"%>
 <%@page import="com.ECW.helper.ConnectionProvider"%>
@@ -23,6 +24,8 @@ for (Cart cart : carts) {
 }
 
 int deliveryCharge = (totalPrice * 15) / 100;
+
+int subTotal=totalPrice+deliveryCharge;
 %>
 <!DOCTYPE html>
 <html>
@@ -48,7 +51,7 @@ int deliveryCharge = (totalPrice * 15) / 100;
 		<div class="row">
 			<div class="col-7">
 				<div class="ml-3">
-					<h4 style="font-weight: 600; color: #A51E01;">1. Select a delivery address</h4>
+					<h4 style="font-weight: 600; color: #A51E01;" id="address">1. Select a delivery address</h4>
 					<div class="card mr-4" style="border-radius: 7px;">
 						<%
 						for (Address a : addresses) {
@@ -56,6 +59,7 @@ int deliveryCharge = (totalPrice * 15) / 100;
 						<div class="card-body">
 							<input type="radio" value="<%=a.getAddressId()%>" name="addressDetails">
 							<label><%=a.getAddressDetails() + " " + a.getCity() + " " + a.getZip() + " " + a.getState()%></label> <br>
+							
 							<%
 							if (a.getContactNo() == null) {
 							%>
@@ -75,15 +79,17 @@ int deliveryCharge = (totalPrice * 15) / 100;
 						<%
 						}
 						%>
-						<a href="#" id="addNewadd">+ add new address</a>
+						<div style="display: flex;">
+							<a href="#" class="btn" id="addNewadd">+ add new address</a> 
+						</div>
 					</div>
 					<hr class="ml-3 mr-5">
-					<div class="container-fluid">
+					<div class="container-fluid" id="paymentMethod">
 						<h4 style="font-weight: 600; color: #A51E01;">2. Payment method</h4>
-						<div class="card mr-4" style="border-radius: 7px;" id="paymentMethod">
+						<div class="card mr-4" style="border-radius: 7px;">
 							<div class="card-body">
 								<div id="div1">
-									<input type="radio" name="payment" id="payWithCard">
+									<input type="radio" name="payment" id="payWithCard" value="payWithCard">
 									<label for="payWithCard">Pay with Debit/Credit/ATM Cards</label>
 									<div id="cardIcons">
 										<div style="display: flex;">
@@ -98,7 +104,7 @@ int deliveryCharge = (totalPrice * 15) / 100;
 									</div>
 								</div>
 								<div>
-									<input type="radio" name="payment" id="netBanking">
+									<input type="radio" name="payment" id="netBanking" value="netBanking">
 									<label for="netBanking">Net Banking</label>
 									<div>
 										<select id="netBankinglist" class="ml-3" style="border-radius: 10px;">
@@ -112,7 +118,7 @@ int deliveryCharge = (totalPrice * 15) / 100;
 
 								</div>
 								<div>
-									<input type="radio" name="payment" id="upi">
+									<input type="radio" name="payment" id="upi" value="upi">
 									<label for="upi">UPI</label>
 									<div id="upiIdDetails" class="ml-3">
 										<label>Please enter your UPI ID</label>
@@ -123,7 +129,7 @@ int deliveryCharge = (totalPrice * 15) / 100;
 									</div>
 								</div>
 								<div>
-									<input type="radio" name="payment" id="cod">
+									<input type="radio" name="payment" id="cod" value="cod">
 									<label for="cod">Cash On Delivery</label>
 									<div id="codLabel">
 										<label class="ml-3" style="font-size: 13px; color: #B7D2D5">You can pay using UPI or Cash at your door step</label>
@@ -149,7 +155,11 @@ int deliveryCharge = (totalPrice * 15) / 100;
 								</thead>
 								<tbody class="text-left">
 									<%
+									List<Integer> cartIds=new ArrayList<Integer>();
+									List<Integer> prodIds=new ArrayList<Integer>();
 									for (Cart c : carts) {
+										cartIds.add(c.getCartId());
+										prodIds.add(c.getProductId());
 									%>
 									<tr>
 										<td>
@@ -182,7 +192,15 @@ int deliveryCharge = (totalPrice * 15) / 100;
 				</div>
 			</div>
 		</div>
+		<div class="text-center mt-3 mb-1">
+			<input type="hidden" value="<%=cartIds%>" id="cartIds">
+			<input type="hidden" value="<%=prodIds%>" id="productIds">
+			<input type="hidden" value="<%=user.getPhoneNumber()%>" id="userId">
+			<input type="hidden" value="<%=subTotal%>" id="totalPrice">
+			<a class="btn" id="checkoutBtn" href="#">Checkout</a>
+		</div>
 	</div>
+
 
 	<!-- BootStrap -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

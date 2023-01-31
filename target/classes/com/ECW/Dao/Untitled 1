@@ -1,0 +1,2 @@
+UPDATE `ecommerce`.`checkout` SET `status` = 'Delivered' WHERE (`transactionId` = 'a31d903d-22d9-4815-a4be-425375a6d050');
+UPDATE `ecommerce`.`cart` SET `status` = 'inactive' WHERE (`cartId` = '641');

@@ -1,6 +1,7 @@
-body{
+body {
 	text-transform: capitalize;
 }
+
 .child {
 	display: inline-block;
 }
@@ -8,20 +9,43 @@ body{
 .img-fluid {
 	height: 35px;
 }
-tbody tr td{
-	font-size: 15px;	
+
+tbody tr td {
+	font-size: 15px;
 }
-#cardIcons img{
+
+#cardIcons img {
 	height: 40px;
 	width: 45px;
 	margin-left: 10px;
 	margin-right: 10px;
 }
-#upiIdDetails a{
+
+#upiIdDetails a {
 	background: #FFC300;
 	font-size: 13px;
 	color: black;
 	border-radius: 5px solid;
 	margin-bottom: 4.5px;
 	margin-left: 2px;
+}
+
+#checkoutBtn {
+	background: #FFC300;
+	font-size: 15px;
+	color: black;
+	border-radius: 5px solid;
+	margin-bottom: 4.5px;
+	margin-left: 2px;
+	font-weight: 600;
+}
+
+#addressBtn {
+	background: #FFC300;
+	font-size: 15px;
+	color: black;
+	border-radius: 10px solid;
+	margin-bottom: 10px;
+	margin-left: 50%;
+	font-weight: 600;	
 }

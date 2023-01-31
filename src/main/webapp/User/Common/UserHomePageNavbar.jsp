@@ -1,4 +1,3 @@
-
 <%@page import="com.ECW.helper.ConnectionProvider"%>
 <%@page import="com.ECW.Dao.CartDao"%>
 <%@page import="java.util.ArrayList"%>
@@ -22,7 +21,7 @@
 					<li class="nav-item mr-5"><a class="nav-link" href="#"><i class="fa-solid fa-house"></i>Home</a></li>
 					<li class="nav-item mr-5"><a class="nav-link" href="allProducts.jsp"><i class="fa-solid fa-bars"></i>All Products</a></li>
 					<li class="nav-item mr-5"><a class="nav-link" id="getCartDetails" href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="modal" data-bs-target="#MyCartModal"><span class="mr-1 mb-1 cart-items">( 0 )</span><i class="fa-solid fa-cart-shopping"></i>My Cart</a></li>
-					<li class="nav-item mr-5"><a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-arrow-down-a-z"></i>My Orders</a></li>
+					<li class="nav-item mr-5"><a class="nav-link" href="UserOrderDetails.jsp" tabindex="-1" aria-disabled="true"><i class="fa-solid fa-arrow-down-a-z"></i>My Orders</a></li>
 				</ul>
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="btn my-2 my-sm-0" href="<%=JAVAView.logoutController%>"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>

@@ -49,9 +49,10 @@ public class CartDao {
 	public List<Cart> getCartDetailsByUser(long userId) {
 		List<Cart> carts = new ArrayList<Cart>();
 		try {
-			String query = "select * from ecommerce.cart where UserId=?;";
+			String query = "select * from ecommerce.cart where UserId=? and status=?;";
 			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
 			preparedStatement.setLong(1, userId);
+			preparedStatement.setString(2, "active");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				int cartId = resultSet.getInt("cartId");
@@ -124,4 +125,73 @@ public class CartDao {
 		}
 		return status;
 	}
+
+	public Cart getCartDetailsByCartId(int cartId) {
+		Cart cart = new Cart();
+		try {
+			String query = "select * from ecommerce.cart where cartId=? and status=?;";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, cartId);
+			preparedStatement.setString(2, "active");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				String productPic = resultSet.getString("productPic");
+				String productName = resultSet.getString("productName");
+				int productPrice = resultSet.getInt("productPrice");
+				int productQuantity = resultSet.getInt("productQuantity");
+				Date date = resultSet.getDate("Date");
+				Long userId = resultSet.getLong("UserId");
+				int productId = resultSet.getInt("ProductId");
+				String status = resultSet.getString("status");
+
+				cart = new Cart(cartId, productPic, productName, productPrice, productQuantity, date, userId, productId, status);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cart;
+	}
+
+	public Cart getCartDetailsByCartIdAsIncative(int cartId) {
+		Cart cart = new Cart();
+		try {
+			String query = "select * from ecommerce.cart where cartId=? and status=?;";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, cartId);
+			preparedStatement.setString(2, "inactive");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				String productPic = resultSet.getString("productPic");
+				String productName = resultSet.getString("productName");
+				int productPrice = resultSet.getInt("productPrice");
+				int productQuantity = resultSet.getInt("productQuantity");
+				Date date = resultSet.getDate("Date");
+				Long userId = resultSet.getLong("UserId");
+				int productId = resultSet.getInt("ProductId");
+				String status = resultSet.getString("status");
+
+				cart = new Cart(cartId, productPic, productName, productPrice, productQuantity, date, userId, productId, status);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cart;
+	}
+
+	public boolean changeCartStatus(int cartId) {
+		boolean status = false;
+		try {
+			String query = "UPDATE ecommerce.cart SET status = 'inactive' WHERE (cartId = ?);";
+			PreparedStatement preparedStatement = this.connection.prepareStatement(query);
+			preparedStatement.setInt(1, cartId);
+			int i = preparedStatement.executeUpdate();
+			if (i > 0) {
+				status = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
+	}
+
 }
