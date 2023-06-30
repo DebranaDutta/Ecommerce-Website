@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ECW.Dao.ProductDao;
 import com.ECW.Model.Product;
+import com.ECW.helper.ConnectionProvider;
 import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.google.gson.Gson;
 
@@ -27,10 +29,13 @@ public class getIndividualProductDetailsController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String productId = request.getParameter("productId");
-		Product product = CrudOperationsUsingHibernate.getIndividualProductDetails(productId);
+		int productIdInt = Integer.parseInt(productId);
+		ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+		Product product = productDao.getIndividualProductDetails(productIdInt);
+		// Product product =
+		// CrudOperationsUsingHibernate.getIndividualProductDetails(productId);
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
-		//System.out.print(gson.toJson(product));
 		out.print(gson.toJson(product));
 	}
 }

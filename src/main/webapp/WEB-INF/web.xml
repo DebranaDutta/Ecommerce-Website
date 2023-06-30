@@ -72,13 +72,13 @@
 		<servlet-name>AddNewCategoryController</servlet-name>
 		<display-name>AddNewCategoryController</display-name>
 		<description></description>
-		<servlet-class>com.ECW.Product.Controller.AddNewCategoryController</servlet-class>
+		<servlet-class>com.ECW.Category.Controller.AddNewCategoryController</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>getAllCategoryDetails</servlet-name>
 		<display-name>getAllCategoryDetails</display-name>
 		<description></description>
-		<servlet-class>com.ECW.Product.Controller.getAllCategoryDetails</servlet-class>
+		<servlet-class>com.ECW.Category.Controller.getAllCategoryDetails</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>removeProductController</servlet-name>

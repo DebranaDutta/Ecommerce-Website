@@ -1,4 +1,4 @@
-package com.ECW.Product.Controller;
+package com.ECW.Category.Controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ECW.Dao.CategoryDao;
 import com.ECW.Model.Category;
+import com.ECW.helper.ConnectionProvider;
 import com.ECW.helper.CrudOperationsUsingHibernate;
 @WebServlet(name = "getAllCategoryDetails", urlPatterns = {"/getAllCategoryDetails"})
 public class getAllCategoryDetails extends HttpServlet {
@@ -19,7 +21,8 @@ public class getAllCategoryDetails extends HttpServlet {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
+		//List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
+		List<Category> categories=new CategoryDao(ConnectionProvider.getConnection()).getAllCategories();
 		HttpSession session=request.getSession();
 		session.setAttribute("categories", categories);
 		response.sendRedirect("Admin/AddNewProduct.jsp");

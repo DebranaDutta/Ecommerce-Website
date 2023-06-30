@@ -6,9 +6,9 @@
 <%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-List<Category> categories = (ArrayList<Category>) CrudOperationsUsingHibernate.getAllCategoryDetails();
-/* CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
-List<Category> categories = categoryDao.getAllCategories(); */
+//List<Category> categories = (ArrayList<Category>) CrudOperationsUsingHibernate.getAllCategoryDetails();
+CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
+List<Category> categories = categoryDao.getAllCategories();
 %>
 <!DOCTYPE html>
 <html>

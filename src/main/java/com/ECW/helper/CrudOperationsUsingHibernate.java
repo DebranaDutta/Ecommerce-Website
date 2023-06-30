@@ -130,9 +130,14 @@ public class CrudOperationsUsingHibernate {
 
 	public static List<Category> getAllCategoryDetails() {
 		List<Category> categories = null;
-		session = FactoryProvider.getFactory().openSession();
-		Query<Category> query = session.createQuery("from Category");
-		return categories = query.getResultList();
+		try {
+			session = FactoryProvider.getFactory().openSession();
+			Query<Category> query = session.createQuery("from Category");
+			categories= query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return categories;
 	}
 	/* Category */
 }

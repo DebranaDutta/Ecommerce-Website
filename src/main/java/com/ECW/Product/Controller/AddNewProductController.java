@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.ECW.Dao.ProductDao;
 import com.ECW.Model.Product;
+import com.ECW.helper.ConnectionProvider;
 import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.ECW.helper.RandomIdGenerator;
 import com.ECW.helper.fileInputOutput;
@@ -42,27 +44,26 @@ public class AddNewProductController extends HttpServlet {
 		String productPic = part.getSubmittedFileName();
 		if (productPic != "") {
 			InputStream inputStream = part.getInputStream();
-			
+
 			String AdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
 			fileInputOutput.saveFile(inputStream, AdminPath);
-			
+
 			String UserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + productPic;
 			fileInputOutput.fileCopy(AdminPath, UserPath);
 		} else {
 			productPic = "default.png";
 			InputStream inputStream = part.getInputStream();
-			
-			
+
 			String AdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + productPic;
 			fileInputOutput.saveFile(inputStream, AdminPath);
-			
+
 			String UserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + productPic;
 			fileInputOutput.fileCopy(AdminPath, UserPath);
 		}
 		Product product = new Product(RandomIdGenerator.newIdGenrator(), productName, productPrice, productCategory, available, new Date(), productPic);
+		ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
 		PrintWriter out = response.getWriter();
-
-		boolean status = CrudOperationsUsingHibernate.addNewProduct(product);
+		boolean status = productDao.addNewProduct(product);
 		if (status == true) {
 			out.print("success");
 		} else {

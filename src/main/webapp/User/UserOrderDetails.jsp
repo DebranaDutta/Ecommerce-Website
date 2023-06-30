@@ -44,7 +44,7 @@ List<Checkout> checkouts = checkoutDao.getOrderDetails(user.getPhoneNumber());
 		<%
 		} else {
 		%>
-		<div class="card" style="border-radius: 7px;">
+		<div class="card mb-2" style="border-radius: 7px;">
 			<%
 			for (Checkout checkout : checkouts) {
 				Address address = addressDao.getAddressDetilsByAddressId(checkout.getAddressId());

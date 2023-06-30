@@ -9,12 +9,14 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails();
+//List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails();
+List<Category> categories = new CategoryDao(ConnectionProvider.getConnection()).getAllCategories();
 List<Product> products = new ArrayList<Product>();
-int catId=Integer.parseInt(request.getParameter("catId"));
-if(catId==0){
-	products = CrudOperationsUsingHibernate.getAllProductDetails();
-}else{
+int catId = Integer.parseInt(request.getParameter("catId"));
+if (catId == 0) {
+	//products = CrudOperationsUsingHibernate.getAllProductDetails();
+	products = new ProductDao(ConnectionProvider.getConnection()).getAllProductsIrrecpectiveOfproductAvailability();
+} else {
 	CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
 	String categoryName = categoryDao.getCategoryNameByCategoryID(catId);
 	ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
@@ -51,16 +53,21 @@ if(catId==0){
 					<div class="price">
 						INR :
 						<%=product.getProductPrice()%></div>
-					<%if(product.getProductAvailability().equals("no")){%>
+					<%
+					if (product.getProductAvailability().equals("no")) {
+					%>
 					<a class="add-to-cart" style="color: red;">Product Id: <%=product.getProductId()%></a><br>
-					<%}else{%>
+					<%
+					} else {
+					%>
 					<a class="add-to-cart" style="color: green;">Product Id: <%=product.getProductId()%></a><br>
-					<%}%>
-					
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
-		<% 
+		<%
 		}
 		%>
 	</div>

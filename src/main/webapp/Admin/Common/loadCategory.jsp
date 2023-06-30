@@ -1,10 +1,13 @@
+<%@page import="com.ECW.helper.ConnectionProvider"%>
+<%@page import="com.ECW.Dao.CategoryDao"%>
+<%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
 <%@page import="java.util.List"%>
 <%
-/* List<Category> categories = (ArrayList<Category>) session.getAttribute("categories"); */
-List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
+List<Category> categories = new CategoryDao(ConnectionProvider.getConnection()).getAllCategories();
+//List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
 %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>

@@ -3,6 +3,7 @@ package com.ECW.Model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 public class Category {
@@ -11,9 +12,8 @@ public class Category {
 	@Column(nullable = false)
 	private String categoryName;
 	private String categoryDetails;
-	
+
 	public Category() {
-		super();
 	}
 
 	public Category(int categoryId, String categoryName) {
