@@ -3,7 +3,7 @@
 <%@page import="com.ECW.Model.Address"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="com.ECW.Model.Checkout"%>
-<%@page import="com.ECW.Dao.CheckoutDao"%>
+<%@page import="com.ECW.Checkout.Dao.CheckoutDao"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>

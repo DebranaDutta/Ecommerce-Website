@@ -18,7 +18,7 @@ public class ProductDaoHibernate {
 		try {
 			session = FactoryProvider.getFactory().openSession();
 			transaction = session.beginTransaction();
-			session.save(product);
+			session.persist(product);
 			transaction.commit();
 			session.close();
 		} catch (Exception e) {

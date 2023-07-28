@@ -6,7 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.ECW.Cart.Dao.CartDaoJDBC"%>
 <%@page import="com.ECW.Address.Dao.AddressDaoJDBC"%>
-<%@page import="com.ECW.Dao.CheckoutDao"%>
+<%@page import="com.ECW.Checkout.Dao.CheckoutDao"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>

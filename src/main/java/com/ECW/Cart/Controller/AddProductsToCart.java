@@ -15,9 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import org.hibernate.internal.build.AllowSysOut;
 
+import com.ECW.Cart.Dao.CartDaoHibernate;
 import com.ECW.Cart.Dao.CartDaoJDBC;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Product;
+import com.ECW.Product.Dao.ProductDaoHibernate;
 import com.ECW.Product.Dao.ProductDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
 import com.ECW.helper.RandomIdGenerator;
@@ -36,23 +38,27 @@ public class AddProductsToCart extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int productId = Integer.parseInt(request.getParameter("productId"));
+
+		String produtIdStr = request.getParameter("productId");
+		int productId = Integer.parseInt(produtIdStr);
 		Long userId = Long.parseLong(request.getParameter("userId"));
 
 		PrintWriter out = response.getWriter();
-		CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 		Gson gson = new Gson();
 
-		//Product product = CrudOperationsUsingHibernate.getIndividualProductDetails(produtIdStr);
-		Product product=new ProductDaoJDBC(ConnectionProvider.getConnection()).getIndividualProductDetails(productId);
-		Cart cart = new Cart(RandomIdGenerator.newIdGenrator(), product.getProductImage(), product.getProductName(), product.getProductPrice(), 1, new Date(), userId, productId, "active");
-		List<Cart> carts = cartDao.getCartDetailsByUser(userId);
+		Product product = ProductDaoHibernate.getIndividualProductDetails(produtIdStr);
+		Cart cart = new Cart(RandomIdGenerator.newIdGenrator(), product.getProductImage(), product.getProductName(), product.getProductPrice(), 1, new Date(), userId, productId,
+				"active");
+		List<Cart> carts = CartDaoHibernate.getCartDetailsByUser(userId);
+
+		// Product product=new
+		// ProductDaoJDBC(ConnectionProvider.getConnection()).getIndividualProductDetails(productId);
+		// CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 
 		try {
 			if (carts.isEmpty()) {
-				boolean stat = cartDao.addProductToCart(cart);
-				carts = cartDao.getCartDetailsByUser(userId);
+				boolean stat = CartDaoHibernate.addProductToCart(cart);
+				carts = CartDaoHibernate.getCartDetailsByUser(userId);
 				if (stat == true) {
 					String data = gson.toJson(carts);
 					out.print("success" + "|" + data);
@@ -71,15 +77,15 @@ public class AddProductsToCart extends HttpServlet {
 					}
 				}
 				if (isExists == true) {
-					boolean stat = cartDao.updateQuantityIfProductExists(cartId, productQuantity);
-					carts = cartDao.getCartDetailsByUser(userId);
+					boolean stat = CartDaoHibernate.updateQuantityIfProductExists(cartId, productQuantity);
+					carts = CartDaoHibernate.getCartDetailsByUser(userId);
 					if (stat == true) {
 						String data = gson.toJson(carts);
 						out.print("success" + "|" + data);
 					}
 				} else if (isExists == false) {
-					boolean stat = cartDao.addProductToCart(cart);
-					carts = cartDao.getCartDetailsByUser(userId);
+					boolean stat = CartDaoHibernate.addProductToCart(cart);
+					carts = CartDaoHibernate.getCartDetailsByUser(userId);
 					if (stat == true) {
 						String data = gson.toJson(carts);
 						out.print("success" + "|" + data);

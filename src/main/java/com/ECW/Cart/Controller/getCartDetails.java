@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ECW.Cart.Dao.CartDaoHibernate;
 import com.ECW.Cart.Dao.CartDaoJDBC;
+import com.ECW.Category.Dao.CategoryDaoHibernate;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Product;
 import com.ECW.helper.ConnectionProvider;
@@ -31,8 +33,12 @@ public class getCartDetails extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Long userId = Long.parseLong(request.getParameter("userId"));
-		CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
-		List<Cart> carts = cartDao.getCartDetailsByUser(userId);
+		
+		/*CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
+		List<Cart> carts = cartDao.getCartDetailsByUser(userId);*/
+		
+		List<Cart> carts=CartDaoHibernate.getCartDetailsByUser(userId);
+		
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
 		out.print(gson.toJson(carts));

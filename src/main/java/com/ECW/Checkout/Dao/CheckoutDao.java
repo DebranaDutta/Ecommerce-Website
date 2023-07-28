@@ -1,4 +1,4 @@
-package com.ECW.Dao;
+package com.ECW.Checkout.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -17,5 +17,6 @@
 		<mapping class="com.ECW.Model.Product"/>	
 		<mapping class="com.ECW.Model.Category"/>	
 		<mapping class="com.ECW.Model.Address"/>
+		<mapping class="com.ECW.Model.Cart"/>
 	</session-factory>
 </hibernate-configuration>

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ECW.Cart.Dao.CartDaoJDBC;
-import com.ECW.Dao.CheckoutDao;
+import com.ECW.Checkout.Dao.CheckoutDao;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Checkout;
 import com.ECW.helper.ConnectionProvider;
