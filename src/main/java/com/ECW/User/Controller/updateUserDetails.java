@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.UserDao;
 import com.ECW.Model.User;
+import com.ECW.User.Dao.UserDaoHibernate;
+import com.ECW.User.Dao.UserDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
-import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.google.gson.Gson;
 
 @WebServlet(name = "updateUserDetails", urlPatterns = { "/updateUserDetails" })
@@ -41,12 +41,12 @@ public class updateUserDetails extends HttpServlet {
 		Gson gson = new Gson();
 
 		User user = new User(userName, emailId, phoneNo, password, seqQs, seqAns);
-		UserDao userDao = new UserDao(ConnectionProvider.getConnection());
+		UserDaoJDBC userDao = new UserDaoJDBC(ConnectionProvider.getConnection());
 		boolean stat = userDao.updateUserDetails(user);
 		if (stat == true) {
 			String data = gson.toJson(user);
 			out.print("success" + "|" + data);
-			user = CrudOperationsUsingHibernate.getUserDetails(phoneNo);
+			user = UserDaoHibernate.getUserDetails(phoneNo);
 			session.setAttribute("currentUser", user);
 		}
 	}

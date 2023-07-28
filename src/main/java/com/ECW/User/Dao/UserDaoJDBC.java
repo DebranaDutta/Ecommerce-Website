@@ -1,4 +1,4 @@
-package com.ECW.Dao;
+package com.ECW.User.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,10 +7,10 @@ import java.util.Date;
 
 import com.ECW.Model.User;
 
-public class UserDao {
+public class UserDaoJDBC {
 	private Connection connection;
 
-	public UserDao(Connection connection) {
+	public UserDaoJDBC(Connection connection) {
 		super();
 		this.connection = connection;
 	}

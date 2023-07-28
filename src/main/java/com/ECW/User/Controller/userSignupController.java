@@ -16,7 +16,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.ECW.Model.User;
-import com.ECW.helper.CrudOperationsUsingHibernate;
+import com.ECW.User.Dao.UserDaoHibernate;
 
 @WebServlet(name = "userSignupController", urlPatterns = {"/userSignupController"})
 public class userSignupController extends HttpServlet {
@@ -40,7 +40,7 @@ public class userSignupController extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		User user=new User(fullName, userName, email, phoneNumber, password, securityQuestion, answer, gender, new Date(), userType);
 		
-		boolean status= CrudOperationsUsingHibernate.addNewUser(user);
+		boolean status= UserDaoHibernate.addNewUser(user);
 		System.out.println(status);
 		if(status==true) {
 			out.print("success");

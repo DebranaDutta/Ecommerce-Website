@@ -15,12 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import org.hibernate.internal.build.AllowSysOut;
 
-import com.ECW.Dao.CartDao;
-import com.ECW.Dao.ProductDao;
+import com.ECW.Cart.Dao.CartDaoJDBC;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Product;
+import com.ECW.Product.Dao.ProductDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
-import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.ECW.helper.RandomIdGenerator;
 import com.google.gson.Gson;
 
@@ -42,11 +41,11 @@ public class AddProductsToCart extends HttpServlet {
 		Long userId = Long.parseLong(request.getParameter("userId"));
 
 		PrintWriter out = response.getWriter();
-		CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
+		CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 		Gson gson = new Gson();
 
 		//Product product = CrudOperationsUsingHibernate.getIndividualProductDetails(produtIdStr);
-		Product product=new ProductDao(ConnectionProvider.getConnection()).getIndividualProductDetails(productId);
+		Product product=new ProductDaoJDBC(ConnectionProvider.getConnection()).getIndividualProductDetails(productId);
 		Cart cart = new Cart(RandomIdGenerator.newIdGenrator(), product.getProductImage(), product.getProductName(), product.getProductPrice(), 1, new Date(), userId, productId, "active");
 		List<Cart> carts = cartDao.getCartDetailsByUser(userId);
 

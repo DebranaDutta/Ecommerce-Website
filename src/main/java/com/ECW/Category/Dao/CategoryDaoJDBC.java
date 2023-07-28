@@ -1,4 +1,4 @@
-package com.ECW.Dao;
+package com.ECW.Category.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,10 @@ import java.util.List;
 
 import com.ECW.Model.Category;
 
-public class CategoryDao {
+public class CategoryDaoJDBC {
 	private Connection connection;
 
-	public CategoryDao(Connection connection) {
+	public CategoryDaoJDBC(Connection connection) {
 		super();
 		this.connection = connection;
 	}

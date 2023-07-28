@@ -2,20 +2,30 @@ package com.ECW.Model;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Cart {
+	@Id
 	private int cartId;
 	private String productPic;
 	private String productName;
 	private int productPrice;
 	private int productQuantity;
+	@Column(name = "Date")
 	private Date date;
+	@Column(name = "UserId")
 	private long userId;
+	@Column(name = "ProductId")
 	private int productId;
 	private String status;
 
 	public Cart() {
 		super();
 	}
+
 	public Cart(int cartId, String productPic, String productName, int productPrice, int productQuantity, Date date, long userId, int productId, String status) {
 		super();
 		this.cartId = cartId;

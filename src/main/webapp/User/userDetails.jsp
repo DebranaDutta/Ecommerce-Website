@@ -1,5 +1,5 @@
 <%@page import="com.ECW.helper.gettingSecurityQuestionDetails"%>
-<%@page import="com.ECW.Dao.CartDao"%>
+<%@page import="com.ECW.Cart.Dao.CartDaoJDBC"%>
 <%@page import="com.ECW.Model.Cart"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.helper.JAVAView"%>

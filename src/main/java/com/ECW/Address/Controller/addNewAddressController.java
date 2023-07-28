@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.AddressDao;
+import com.ECW.Address.Dao.AddressDaoHibernate;
+import com.ECW.Address.Dao.AddressDaoJDBC;
 import com.ECW.Model.Address;
 import com.ECW.helper.ConnectionProvider;
 import com.mysql.cj.Session;
@@ -42,9 +43,11 @@ public class addNewAddressController extends HttpServlet {
 		String contactNo = request.getParameter("contactNo");
 		Address address = new Address();
 		address = new Address(new Random().nextInt(10000), addreassDetails, city, state, zip, userId, contactNo);
-		boolean stat = new AddressDao(ConnectionProvider.getConnection()).addNewAddress(address);
+		// boolean stat = new
+		// AddressDaoJDBC(ConnectionProvider.getConnection()).addNewAddress(address);
+		boolean stat = AddressDaoHibernate.addNewAddress(address);
 		if (stat == true) {
-			List<Address> addresses = new AddressDao(ConnectionProvider.getConnection()).getAllAddressDetails(userId);
+			List<Address> addresses = new AddressDaoJDBC(ConnectionProvider.getConnection()).getAllAddressDetails(userId);
 			session.setAttribute("addresses", addresses);
 			out.print("success");
 		}

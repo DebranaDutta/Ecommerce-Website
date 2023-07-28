@@ -1,5 +1,5 @@
 <%@page import="com.ECW.helper.ConnectionProvider"%>
-<%@page import="com.ECW.Dao.CartDao"%>
+<%@page import="com.ECW.Cart.Dao.CartDaoJDBC"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.ECW.Model.Cart"%>

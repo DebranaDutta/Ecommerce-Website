@@ -1,4 +1,4 @@
-package com.ECW.Dao;
+package com.ECW.Cart.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,10 +9,10 @@ import java.util.List;
 
 import com.ECW.Model.Cart;
 
-public class CartDao {
+public class CartDaoJDBC {
 	Connection connection;
 
-	public CartDao(Connection connection) {
+	public CartDaoJDBC(Connection connection) {
 		super();
 		this.connection = connection;
 	}

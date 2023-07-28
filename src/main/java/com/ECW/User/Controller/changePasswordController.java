@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.Dao.UserDao;
+import com.ECW.User.Dao.UserDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
 
 @WebServlet(name = "changePasswordController", urlPatterns = {"/changePasswordController"})
@@ -24,7 +24,7 @@ public class changePasswordController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String newPassword=request.getParameter("newPassword");
 		String userName=request.getParameter("userName");
-		UserDao userDao=new UserDao(ConnectionProvider.getConnection());
+		UserDaoJDBC userDao=new UserDaoJDBC(ConnectionProvider.getConnection());
 		PrintWriter out=response.getWriter();
 		boolean status= userDao.updateUserPassword(newPassword, userName);
 		if(status==true) {

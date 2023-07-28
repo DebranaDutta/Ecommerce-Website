@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.AddressDao;
+import com.ECW.Address.Dao.AddressDaoHibernate;
+import com.ECW.Address.Dao.AddressDaoJDBC;
 import com.ECW.Model.Address;
 import com.ECW.helper.ConnectionProvider;
 
@@ -24,8 +25,11 @@ public class showAllAddressController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Long userId = Long.parseLong(request.getParameter("userId"));
-		AddressDao addressDao = new AddressDao(ConnectionProvider.getConnection());
-		List<Address> addresses = addressDao.getAllAddressDetails(userId);
+		/*AddressDaoJDBC addressDao = new AddressDaoJDBC(ConnectionProvider.getConnection());
+		List<Address> addresses = addressDao.getAllAddressDetails(userId);*/
+		
+		List<Address> addresses=AddressDaoHibernate.getAllAddressDetails(userId);
+		
 		HttpSession session=request.getSession();
 		session.setAttribute("addresses", addresses);
 		response.sendRedirect("User/viewAddressDetails.jsp");		

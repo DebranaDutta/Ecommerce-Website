@@ -1,5 +1,5 @@
 <%@page import="com.ECW.helper.ConnectionProvider"%>
-<%@page import="com.ECW.Dao.CategoryDao"%>
+<%@page import="com.ECW.Category.Dao.CategoryDaoJDBC"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
 <%@page import="java.util.List"%>
@@ -7,7 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 //List<Category> categories = (ArrayList<Category>) CrudOperationsUsingHibernate.getAllCategoryDetails();
-CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
+CategoryDaoJDBC categoryDao = new CategoryDaoJDBC(ConnectionProvider.getConnection());
 List<Category> categories = categoryDao.getAllCategories();
 %>
 <!DOCTYPE html>

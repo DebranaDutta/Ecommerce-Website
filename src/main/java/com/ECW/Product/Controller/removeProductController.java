@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.helper.CrudOperationsUsingHibernate;
+import com.ECW.Product.Dao.ProductDaoHibernate;
 import com.ECW.helper.fileInputOutput;
 
 @WebServlet(name = "removeProductController", urlPatterns = { "/removeProductController" })
@@ -34,6 +34,6 @@ public class removeProductController extends HttpServlet {
 		String userProductPicPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + productPic;
 		fileInputOutput.deleteFile(userProductPicPath);
 
-		CrudOperationsUsingHibernate.removeProducts(productId);
+		ProductDaoHibernate.removeProducts(productId);
 	}
 }

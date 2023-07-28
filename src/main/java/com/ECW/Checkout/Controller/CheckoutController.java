@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.Dao.CartDao;
+import com.ECW.Cart.Dao.CartDaoJDBC;
 import com.ECW.Dao.CheckoutDao;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Checkout;
@@ -60,7 +60,7 @@ public class CheckoutController extends HttpServlet {
 		try {
 			Checkout checkout = new Checkout(transactionId, totalPrice, mop, productIds, cartIds, userId, addressId, new Date());
 			CheckoutDao checkoutDao = new CheckoutDao(ConnectionProvider.getConnection());
-			CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
+			CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 			for (Integer i : favList) {
 				cartDao.changeCartStatus(i);
 			}

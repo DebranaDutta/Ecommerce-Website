@@ -1,5 +1,5 @@
 <%@page import="com.ECW.helper.GeneralCalculation"%>
-<%@page import="com.ECW.Dao.AddressDao"%>
+<%@page import="com.ECW.Address.Dao.AddressDaoJDBC"%>
 <%@page import="com.ECW.Model.Address"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="com.ECW.Model.Checkout"%>
@@ -15,8 +15,8 @@ if (user == null) {
 	return;
 }
 CheckoutDao checkoutDao = new CheckoutDao(ConnectionProvider.getConnection());
-AddressDao addressDao = new AddressDao(ConnectionProvider.getConnection());
-CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
+AddressDaoJDBC addressDao = new AddressDaoJDBC(ConnectionProvider.getConnection());
+CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 List<Checkout> checkouts = checkoutDao.getOrderDetails(user.getPhoneNumber());
 %>
 <!DOCTYPE html>

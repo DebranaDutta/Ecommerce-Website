@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.AddressDao;
+import com.ECW.Address.Dao.AddressDaoJDBC;
 import com.ECW.Model.Address;
 import com.ECW.helper.ConnectionProvider;
 
@@ -30,11 +30,11 @@ public class removeAddressController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int addressId = Integer.parseInt(request.getParameter("addressId"));
 		Long userId = Long.parseLong(request.getParameter("userId"));
-		boolean status = new AddressDao(ConnectionProvider.getConnection()).removeAddress(addressId);
+		boolean status = new AddressDaoJDBC(ConnectionProvider.getConnection()).removeAddress(addressId);
 		PrintWriter out = response.getWriter();
 		HttpSession session=request.getSession();
 		if (status == true) {
-			List<Address> addresses=new AddressDao(ConnectionProvider.getConnection()).getAllAddressDetails(userId);
+			List<Address> addresses=new AddressDaoJDBC(ConnectionProvider.getConnection()).getAllAddressDetails(userId);
 			session.setAttribute("addresses", addresses);
 			out.print("success");
 		}

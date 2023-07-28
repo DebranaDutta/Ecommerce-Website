@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.Dao.ProductDao;
 import com.ECW.Model.Product;
+import com.ECW.Product.Dao.ProductDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
-import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.google.gson.Gson;
 
 @WebServlet(name = "getIndividualProductDetailsController", urlPatterns = { "/getIndividualProductDetailsController" })
@@ -30,7 +29,7 @@ public class getIndividualProductDetailsController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String productId = request.getParameter("productId");
 		int productIdInt = Integer.parseInt(productId);
-		ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+		ProductDaoJDBC productDao = new ProductDaoJDBC(ConnectionProvider.getConnection());
 		Product product = productDao.getIndividualProductDetails(productIdInt);
 		// Product product =
 		// CrudOperationsUsingHibernate.getIndividualProductDetails(productId);

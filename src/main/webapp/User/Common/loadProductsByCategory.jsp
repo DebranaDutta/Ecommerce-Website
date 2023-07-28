@@ -1,7 +1,7 @@
 <%@page import="com.ECW.Model.User"%>
-<%@page import="com.ECW.Dao.CategoryDao"%>
+<%@page import="com.ECW.Category.Dao.CategoryDaoJDBC"%>
 <%@page import="com.ECW.helper.ConnectionProvider"%>
-<%@page import="com.ECW.Dao.ProductDao"%>
+<%@page import="com.ECW.Product.Dao.ProductDaoJDBC"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Product"%>
 <%@page import="java.util.List"%>
@@ -11,10 +11,10 @@ User user=(User) session.getAttribute("currentUser");
 List<Product> products = new ArrayList<Product>();
 int catId = Integer.parseInt(request.getParameter("catId"));
 if (catId == 0) {
-	products = new ProductDao(ConnectionProvider.getConnection()).getAllProducts();
+	products = new ProductDaoJDBC(ConnectionProvider.getConnection()).getAllProducts();
 } else {
-	String categoryName = new CategoryDao(ConnectionProvider.getConnection()).getCategoryNameByCategoryID(catId);
-	products = new ProductDao(ConnectionProvider.getConnection()).getProductsByCategoryName(categoryName);
+	String categoryName = new CategoryDaoJDBC(ConnectionProvider.getConnection()).getCategoryNameByCategoryID(catId);
+	products = new ProductDaoJDBC(ConnectionProvider.getConnection()).getProductsByCategoryName(categoryName);
 }
 %>
 <!DOCTYPE html>

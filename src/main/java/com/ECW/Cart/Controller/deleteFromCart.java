@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.Dao.CartDao;
+import com.ECW.Cart.Dao.CartDaoJDBC;
 import com.ECW.Model.Cart;
 import com.ECW.helper.ConnectionProvider;
 import com.google.gson.Gson;
@@ -31,11 +31,11 @@ public class deleteFromCart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int cartId = Integer.parseInt(request.getParameter("cartId"));
 		long userId = Long.parseLong(request.getParameter("userId"));
-		boolean status = new CartDao(ConnectionProvider.getConnection()).deletefromCartByCartId(cartId);
+		boolean status = new CartDaoJDBC(ConnectionProvider.getConnection()).deletefromCartByCartId(cartId);
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
 		if (status == true) {
-			List<Cart> carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(userId);
+			List<Cart> carts = new CartDaoJDBC(ConnectionProvider.getConnection()).getCartDetailsByUser(userId);
 			out.print(gson.toJson(carts));
 		}
 	}

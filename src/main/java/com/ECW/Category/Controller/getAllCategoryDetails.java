@@ -10,24 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.CategoryDao;
+import com.ECW.Category.Dao.CategoryDaoHibernate;
+import com.ECW.Category.Dao.CategoryDaoJDBC;
 import com.ECW.Model.Category;
 import com.ECW.helper.ConnectionProvider;
-import com.ECW.helper.CrudOperationsUsingHibernate;
-@WebServlet(name = "getAllCategoryDetails", urlPatterns = {"/getAllCategoryDetails"})
+
+@WebServlet(name = "getAllCategoryDetails", urlPatterns = { "/getAllCategoryDetails" })
 public class getAllCategoryDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public getAllCategoryDetails() {
-        super();
-    }
+
+	public getAllCategoryDetails() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//List<Category> categories= CrudOperationsUsingHibernate.getAllCategoryDetails();
-		List<Category> categories=new CategoryDao(ConnectionProvider.getConnection()).getAllCategories();
-		HttpSession session=request.getSession();
+		List<Category> categories = CategoryDaoHibernate.getAllCategoryDetails();
+		// List<Category> categories=new
+		// CategoryDao(ConnectionProvider.getConnection()).getAllCategories();
+		HttpSession session = request.getSession();
 		session.setAttribute("categories", categories);
 		response.sendRedirect("Admin/AddNewProduct.jsp");
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 }

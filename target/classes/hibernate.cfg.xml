@@ -16,5 +16,6 @@
 		<mapping  class="com.ECW.Model.User"/>
 		<mapping class="com.ECW.Model.Product"/>	
 		<mapping class="com.ECW.Model.Category"/>	
+		<mapping class="com.ECW.Model.Address"/>
 	</session-factory>
 </hibernate-configuration>

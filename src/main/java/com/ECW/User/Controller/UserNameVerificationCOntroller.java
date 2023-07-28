@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.UserDao;
+import com.ECW.User.Dao.UserDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
 import com.ECW.helper.gettingSecurityQuestionDetails;
 
@@ -26,7 +26,7 @@ public class UserNameVerificationCOntroller extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName=request.getParameter("userName");
-		UserDao userDao=new UserDao(ConnectionProvider.getConnection());
+		UserDaoJDBC userDao=new UserDaoJDBC(ConnectionProvider.getConnection());
 		String securityQuestionId=userDao.getSecurityQuestionByUserName(userName);
 		PrintWriter out=response.getWriter();
 		if(securityQuestionId==null) {

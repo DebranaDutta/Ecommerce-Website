@@ -1,8 +1,8 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.ECW.Dao.CartDao"%>
+<%@page import="com.ECW.Cart.Dao.CartDaoJDBC"%>
 <%@page import="com.ECW.Model.Cart"%>
 <%@page import="com.ECW.helper.ConnectionProvider"%>
-<%@page import="com.ECW.Dao.AddressDao"%>
+<%@page import="com.ECW.Address.Dao.AddressDaoJDBC"%>
 <%@page import="com.ECW.Model.Address"%>
 <%@page import="java.util.List"%>
 <%@page import="com.ECW.helper.JAVAView"%>
@@ -15,9 +15,9 @@ if (user == null) {
 	response.sendRedirect(JAVAView.loginView);
 	return;
 }
-List<Address> addresses = new AddressDao(ConnectionProvider.getConnection())
+List<Address> addresses = new AddressDaoJDBC(ConnectionProvider.getConnection())
 		.getAllAddressDetails(user.getPhoneNumber());
-List<Cart> carts = new CartDao(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());
+List<Cart> carts = new CartDaoJDBC(ConnectionProvider.getConnection()).getCartDetailsByUser(user.getPhoneNumber());
 int totalPrice = 0;
 for (Cart cart : carts) {
 	totalPrice = totalPrice + (cart.getProductQuantity() * cart.getProductPrice());

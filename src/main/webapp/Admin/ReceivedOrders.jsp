@@ -4,8 +4,8 @@
 <%@page import="com.ECW.helper.ConnectionProvider"%>
 <%@page import="com.ECW.Model.Checkout"%>
 <%@page import="java.util.List"%>
-<%@page import="com.ECW.Dao.CartDao"%>
-<%@page import="com.ECW.Dao.AddressDao"%>
+<%@page import="com.ECW.Cart.Dao.CartDaoJDBC"%>
+<%@page import="com.ECW.Address.Dao.AddressDaoJDBC"%>
 <%@page import="com.ECW.Dao.CheckoutDao"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
@@ -24,8 +24,8 @@ if (user == null) {
 	}
 }
 CheckoutDao checkoutDao = new CheckoutDao(ConnectionProvider.getConnection());
-AddressDao addressDao = new AddressDao(ConnectionProvider.getConnection());
-CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
+AddressDaoJDBC addressDao = new AddressDaoJDBC(ConnectionProvider.getConnection());
+CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 List<Checkout> checkouts = checkoutDao.getNotDeliveredOrderDetails();
 %>
 <!DOCTYPE html>

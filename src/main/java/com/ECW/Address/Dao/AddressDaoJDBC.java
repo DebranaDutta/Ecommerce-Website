@@ -1,4 +1,4 @@
-package com.ECW.Dao;
+package com.ECW.Address.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,10 @@ import java.util.List;
 
 import com.ECW.Model.Address;
 
-public class AddressDao {
+public class AddressDaoJDBC {
 	Connection connection;
 
-	public AddressDao(Connection connection) {
+	public AddressDaoJDBC(Connection connection) {
 		super();
 		this.connection = connection;
 	}

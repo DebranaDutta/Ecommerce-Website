@@ -15,10 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.ECW.Dao.ProductDao;
 import com.ECW.Model.Product;
+import com.ECW.Product.Dao.ProductDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
-import com.ECW.helper.CrudOperationsUsingHibernate;
 import com.ECW.helper.RandomIdGenerator;
 import com.ECW.helper.fileInputOutput;
 
@@ -61,7 +60,7 @@ public class AddNewProductController extends HttpServlet {
 			fileInputOutput.fileCopy(AdminPath, UserPath);
 		}
 		Product product = new Product(RandomIdGenerator.newIdGenrator(), productName, productPrice, productCategory, available, new Date(), productPic);
-		ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+		ProductDaoJDBC productDao = new ProductDaoJDBC(ConnectionProvider.getConnection());
 		PrintWriter out = response.getWriter();
 		boolean status = productDao.addNewProduct(product);
 		if (status == true) {

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ECW.Dao.UserDao;
 import com.ECW.Model.User;
+import com.ECW.User.Dao.UserDaoJDBC;
 import com.ECW.helper.ConnectionProvider;
 
 @WebServlet(name = "userLoginController", urlPatterns = "/userLoginController")
@@ -31,7 +31,7 @@ public class userLoginController extends HttpServlet {
 		String password = request.getParameter("password");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		UserDao userDao = new UserDao(ConnectionProvider.getConnection());
+		UserDaoJDBC userDao = new UserDaoJDBC(ConnectionProvider.getConnection());
 		User user = userDao.getUserByUserIdAndPassword(password, userName);
 		if (user == null) {
 			out.print("error");

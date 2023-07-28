@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.Dao.CategoryDao;
+import com.ECW.Category.Dao.CategoryDaoHibernate;
+import com.ECW.Category.Dao.CategoryDaoJDBC;
 import com.ECW.Model.Category;
 import com.ECW.helper.ConnectionProvider;
-import com.ECW.helper.CrudOperationsUsingHibernate;
 
 @WebServlet(name = "AddNewCategoryController", urlPatterns = { "/AddNewCategoryController" })
 public class AddNewCategoryController extends HttpServlet {
@@ -32,8 +32,8 @@ public class AddNewCategoryController extends HttpServlet {
 		String categoryDetails = request.getParameter("categoryDetails");
 		PrintWriter out = response.getWriter();
 		Category category = new Category(new Random().nextInt(1000), categoryName, categoryDetails);
-		// boolean status= CrudOperationsUsingHibernate.addNewCategory(category);
-		boolean status = new CategoryDao(ConnectionProvider.getConnection()).AddCategory(category);
+		boolean status= CategoryDaoHibernate.addNewCategory(category);
+		//boolean status = new CategoryDao(ConnectionProvider.getConnection()).AddCategory(category);
 		if (status == true) {
 			out.print("success");
 		} else {

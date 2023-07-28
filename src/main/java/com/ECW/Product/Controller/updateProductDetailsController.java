@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.ECW.Model.Product;
-import com.ECW.helper.CrudOperationsUsingHibernate;
+import com.ECW.Product.Dao.ProductDaoHibernate;
 import com.ECW.helper.fileInputOutput;
 
 @WebServlet(name = "updateProductDetailsController", urlPatterns = "/updateProductDetailsController")
@@ -49,17 +49,17 @@ public class updateProductDetailsController extends HttpServlet {
 			fileInputOutput.deleteFile(oldAdminPath);
 			String oldUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + oldProductPic;
 			fileInputOutput.deleteFile(oldUserPath);
-			
+
 			String newAdminPath = request.getRealPath("/") + "Admin" + File.separator + "img" + File.separator + newProductPic;
 			fileInputOutput.saveFile(inputStream, newAdminPath);
 
 			String newUserPath = request.getRealPath("/") + "User" + File.separator + "img" + File.separator + newProductPic;
 			fileInputOutput.fileCopy(newAdminPath, newUserPath);
-			
-			CrudOperationsUsingHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, newProductPic);
+
+			ProductDaoHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, newProductPic);
 
 		} else if (newProductPic == "") {
-			CrudOperationsUsingHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, oldProductPic);
+			ProductDaoHibernate.updateProdcutDetails(productId, productName, productPrice, productCategory, available, oldProductPic);
 		}
 
 		PrintWriter out = response.getWriter();

@@ -1,6 +1,11 @@
 package com.ECW.Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Address {
+	@Id
 	private int addressId;
 	private String addressDetails;
 	private String city;

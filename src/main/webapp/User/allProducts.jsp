@@ -1,7 +1,7 @@
 <%@page import="com.ECW.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-	User user=(User) session.getAttribute("currentUser");
+User user=(User) session.getAttribute("currentUser");
 	if(user==null){
 		session.setAttribute("message", "You are not loggedin!");
 		response.sendRedirect(JAVAView.loginView);

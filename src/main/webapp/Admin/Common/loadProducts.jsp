@@ -1,25 +1,25 @@
-<%@page import="com.ECW.Dao.CategoryDao"%>
+<%@page import="com.ECW.Product.Dao.ProductDaoHibernate"%>
+<%@page import="com.ECW.Category.Dao.CategoryDaoHibernate"%>
+<%@page import="com.ECW.Category.Dao.CategoryDaoJDBC"%>
 <%@page import="com.ECW.helper.ConnectionProvider"%>
-<%@page import="com.ECW.Dao.ProductDao"%>
+<%@page import="com.ECW.Product.Dao.ProductDaoJDBC"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
-<%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
 <%@page import="com.ECW.Model.Product"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-//List<Category> categories = CrudOperationsUsingHibernate.getAllCategoryDetails();
-List<Category> categories = new CategoryDao(ConnectionProvider.getConnection()).getAllCategories();
+List<Category> categories = CategoryDaoHibernate.getAllCategoryDetails();
 List<Product> products = new ArrayList<Product>();
 int catId = Integer.parseInt(request.getParameter("catId"));
 if (catId == 0) {
-	//products = CrudOperationsUsingHibernate.getAllProductDetails();
-	products = new ProductDao(ConnectionProvider.getConnection()).getAllProductsIrrecpectiveOfproductAvailability();
+	products = ProductDaoHibernate.getAllProductDetails();
+	//products = new ProductDao(ConnectionProvider.getConnection()).getAllProductsIrrecpectiveOfproductAvailability();
 } else {
-	CategoryDao categoryDao = new CategoryDao(ConnectionProvider.getConnection());
+	CategoryDaoJDBC categoryDao = new CategoryDaoJDBC(ConnectionProvider.getConnection());
 	String categoryName = categoryDao.getCategoryNameByCategoryID(catId);
-	ProductDao productDao = new ProductDao(ConnectionProvider.getConnection());
+	ProductDaoJDBC productDao = new ProductDaoJDBC(ConnectionProvider.getConnection());
 	products = productDao.getProductsByCategoryAdmin(categoryName);
 }
 %>

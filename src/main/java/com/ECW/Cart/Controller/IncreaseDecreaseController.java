@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ECW.Dao.CartDao;
+import com.ECW.Cart.Dao.CartDaoJDBC;
 import com.ECW.Model.Cart;
 import com.ECW.helper.ConnectionProvider;
 import com.google.gson.Gson;
@@ -33,7 +33,7 @@ public class IncreaseDecreaseController extends HttpServlet {
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		Gson gson = new Gson();
 		PrintWriter out = response.getWriter();
-		CartDao cartDao = new CartDao(ConnectionProvider.getConnection());
+		CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 		if (quantity == 0) {
 			boolean status = cartDao.deletefromCartByCartId(cartId);
 			if (status == true) {

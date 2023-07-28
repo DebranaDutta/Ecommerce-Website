@@ -1,4 +1,4 @@
-package com.ECW.helper;
+package com.ECW.Product.Dao;
 
 import java.util.Date;
 import java.util.List;
@@ -7,43 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import com.ECW.Model.Category;
 import com.ECW.Model.Product;
-import com.ECW.Model.User;
+import com.ECW.helper.FactoryProvider;
 
-public class CrudOperationsUsingHibernate {
+public class ProductDaoHibernate {
 	public static Session session;
 	public static Transaction transaction;
 
-	/* User */
-	public static boolean addNewUser(User user) {
-		try {
-			session = FactoryProvider.getFactory().openSession();
-			transaction = session.beginTransaction();
-			session.save(user);
-			transaction.commit();
-			session.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return true;
-	}
-
-	public static User getUserDetails(Long userId) {
-		User user = new User();
-		try {
-			session = FactoryProvider.getFactory().openSession();
-			transaction = session.beginTransaction();
-			user = (User) session.get(User.class, userId);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return user;
-	}
-
-	/* User */
-
-	/* Product */
 	public static boolean addNewProduct(Product product) {
 		try {
 			session = FactoryProvider.getFactory().openSession();
@@ -117,27 +87,4 @@ public class CrudOperationsUsingHibernate {
 			e.printStackTrace();
 		}
 	}
-	/* Product */
-
-	/* Category */
-	public static boolean addNewCategory(Category category) {
-		session = FactoryProvider.getFactory().openSession();
-		transaction = session.beginTransaction();
-		session.save(category);
-		transaction.commit();
-		return true;
-	}
-
-	public static List<Category> getAllCategoryDetails() {
-		List<Category> categories = null;
-		try {
-			session = FactoryProvider.getFactory().openSession();
-			Query<Category> query = session.createQuery("from Category");
-			categories= query.getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return categories;
-	}
-	/* Category */
 }
