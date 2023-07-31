@@ -3,10 +3,11 @@
 <%@page import="com.ECW.Model.Address"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@page import="com.ECW.Model.Checkout"%>
-<%@page import="com.ECW.Checkout.Dao.CheckoutDao"%>
+<%@page import="com.ECW.Checkout.Dao.CheckoutDaoJDBC"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%
 User user = (User) session.getAttribute("currentUser");
 if (user == null) {
@@ -14,10 +15,10 @@ if (user == null) {
 	response.sendRedirect(JAVAView.loginView);
 	return;
 }
-CheckoutDao checkoutDao = new CheckoutDao(ConnectionProvider.getConnection());
+CheckoutDaoJDBC checkoutDaoJDBC = new CheckoutDaoJDBC(ConnectionProvider.getConnection());
 AddressDaoJDBC addressDao = new AddressDaoJDBC(ConnectionProvider.getConnection());
 CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
-List<Checkout> checkouts = checkoutDao.getOrderDetails(user.getPhoneNumber());
+List<Checkout> checkouts = checkoutDaoJDBC.getOrderDetails(user.getPhoneNumber());
 %>
 <!DOCTYPE html>
 <html>
@@ -25,8 +26,10 @@ List<Checkout> checkouts = checkoutDao.getOrderDetails(user.getPhoneNumber());
 <meta charset="ISO-8859-1">
 <title>My Orders</title>
 <!-- bootStrap -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 
 <!--Custom CSS only -->
 <link rel="stylesheet" href="CSS/cartFunctions.css">
@@ -79,9 +82,11 @@ List<Checkout> checkouts = checkoutDao.getOrderDetails(user.getPhoneNumber());
 						Cart cart = cartDao.getCartDetailsByCartIdAsIncative(i);
 					%>
 					<div class="col ml-3 mb-3">
-						<div class="card" style="width: 12rem; height: 10rem; border-radius: 7px;">
+						<div class="card"
+							style="width: 12rem; height: 10rem; border-radius: 7px;">
 							<div class="text-center">
-								<img src="img/<%=cart.getProductPic()%>" class="card-img-top mt-1" alt="">
+								<img src="img/<%=cart.getProductPic()%>"
+									class="card-img-top mt-1" alt="">
 							</div>
 							<div class="text-center">
 								<span class="span1"><%=cart.getProductName()%></span>
@@ -134,14 +139,19 @@ label {
 }
 </style>
 	<!-- BootStrap -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 	<!-- FontAwsome -->
-	<script src="https://kit.fontawesome.com/400552a932.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/400552a932.js"
+		crossorigin="anonymous"></script>
 	<!-- JQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- Sweetalert -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
 	<script type="text/javascript" src="JS/cartFunctions.js"></script>
 </body>

@@ -13,10 +13,11 @@
 		<property name="format_sql">false</property>
 		<property name="use_sql_comments">false</property>
 		<property name="connection.pool_size">100</property>
-		<mapping  class="com.ECW.Model.User"/>
-		<mapping class="com.ECW.Model.Product"/>	
-		<mapping class="com.ECW.Model.Category"/>	
-		<mapping class="com.ECW.Model.Address"/>
-		<mapping class="com.ECW.Model.Cart"/>
+		<mapping class="com.ECW.Model.User" />
+		<mapping class="com.ECW.Model.Product" />
+		<mapping class="com.ECW.Model.Category" />
+		<mapping class="com.ECW.Model.Address" />
+		<mapping class="com.ECW.Model.Cart" />
+		<mapping class="com.ECW.Model.Checkout" />
 	</session-factory>
 </hibernate-configuration>

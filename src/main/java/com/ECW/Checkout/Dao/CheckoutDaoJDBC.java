@@ -9,10 +9,10 @@ import java.util.List;
 
 import com.ECW.Model.Checkout;
 
-public class CheckoutDao {
+public class CheckoutDaoJDBC {
 	Connection connection;
 
-	public CheckoutDao(Connection connection) {
+	public CheckoutDaoJDBC(Connection connection) {
 		super();
 		this.connection = connection;
 	}

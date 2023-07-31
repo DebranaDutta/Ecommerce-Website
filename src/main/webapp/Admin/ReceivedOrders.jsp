@@ -6,7 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.ECW.Cart.Dao.CartDaoJDBC"%>
 <%@page import="com.ECW.Address.Dao.AddressDaoJDBC"%>
-<%@page import="com.ECW.Checkout.Dao.CheckoutDao"%>
+<%@page import="com.ECW.Checkout.Dao.CheckoutDaoJDBC"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -23,7 +23,7 @@ if (user == null) {
 		return;
 	}
 }
-CheckoutDao checkoutDao = new CheckoutDao(ConnectionProvider.getConnection());
+CheckoutDaoJDBC checkoutDao = new CheckoutDaoJDBC(ConnectionProvider.getConnection());
 AddressDaoJDBC addressDao = new AddressDaoJDBC(ConnectionProvider.getConnection());
 CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 List<Checkout> checkouts = checkoutDao.getNotDeliveredOrderDetails();

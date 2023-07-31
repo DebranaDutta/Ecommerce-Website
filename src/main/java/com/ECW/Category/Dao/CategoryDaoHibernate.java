@@ -15,11 +15,16 @@ public class CategoryDaoHibernate {
 	public static Transaction transaction;
 
 	public static boolean addNewCategory(Category category) {
-		session = FactoryProvider.getFactory().openSession();
-		transaction = session.beginTransaction();
-		session.save(category);
-		transaction.commit();
-		return true;
+		try {
+			session = FactoryProvider.getFactory().openSession();
+			transaction = session.beginTransaction();
+			session.save(category);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	public static List<Category> getAllCategoryDetails() {
@@ -33,5 +38,5 @@ public class CategoryDaoHibernate {
 		}
 		return categories;
 	}
-	
+
 }

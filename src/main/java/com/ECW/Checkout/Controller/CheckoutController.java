@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ECW.Cart.Dao.CartDaoJDBC;
-import com.ECW.Checkout.Dao.CheckoutDao;
+import com.ECW.Checkout.Dao.CheckoutDaoHibernate;
+import com.ECW.Checkout.Dao.CheckoutDaoJDBC;
 import com.ECW.Model.Cart;
 import com.ECW.Model.Checkout;
 import com.ECW.helper.ConnectionProvider;
@@ -58,13 +59,12 @@ public class CheckoutController extends HttpServlet {
 		
 
 		try {
-			Checkout checkout = new Checkout(transactionId, totalPrice, mop, productIds, cartIds, userId, addressId, new Date());
-			CheckoutDao checkoutDao = new CheckoutDao(ConnectionProvider.getConnection());
+			Checkout checkout = new Checkout(transactionId, totalPrice, mop, productIds, cartIds, userId, addressId, new Date(), "Not Delivered");
 			CartDaoJDBC cartDao = new CartDaoJDBC(ConnectionProvider.getConnection());
 			for (Integer i : favList) {
 				cartDao.changeCartStatus(i);
 			}
-			boolean stat = checkoutDao.insertIntoCheckoutTable(checkout);
+			boolean stat = CheckoutDaoHibernate.insertIntoCheckoutTable(checkout);
 			if (stat == true) {
 				out.print("success");
 			}
