@@ -1,8 +1,11 @@
+<%@page import="java.util.List"%>
+<%@page import="com.ECW.User.Dao.UserDaoHibernate"%>
+<%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
 <%@ page
 	language="java"
-	contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 User user = (User) session.getAttribute("currentUser");
 if (user == null) {
@@ -16,12 +19,13 @@ if (user == null) {
 		return;
 	}
 }
+List<User> users = UserDaoHibernate.getAllUsers();
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Users Details</title>
 <link
 	rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -30,15 +34,54 @@ if (user == null) {
 <link
 	rel="stylesheet"
 	href="CSS/commonCss/background.css">
+<link
+	rel="stylesheet"
+	href="CSS/AllUserDetails.css">
 </head>
 <body>
 	<%@include file="Common/AdminNavbar.jsp"%>
-	<div class="container-fluid text-center">
-		<h1>
-			Hello
-			<%=user.getFullName()%></h1>
-	</div>
+	<div class="container-fluid mt-3">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Full Name</th>
+					<th scope="col">User Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Contact No</th>
+					<th scope="col">User Type</th>
+					<th scope="col">Gender</th>
+					<th scope="col">Profile Creation Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+				for (User u : users) {
+					if (!(u.getUserName().equalsIgnoreCase("Admin"))) {
+				%>
 
+				<tr class="userGrid">
+					<td><a
+						href="#"
+						class="userDetails"><%=u.getFullName()%></a></td>
+					<input
+						type="hidden"
+						class="userId"
+						value="<%=u.getPhoneNumber()%>">
+					<td><%=u.getUserName()%></td>
+					<td><%=u.getEmail()%></td>
+					<td><%=u.getPhoneNumber()%></td>
+					<td><%=u.getUserType()%></td>
+					<td><%=u.getGender()%></td>
+					<td><%=u.getDate()%></td>
+				</tr>
+
+				<%
+				}
+				}
+				%>
+			</tbody>
+		</table>
+	</div>
 	<!-- BootStrap -->
 	<script
 		src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -61,5 +104,8 @@ if (user == null) {
 	<!-- Sweetalert -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 	<!-- CustomScript -->
+	<script
+		type="text/javascript"
+		src="JS/AllUserDetails.js"></script>
 </body>
 </html>

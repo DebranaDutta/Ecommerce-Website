@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.userDetails {
+	color: black;
+}
+
+.userDetails:hover {
+	cursor: pointer;
+	text-decoration: none;
+	font-weight: 600;
+	transition: all .5s ease;
+	color: black;
+	letter-spacing: .8px;
+	text-shadow: 0 .2rem .3rem rgb(0, 0, 0, .5);
+}
