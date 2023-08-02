@@ -1,0 +1,67 @@
+.list-group {
+	box-shadow: 0 .2rem .2rem rgb(0, 0, 0, .5);
+	border-radius: 5px;
+}
+
+.list-group a {
+	background: none;
+	color: black;
+	font-weight: 500;
+	border: none;
+	padding: 10px;
+	padding-left: 10%;
+}
+
+.list-group a:hover {
+	background: #fff;
+	letter-spacing: .8px;
+	font-weight: 600;
+	transition: all .5s ease;
+	color: black;
+	box-shadow: 0 .2rem .3rem rgb(0, 0, 0, .5);
+}
+
+.userDetails {
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 0 .2rem .3rem rgb(0, 0, 0, .5);
+	width: 60%;
+	margin-left: 18%;
+	margin-right: 32%;
+	background: white;
+}
+
+#userImg {
+	height: 75px;
+	padding: 3px;
+	border: 2px solid #BDB6B4;
+	border-radius: 50px;
+}
+
+.details {
+	display: inline-block;
+}
+
+.titleDetails input {
+	width: 70%;
+	color: red;
+	border: none;
+	font-size: 20px;
+}
+
+.modal-content {
+	border-radius: 10px;
+	box-shadow: 0 .5rem .5rem rgb(0, 0, 0, 1);
+}
+
+.btn {
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.selectDropdown {
+	width: 80%;
+	color: red;
+	border: none;
+	font-size: 20px;
+}

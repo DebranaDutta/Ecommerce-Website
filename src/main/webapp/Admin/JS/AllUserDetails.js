@@ -9,6 +9,11 @@ $(document).ready(function() {
 				userId:userId
 			},
 			success : function(data, tetxtStatus, jqXHR){
+				if(data.trim()==='success'){
+					window.location='UserIndividualDetails.jsp';
+				}		
+			},
+			error: function(jqXHR, textStatus, errorThrown){
 				
 			}
 		})

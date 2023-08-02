@@ -2,7 +2,6 @@
 <%@page import="com.ECW.helper.ConnectionProvider"%>
 <%@page import="com.ECW.Category.Dao.CategoryDaoJDBC"%>
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
-<%@page import="com.ECW.helper.CrudOperationsUsingHibernate"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.ECW.Model.Category"%>
 <%@page import="java.util.List"%>
