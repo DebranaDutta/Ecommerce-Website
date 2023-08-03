@@ -37,10 +37,15 @@ public class getIndividualUserDetailsController extends HttpServlet {
 		long userId = Long.parseLong(strUserId);
 		User particularUser = UserDaoHibernate.getUserDetails(userId);
 		List<Address> addresses = AddressDaoHibernate.getAllAddressDetails(userId);
+		List<Cart> carts = CartDaoHibernate.getCartDetailsByUser(userId);
+		List<Checkout> checkouts = CheckoutDaoHibernate.getOrderDetails(userId);
+
 		HttpSession session = request.getSession();
 		session.setAttribute("particularUser", particularUser);
 		session.setAttribute("addresses", addresses);
-		
+		session.setAttribute("carts", carts);
+		session.setAttribute("checkouts", checkouts);
+
 		PrintWriter out = response.getWriter();
 		out.print("success");
 	}

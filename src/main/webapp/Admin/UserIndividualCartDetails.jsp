@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ECW.Model.Cart"%>
+<%@page import="java.util.List"%>
 <%@page import="com.ECW.helper.JAVAView"%>
 <%@page import="com.ECW.Model.User"%>
 <%@ page
@@ -18,6 +21,7 @@ if (user == null) {
 	}
 }
 User particularUser = (User) session.getAttribute("particularUser");
+List<Cart> carts = (ArrayList) session.getAttribute("carts");
 %>
 <!DOCTYPE html>
 <html>
@@ -40,6 +44,54 @@ User particularUser = (User) session.getAttribute("particularUser");
 			<!-- First COL -->
 			<%@include file="userDetailsList.jsp"%>
 			<!-- Second COL -->
+			<div class="col-md-10">
+				<div class="container-fluid">
+					<%
+					if (carts.isEmpty()) {
+					%>
+					<div class="text-center">
+						<h1 id="Notice">
+							<span style="color: #FF4711"><%=particularUser.getFullName()%>'s</span> cart is empty
+						</h1>
+					</div>
+					<%
+					} else {
+					%>
+					<div class="card">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Cart Id</th>
+									<th>Date</th>
+									<th>Product Id</th>
+									<th>Product Name</th>
+									<th>Product Price</th>
+									<th>Product Quantity</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+								for (Cart cart : carts) {
+								%>
+								<tr>
+									<td><%=cart.getCartId()%></td>
+									<td><%=cart.getDate().getDate()%></td>
+									<td><%=cart.getProductId()%></td>
+									<td><%=cart.getProductName()%></td>
+									<td><%=cart.getProductPrice()%></td>
+									<td><%=cart.getProductQuantity()%></td>
+								</tr>
+								<%
+								}
+								%>
+							</tbody>
+						</table>
+					</div>
+					<%
+					}
+					%>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- BootStrap -->

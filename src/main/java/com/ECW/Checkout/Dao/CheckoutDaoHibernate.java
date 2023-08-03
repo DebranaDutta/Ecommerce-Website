@@ -33,13 +33,29 @@ public class CheckoutDaoHibernate {
 		try {
 			session = FactoryProvider.getFactory().openSession();
 			transaction = session.beginTransaction();
-			Query query = session.createQuery("from Checkout as C where C.userid= :userid and C.status= :status");
+			Query query = session.createQuery("from Checkout as C where C.userId= :userid and C.status= :status");
 			query.setParameter("userid", userId);
 			query.setParameter("status", "Not Delivered");
 			checkouts = query.getResultList();
 			session.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return checkouts;
+	}
+
+	public static List<Checkout> getDeliveredOrderDetails(long userId) {
+		List<Checkout> checkouts = new ArrayList<Checkout>();
+		try {
+			session = FactoryProvider.getFactory().openSession();
+			transaction = session.beginTransaction();
+			Query query = session.createQuery("from Checkout as C where C.userId= :userid and C.status= :status");
+			query.setParameter("userid", userId);
+			query.setParameter("status", "Delivered");
+			checkouts = query.getResultList();
+			session.close();
+		} catch (Exception e) {
+
 		}
 		return checkouts;
 	}

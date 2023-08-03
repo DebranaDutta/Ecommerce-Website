@@ -154,8 +154,8 @@ public class Checkout {
 
 	@Override
 	public String toString() {
-		return "Checkout [transactionId=" + transactionId + ", totalPrice=" + totalPrice + ", payment=" + payment + ", productId=" + productId + ", userId=" + userId
-				+ ", addressId=" + addressId + ", date=" + date + ", status=" + status + "]";
+		return "Checkout [transactionId=" + transactionId + ", totalPrice=" + totalPrice + ", payment=" + payment + ", productId=" + productId + ", cartId=" + cartId + ", userId="
+				+ userId + ", addressId=" + addressId + ", date=" + date + ", status=" + status + "]";
 	}
 
 }
